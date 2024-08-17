@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "cresult.h": "c",
+        "cvector.h": "c",
+        "stdio.h": "c",
+        "cerror.h": "c",
+        "cstdlib": "cpp"
+    }
+}
