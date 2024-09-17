@@ -120,6 +120,9 @@ size_t CVector_find(const CVector* vector, void* key, CompareTo cmp);
 /// \param cmp Function pointer to the comparison function used for sorting. The comparison function should
 ///            return a negative value if the first element is less than the second, zero if they are equal,
 ///            and a positive value if the first element is greater than the second.
+///
+/// \note: Thanks to Patrick Perry for reference implementation. Source: https://github.com/patperry/timsort/blob/master/timsort.c
+///
 /// \return Returns `CVECTOR_SUCCESS` on success, or an error code if the sorting operation fails (e.g., NULL comparison function).
 int CVector_sort(CVector* vector, CompareTo cmp);
 

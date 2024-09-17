@@ -153,6 +153,8 @@ static void merge(void** data, size_t l, size_t m, size_t r, CompareTo cmp) {
     free(right);
 }
 
+// Thanks to Patrick Perry and other authors.
+// I referenced this from https://github.com/patperry/timsort/blob/master/timsort.c
 static void timsort(void** data, size_t size, CompareTo cmp) {
     const size_t min_run = 32;
 

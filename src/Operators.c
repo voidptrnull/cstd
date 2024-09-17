@@ -1,6 +1,7 @@
 #include <Operators.h>
 
 #ifdef CUTILS_COMP_FUNCTIONS
+#define HAVE_CUTILS_FUNCTIONS
 int ccompare_pointer(const void* a, const void* b) {
 	return (a > b) - (a < b);
 }
@@ -21,8 +22,8 @@ size_t chash_string(const void* key) {
     return hash;
 }
 
+#include <stdint.h>
 size_t cdefault_hash(const void* key) {
-	#include <stdint.h>
 	uintptr_t ptr = (uintptr_t)key;
     ptr ^= (ptr >> 21);
     ptr ^= (ptr >> 35);

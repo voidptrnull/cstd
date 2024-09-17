@@ -38,21 +38,10 @@
 /// \details The default capacity determines the number of buckets allocated initially for the hash map.
 #define CHASHMAP_DEFAULT_CAPACITY 16
 
-/// \CHashMap
 /// \brief Structure representing a hash map.
 /// \details The hash map uses an array of vectors (`buckets`) to store key-value pairs. Each bucket is a vector
 ///          that can hold multiple entries. The hash map uses user-defined comparison (`cmp`) and hash (`hash`)
 ///          functions to manage and access elements.
-/// \var CHashMap::buckets
-///     Pointer to an array of vectors used as buckets for storing hash map entries.
-/// \var CHashMap::size
-///     Number of key-value pairs currently stored in the hash map.
-/// \var CHashMap::capacity
-///     Number of buckets allocated for the hash map.
-/// \var CHashMap::cmp
-///     Function pointer to a comparison function used to compare keys.
-/// \var CHashMap::hash
-///     Function pointer to a hash function used to compute hash values for keys.
 typedef struct {
     CVector* buckets;   ///< Array of buckets (vectors) to store hash map entries.
     size_t size;               ///< Number of key-value pairs currently in the hash map.
@@ -71,6 +60,11 @@ typedef struct {
 /// \return An integer value indicating the result of the initialization:
 ///         - `CHASHMAP_SUCCESS` if the hash map was successfully initialized,
 ///         - `CHASHMAP_ALLOC_FAILURE` if memory allocation failed.
+///
+/// \note Ensure that `map` is not NULL before calling this function. The function initializes the hash map with
+///       the provided capacity, comparison, and hash functions. The default capacity is 16 if `capacity` is zero.
+///
+/// \warning If memory allocation fails or the parameters are invalid, the function will return `CHASHMAP_ALLOC_FAILURE`.
 int CHashMap_init(CHashMap* map, size_t capacity, CompareTo cmp, Hash hash);
 
 /// \brief Insert a key-value pair into the hash map.
@@ -81,6 +75,11 @@ int CHashMap_init(CHashMap* map, size_t capacity, CompareTo cmp, Hash hash);
 /// \return An integer value indicating the result of the insertion:
 ///         - `CHASHMAP_SUCCESS` if the key-value pair was successfully inserted or updated,
 ///         - `CHASHMAP_ALLOC_FAILURE` if memory allocation failed.
+///
+/// \note Ensure that neither `key` nor `value` is NULL before calling this function. The function will update
+///       the value if the key already exists in the hash map.
+///
+/// \warning If memory allocation fails, or `key` or `value` is NULL, the function will return `CHASHMAP_ALLOC_FAILURE`.
 int CHashMap_insert(CHashMap* map, void* key, void* value);
 
 /// \brief Lookup a value by key in the hash map.
@@ -88,6 +87,11 @@ int CHashMap_insert(CHashMap* map, void* key, void* value);
 /// \param map Pointer to the hash map.
 /// \param key Pointer to the key to look up.
 /// \return Pointer to the value associated with the key, or `NULL` if the key was not found.
+///
+/// \note Ensure that `key` is not NULL before calling this function. The function will return `NULL` if the key
+///       is not found in the hash map.
+///
+/// \warning If `key` is NULL, the function may return unexpected results or fail to perform the lookup.
 void* CHashMap_lookup(CHashMap* map, void* key);
 
 /// \brief Remove a key-value pair from the hash map.
@@ -97,15 +101,24 @@ void* CHashMap_lookup(CHashMap* map, void* key);
 /// \return An integer value indicating the result of the removal:
 ///         - `CHASHMAP_SUCCESS` if the key-value pair was successfully removed,
 ///         - `CHASHMAP_NOT_FOUND` if the key was not found in the hash map.
+///
+/// \note Ensure that `key` is not NULL before calling this function. The function will return `CHASHMAP_NOT_FOUND`
+///       if the key is not present in the hash map.
+///
+/// \warning If `key` is NULL, the function will return `CHASHMAP_NOT_FOUND` without performing the removal.
 int CHashMap_remove(CHashMap* map, void* key);
 
 /// \brief Free the resources used by the hash map.
 /// \details Deallocates the memory used by the hash map and its buckets. The hash map itself is invalid after
-///          this operation, and should not be used.
+///          this operation and should not be used.
 /// \param map Pointer to the hash map to free.
 /// \return An integer value indicating the result of the operation:
 ///         - `CHASHMAP_SUCCESS` if the hash map was successfully freed,
 ///         - `CHASHMAP_NULL_MAP` if the hash map pointer was `NULL`.
+///
+/// \note Ensure that `map` is not NULL before calling this function. After freeing, the hash map should not be used.
+///
+/// \warning If `map` is NULL, the function will return `CHASHMAP_NULL_MAP` and will not perform any operation.
 int CHashMap_free(CHashMap* map);
 
 /// \brief Update the value associated with a key in the hash map.
@@ -116,6 +129,11 @@ int CHashMap_free(CHashMap* map);
 /// \return An integer value indicating the result of the update:
 ///         - `CHASHMAP_SUCCESS` if the key-value pair was successfully updated,
 ///         - `CHASHMAP_NOT_FOUND` if the key was not found in the hash map.
+///
+/// \note Ensure that neither `key` nor `new_value` is NULL before calling this function. The function will return
+///       `CHASHMAP_NOT_FOUND` if the key does not exist.
+///
+/// \warning If memory allocation fails or `key` or `new_value` is NULL, the function may return `CHASHMAP_NOT_FOUND`.
 int CHashMap_update(CHashMap* map, const void* key, const void* new_value);
 
 /// \brief Clear all key-value pairs from the hash map.
@@ -124,17 +142,30 @@ int CHashMap_update(CHashMap* map, const void* key, const void* new_value);
 /// \return An integer value indicating the result of the operation:
 ///         - `CHASHMAP_SUCCESS` if the hash map was successfully cleared,
 ///         - `CHASHMAP_NULL_MAP` if the hash map pointer was `NULL`.
+///
+/// \note Ensure that `map` is not NULL before calling this function. The function will clear all entries but will
+///       not free the hash map itself.
+///
+/// \warning If `map` is NULL, the function will return `CHASHMAP_NULL_MAP` and will not perform the clearing operation.
 int CHashMap_clear(CHashMap* map);
 
 /// \brief Retrieve the number of key-value pairs in the hash map.
 /// \param map Pointer to the hash map.
 /// \return The number of key-value pairs currently stored in the hash map.
+///
+/// \note The function provides a count of the current number of key-value pairs stored in the hash map.
+///
+/// \warning If `map` is NULL, the function returns 0.
 inline size_t CHashMap_size(const CHashMap* map);
 
 /// \brief Calculate the load factor of the hash map.
 /// \details The load factor is defined as the ratio of the number of key-value pairs to the number of buckets.
 /// \param map Pointer to the hash map.
 /// \return The load factor as a double value.
+///
+/// \note The load factor provides insight into the hash map's current capacity utilization.
+///
+/// \warning If `map` is NULL, the function returns 0.0.
 double CHashMap_load_factor(const CHashMap* map);
 
 #endif // C_UTILS_CHASHMAP_H

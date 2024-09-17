@@ -153,7 +153,7 @@ CResult* CString_c_str(CString* string) {
     if (string->characters->size <= 0 || string->characters == NULL)
         return CResult_create("");
 
-    char* str = malloc(sizeof(char*) * string->characters->size);
+    char* str = malloc(sizeof(char) * string->characters->size);
     if (str == NULL)
         return CResult_ecreate(CError_create("Unable to allocate memory for C string.", "CString_c_str", CSTRING_ALLOC_FAILURE));
     
@@ -187,4 +187,65 @@ int CString_equals(CString* str1, CString* str2) {
     }
 
     return 1;
+}
+
+signed long CString_compare(CString* str1, CString* str2) {
+    if (str1 == str2) return 0;
+    if (str1 == NULL || str2 == NULL) return -0x8000000000000000L;
+    
+    if (CString_length(str1) - CString_length(str2)) return CString_length(str1) - CString_length(str2);
+
+    for (unsigned long int i = 0;i < CString_length(str1);i++) {
+        if (CString_at(str1,i) != CString_at(str2, i)) {
+            return CString_at(str1,i) - CString_at(str2, i);
+        }
+    }
+
+    return 0;
+}
+
+CResult* CString_substring(const CString* string, size_t start, size_t end) {
+    if (!string || !string->characters) {
+        return CResult_ecreate(CError_create("Failed to add character to substring.", "CString_substring", CSTRING_NULL_STRING));
+    }
+
+    size_t length = CString_length(string);
+
+    if (start >= length || end >= length || start > end) {
+        return CResult_ecreate(CError_create("Index of substring is out of bounds.", "CString_substring", CSTRING_INDEX_OUT_OF_BOUNDS));
+    }
+
+    size_t substring_length = end - start + 1;
+    CResult* res = CVector_new(substring_length);
+    if (CResult_is_error(res)) {
+        CResult_free(res);
+        return CResult_ecreate(CError_create("An error was encountered during creating a new vector for storing the substring.", "CString_substring", CSTRING_ALLOC_FAILURE));
+    }
+    CVector* substring_vector = CResult_get(res);
+    if (!substring_vector) {
+        return CResult_ecreate(CError_create("Failed to allocate memory for substring vector.", "CString_substring",CSTRING_ALLOC_FAILURE));
+    }
+
+    for (size_t i = start; i <= end; ++i) {
+        char ch = CString_at(string, i);
+        if (CVector_add(substring_vector, (void*)(uintptr_t)ch) != CVECTOR_SUCCESS) {
+            CVector_free(substring_vector);
+            return CResult_ecreate(CError_create("Failed to add character to substring.", "CString_substring", CSTRING_ALLOC_FAILURE));
+        }
+    }
+
+    CString* substring = malloc(sizeof(CString));
+    if (!substring) {
+        CVector_free(substring_vector);
+        return CResult_ecreate(CError_create("Failed to allocate memory for substring.", "CString_substring", CSTRING_ALLOC_FAILURE));
+    }
+
+    if (CString_init(substring, substring_length)) {
+        free(substring);
+        CVector_free(substring_vector);
+        return CResult_ecreate(CError_create("Failed to initialize substring's array.", "CString_substring", CSTRING_ALLOC_FAILURE));
+    }
+
+    substring->characters = substring_vector;
+    return CResult_create(substring);
 }

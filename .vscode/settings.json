@@ -4,6 +4,7 @@
         "cvector.h": "c",
         "stdio.h": "c",
         "cerror.h": "c",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "cdlinkedlist.h": "c"
     }
 }
