@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/time Directory Reference</title>
+<title>cstd: include/time/CHRTime.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -75,17 +75,21 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">time Directory Reference</div></div>
+  <div class="headertitle"><div class="title">CHRTime.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="CHRTime_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHRTime_8h.html">CHRTime.h</a></td></tr>
-<tr class="memdesc:CHRTime_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Header file for high-resolution time measurement functions. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+
+<p>Header file for high-resolution time measurement functions.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="CHRTime_8h_source.html">Go to the source code of this file.</a></p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header file for high-resolution time measurement functions. </p>
+<p>This file defines functions for obtaining high-resolution timestamps in nanoseconds, microseconds, and milliseconds, suitable for performance measurement. The functions utilize platform-specific APIs to ensure accurate time retrieval across different operating systems.</p>
+<p>The header includes inline functions to get the current time based on the available platform (Windows, Linux, Unix, or macOS).</p>
+<dl class="section note"><dt>Note</dt><dd>Ensure to include this header only once per compilation unit to avoid multiple definition errors. The functions are optimized for performance and are intended to be used where high-resolution timing is required. </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
