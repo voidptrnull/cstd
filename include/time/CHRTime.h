@@ -1,4 +1,4 @@
-/**
+/*
  * MIT License
  *
  * Copyright (c) 2024 Subhadip Roy Chowdhury
@@ -21,6 +21,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
+/// \file CHRTime.h
+/// \brief Header file for high-resolution time measurement functions.
+///
+/// This file defines functions for obtaining high-resolution timestamps
+/// in nanoseconds, microseconds, and milliseconds, suitable for performance
+/// measurement. The functions utilize platform-specific APIs to ensure
+/// accurate time retrieval across different operating systems.
+///
+/// The header includes inline functions to get the current time based on
+/// the available platform (Windows, Linux, Unix, or macOS).
+///
+/// \note Ensure to include this header only once per compilation unit
+///       to avoid multiple definition errors. The functions are optimized
+///       for performance and are intended to be used where high-resolution
+///       timing is required.
 #ifndef CSTD_CHRTIME_H
 #define CSTD_CHRTIME_H
 
@@ -30,10 +46,8 @@
 #include <windows.h>
 typedef uint64_t hrtime_t;
 
-#define HRTIME_NS() (hrtime_ns())
-#define HRTIME_US() (hrtime_us())
-#define HRTIME_MS() (hrtime_ms())
-
+/// \brief Retrieve the current time in nanoseconds.
+/// \return The current high-resolution time in nanoseconds.
 inline hrtime_t hrtime_ns() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
@@ -41,6 +55,8 @@ inline hrtime_t hrtime_ns() {
     return (hrtime_t)(counter.QuadPart * 1000000000ULL / frequency.QuadPart);
 }
 
+/// \brief Retrieve the current time in microseconds.
+/// \return The current high-resolution time in microseconds.
 inline hrtime_t hrtime_us() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
@@ -48,6 +64,8 @@ inline hrtime_t hrtime_us() {
     return (hrtime_t)(counter.QuadPart * 1000000ULL / frequency.QuadPart);
 }
 
+/// \brief Retrieve the current time in milliseconds.
+/// \return The current high-resolution time in milliseconds.
 inline hrtime_t hrtime_ms() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
@@ -59,22 +77,24 @@ inline hrtime_t hrtime_ms() {
 #include <time.h>
 typedef uint64_t hrtime_t;
 
-#define HRTIME_NS() (hrtime_ns())
-#define HRTIME_US() (hrtime_us())
-#define HRTIME_MS() (hrtime_ms())
-
+/// \brief Retrieve the current time in nanoseconds.
+/// \return The current high-resolution time in nanoseconds.
 inline hrtime_t hrtime_ns() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (hrtime_t)ts.tv_sec * 1000000000ULL + ts.tv_nsec;
 }
 
+/// \brief Retrieve the current time in microseconds.
+/// \return The current high-resolution time in microseconds.
 inline hrtime_t hrtime_us() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (hrtime_t)ts.tv_sec * 1000000ULL + ts.tv_nsec / 1000ULL;
 }
 
+/// \brief Retrieve the current time in milliseconds.
+/// \return The current high-resolution time in milliseconds.
 inline hrtime_t hrtime_ms() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
@@ -85,4 +105,4 @@ inline hrtime_t hrtime_ms() {
 #error "Unsupported platform"
 #endif
 
-#endif // CHRTIME_
+#endif // CSTD_CHRTIME_H
