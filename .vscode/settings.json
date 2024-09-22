@@ -5,6 +5,7 @@
         "stdio.h": "c",
         "cerror.h": "c",
         "cstdlib": "cpp",
-        "cdlinkedlist.h": "c"
+        "cdlinkedlist.h": "c",
+        "assert.h": "c"
     }
 }
