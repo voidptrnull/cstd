@@ -28,4 +28,8 @@ CSTD does not intend to do the following:
 ## Usage Philosophy
 
 To use any of the data structure provided in the implementation, the following functions are used:
-- `new` - for creating a dynamically allocated 
+- `new` - for creating a dynamically allocated memory. It initializes the data too, with the <br>exception of `CHashMap` data structure.
+- `init` - for initializing data structures.
+- `clear` - for clearing resources. Does not free the structure itself, just its resources.
+- `free` - does what `clear` does, and frees the structure too in addition.
+
