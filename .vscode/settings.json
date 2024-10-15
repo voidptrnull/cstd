@@ -6,6 +6,17 @@
         "cerror.h": "c",
         "cstdlib": "cpp",
         "cdlinkedlist.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "string.h": "c",
+        "clog.h": "c",
+        "coroutine": "c",
+        "memory_resource": "c",
+        "operators.h": "c",
+        "cstdint": "c",
+        "source_location": "c",
+        "chashmap.h": "c",
+        "map": "c",
+        "format": "c",
+        "exception": "c"
     }
 }

@@ -1,4 +1,3 @@
-
 /// \file Operators.h
 /// \brief Header file for all definitions of functions to be used or provided
 /// by the user.
@@ -9,9 +8,10 @@
 ///
 /// The file, if enabled during compilation, also enables default
 /// implementations of certain functions. To detect their presence,
-/// simply use the `HAVE_CSTD_DEFAULTS` macros.
+/// simply use the `HAVE_CSTD_DEFAULTS` macro.
 #ifndef CSTD_OPERATORS_H
 #define CSTD_OPERATORS_H
+#define HAVE_CSTD_DEFAULTS
 
 #include <stddef.h>
 
@@ -34,6 +34,12 @@ typedef size_t (*Hash)(const void *key);
 /// associated with a pointer. \param data Pointer to the element to be
 /// destroyed or cleaned up.
 typedef void (*Destructor)(void *data);
+
+/// \typedef CloneFn
+/// \brief Function pointer type for clone functions.
+/// \param data Pointer to the element to clone.
+/// \return A pointer to the cloned element.
+typedef void *(*CloneFn)(const void *data);
 
 #ifndef CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS
 /// \brief Compare function for pointers.
@@ -58,6 +64,11 @@ size_t chash_string(const void *key);
 /// \return A `size_t` value representing the hash of the pointer.
 size_t cdefault_hash(const void *key);
 
-#endif // CUTILS_COMP_FUNCTIONS
+/// \brief Default clone function for integers.
+/// \param data Pointer to the integer to clone.
+/// \return A pointer to the cloned integer.
+void *cclone_integer(const void *data);
+
+#endif // CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS
 
 #endif // CSTD_OPERATORS_H

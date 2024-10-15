@@ -38,8 +38,9 @@
 /// failure cases.
 ///
 /// \note The functions in this header are intended to be used with dynamic
-/// memory allocation and requires error checking
-///       to ensure successful memory operations.
+/// memory allocation and require error checking to ensure successful memory
+/// operations. If you do intend to use stack-allocated structures, do not 
+/// use `new` and `free` methods associated to that structure.
 #ifndef CSTD_CSTRING_H
 #define CSTD_CSTRING_H
 
@@ -79,7 +80,7 @@
 /// It supports various
 ///          operations such as initialization, setting, retrieving, appending,
 ///          copying, and clearing.
-typedef struct CString CString;
+typedef struct _CString CString;
 
 /// \brief Create a new CString object.
 /// \return Returns a pointer to a newly created `CString` structure,
@@ -192,7 +193,7 @@ int CString_equals(CString *str1, CString *str2);
 /// returns a result encapsulating an error.
 CResult *CString_substring(const CString *string, size_t start, size_t end);
 
-/// \brief Create a copy of the CString object.
+/// \brief Create a deep-copy of the CString object.
 /// \param source Pointer to the source `CString` structure.
 /// \return Returns a pointer to a new `CResult` structure, containing a
 /// `CString` with the copied data, or an error code if the operation fails.
@@ -203,15 +204,15 @@ CResult *CString_substring(const CString *string, size_t start, size_t end);
 ///
 /// \warning If the source `CString` is NULL or memory allocation fails, the
 /// function will return an error `CResult`.
-CResult *CString_copy(const CString *source);
+CResult *CString_clone(const CString *source);
 
 /// \brief Convert the contents of the CString object to a C-Style string.
 /// \param string Pointer to the `CString` structure to be converted from.
 /// \return Returns a `CResult` structure, which has the C-String as `char*` or
 /// an error `CResult` in case of failure.
 ///
-/// \note The resultant string is dynamically allocated, so it is necessary to free
-/// it to avoid memory leaks. Ensure that `string` is properly initialized
+/// \note The resultant string is dynamically allocated, so it is necessary to
+/// free it to avoid memory leaks. Ensure that `string` is properly initialized
 /// before calling this function.
 ///
 /// \warning If memory allocation fails or `string` is NULL, the function will
@@ -229,7 +230,7 @@ CResult *CString_c_str(CString *string);
 ///
 /// \warning If memory allocation fails or the provided string cannot be
 /// processed, an appropriate error code will be returned.
-int CString_set(CString *string, const char *str);
+int CString_set(CString *string, char *str);
 
 /// \brief Compare two CString objects lexicographically.
 /// \param str1 Pointer to the first `CString` structure.

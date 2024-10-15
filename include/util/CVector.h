@@ -35,8 +35,9 @@
 /// failure cases.
 ///
 /// \note The functions in this header are intended to be used with dynamic
-/// memory allocation and requires error checking
-///       to ensure successful memory operations.
+/// memory allocation and require error checking to ensure successful memory
+/// operations. If you do intend to use stack-allocated structures, do not 
+/// use `new` and `free` methods associated to that structure.
 #ifndef CSTD_CVECTOR_H
 #define CSTD_CVECTOR_H
 
@@ -47,7 +48,7 @@
 /// \details When resizing, the vector's capacity is multiplied by this growth
 /// rate.
 ///          The default value is 1.3 (30% growth).
-#define CVECTOR_DEFAULT_GROWTH_RATE 1.3
+#define CVECTOR_DEFAULT_GROWTH_RATE 1.3F
 
 /// \brief Default initial capacity for the vector.
 /// \details The default size of the vector when it is first initialized.
@@ -83,7 +84,7 @@
 /// \details The `CVector` structure maintains an array of `void*` pointers, its
 /// current size, and its capacity.
 ///          It supports dynamic resizing as elements are added or removed.
-typedef struct CVector CVector;
+typedef struct _CVector CVector;
 
 /// \brief Create a new vector and initialize it with a specified initial
 /// capacity. \param reserve_capacity The capacity to reserve for the vector. If
@@ -136,15 +137,15 @@ CResult *CVector_get(const CVector *vector, size_t index);
 size_t CVector_find(const CVector *vector, void *key, CompareTo cmp);
 
 /// \brief Sort the elements of the vector using a comparison function by
-/// timsort. \param vector Pointer to the `CVector` structure. \param cmp
-/// Function pointer to the comparison function used for sorting. The comparison
-/// function should
-///            return a negative value if the first element is less than the
-///            second, zero if they are equal, and a positive value if the first
-///            element is greater than the second.
+/// timsort.
+/// \param vector Pointer to the `CVector` structure.
+/// \param cmp Function pointer to the comparison function used for sorting. The
+/// comparison function should return a negative value if the first element is
+/// less than the second, zero if they are equal, and a positive value if the
+/// first element is greater than the second.
 ///
 /// \note Thanks to Patrick Perry for the reference implementation.
-/// \cite https://github.com/patperry/timsort/blob/master/timsort.c
+/// \link https://github.com/patperry/timsort/blob/master/timsort.c \endlink
 ///
 /// \return Returns `CVECTOR_SUCCESS` on success, or an error code if the
 /// sorting operation fails (e.g., NULL comparison function).
@@ -171,14 +172,15 @@ int CVector_clear(CVector *vector);
 /// caller or double-free will occur.
 int CVector_free(CVector **vector);
 
-/// \brief Create a copy of the CVector object.
+/// \brief Create a clone of the CVector object.
 /// \param source Pointer to the source `CVector` structure.
-/// \return Returns a pointer to a new `CVector` structure containing the copied
-/// data, or `NULL` if allocation fails.
+/// \param cloner Function pointer for clone function.
+/// \return Returns a pointer to a new `CVector` structure containing the deep
+/// copied data, or `NULL` if allocation fails.
 ///
 /// This function creates a new `CVector` instance with the same content as the
 /// source `CVector`.
-CResult *CVector_copy(const CVector *source);
+CResult *CVector_clone(const CVector *source, CloneFn cloner);
 
 /// \brief Reserve a specified capacity for the vector.
 /// \param vector Pointer to the `CVector` structure.

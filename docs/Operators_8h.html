@@ -76,6 +76,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Operators.h File Reference</div></div>
@@ -99,6 +100,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a2353e69e9b641fd66c9419b05ab8333f" id="r_a2353e69e9b641fd66c9419b05ab8333f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>) (void *data)</td></tr>
 <tr class="memdesc:a2353e69e9b641fd66c9419b05ab8333f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for destructor functions.  <br /></td></tr>
 <tr class="separator:a2353e69e9b641fd66c9419b05ab8333f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c07bbba1050ecd045a9fe5b10c8a171" id="r_a8c07bbba1050ecd045a9fe5b10c8a171"><td class="memItemLeft" align="right" valign="top">typedef void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a8c07bbba1050ecd045a9fe5b10c8a171">CloneFn</a>) (const void *data)</td></tr>
+<tr class="memdesc:a8c07bbba1050ecd045a9fe5b10c8a171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for clone functions.  <br /></td></tr>
+<tr class="separator:a8c07bbba1050ecd045a9fe5b10c8a171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -114,12 +118,38 @@ Functions</h2></td></tr>
 <tr class="memitem:abbbf765bb3df5c959af0e4f89e1f00f6" id="r_abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a> (const void *key)</td></tr>
 <tr class="memdesc:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
 <tr class="separator:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6c89c74ced32fa71304ed19bae086b" id="r_aca6c89c74ced32fa71304ed19bae086b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a> (const void *data)</td></tr>
+<tr class="memdesc:aca6c89c74ced32fa71304ed19bae086b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default clone function for integers.  <br /></td></tr>
+<tr class="separator:aca6c89c74ced32fa71304ed19bae086b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for all definitions of functions to be used or provided by the user. </p>
 <p>This file defines the functions for performing operations which are required for other structures. This provides a standalone, standardized or one way for the definitions.</p>
-<p>The file, if enabled during compilation, also enables default implementations of certain functions. To detect their presence, simply use the <code>HAVE_CSTD_DEFAULTS</code> macros. </p>
+<p>The file, if enabled during compilation, also enables default implementations of certain functions. To detect their presence, simply use the <code>HAVE_CSTD_DEFAULTS</code> macro. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a8c07bbba1050ecd045a9fe5b10c8a171" name="a8c07bbba1050ecd045a9fe5b10c8a171"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c07bbba1050ecd045a9fe5b10c8a171">&#9670;&#160;</a></span>CloneFn</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CloneFn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function pointer type for clone functions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the element to clone. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the cloned element. </dd></dl>
+
+</div>
+</div>
 <a id="a4c4b78c82a1e9277aa9d977c4652bb10" name="a4c4b78c82a1e9277aa9d977c4652bb10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4c4b78c82a1e9277aa9d977c4652bb10">&#9670;&#160;</a></span>CompareTo</h2>
 
@@ -190,6 +220,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aca6c89c74ced32fa71304ed19bae086b" name="aca6c89c74ced32fa71304ed19bae086b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6c89c74ced32fa71304ed19bae086b">&#9670;&#160;</a></span>cclone_integer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * cclone_integer </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default clone function for integers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the integer to clone. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the cloned integer. </dd></dl>
+
+</div>
+</div>
 <a id="a37eb4a0a536b9fe626c06b7922fcfc9c" name="a37eb4a0a536b9fe626c06b7922fcfc9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37eb4a0a536b9fe626c06b7922fcfc9c">&#9670;&#160;</a></span>ccompare_integer()</h2>
 
@@ -323,7 +380,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -74,12 +74,34 @@ $(function() {
   <div class="headertitle"><div class="title">CSTD </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a></p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Purpose</h1>
+<p>The purpose of CSTD is to provide the standard C library and provide general implementations of widely or commonly used features like that in other languages.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Usage &amp; Fitness</h1>
+<p>I have written this library merely to ease-up developement when writing software with C. You may use CSTD for any purpose you may deem fit.</p>
+<p>While CSTD does not provide emphasis on performance, it tries to be as performant as possible while being able to used. This does not mean that CSTD will never be a performance "bottle-neck" for your application. If you are encountering such issues, you are better off writing your own "performant" versions for your use-case. However, if you do think the library can be improved, please do not hesitate to create a pull request.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+What does it and does not intend to do ?</h1>
+<p>CSTD intends to do the following:</p><ul>
+<li>Provide common implementations (like dynamic arrays).</li>
+<li>Provide ease-of use utilities (like custom CStrings).</li>
+<li>Provide a general way to perform common system coroutines or tasks (like creating networking sockets).</li>
+</ul>
+<p>CSTD does not intend to do the following:</p><ul>
+<li>Provide things that are already in the standard C library (like memory allocators, etc.)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Usage Philosophy</h1>
+<p>To use any of the data structure provided in the implementation, the following functions are used:</p><ul>
+<li><code>new</code> - for creating a dynamically allocated </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

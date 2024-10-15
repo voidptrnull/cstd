@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['cdlinkedlist_2eh_0',['CDLinkedList.h',['../CDLinkedList_8h.html',1,'']]],
-  ['cerror_2eh_1',['CError.h',['../CError_8h.html',1,'']]],
-  ['chashmap_2eh_2',['CHashMap.h',['../CHashMap_8h.html',1,'']]],
+  ['cerror_2eh_0',['CError.h',['../CError_8h.html',1,'']]],
+  ['chashmap_2eh_1',['CHashMap.h',['../CHashMap_8h.html',1,'']]],
+  ['chashset_2eh_2',['CHashSet.h',['../CHashSet_8h.html',1,'']]],
   ['chrtime_2eh_3',['CHRTime.h',['../CHRTime_8h.html',1,'']]],
-  ['cresult_2eh_4',['CResult.h',['../CResult_8h.html',1,'']]],
-  ['cstring_2eh_5',['CString.h',['../CString_8h.html',1,'']]],
-  ['cvector_2eh_6',['CVector.h',['../CVector_8h.html',1,'']]]
+  ['clog_2eh_4',['CLog.h',['../CLog_8h.html',1,'']]],
+  ['cresult_2eh_5',['CResult.h',['../CResult_8h.html',1,'']]],
+  ['cstack_2eh_6',['CStack.h',['../CStack_8h.html',1,'']]],
+  ['cstring_2eh_7',['CString.h',['../CString_8h.html',1,'']]],
+  ['cvector_2eh_8',['CVector.h',['../CVector_8h.html',1,'']]]
 ];

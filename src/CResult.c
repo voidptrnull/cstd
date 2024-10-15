@@ -8,7 +8,7 @@
 /// successful,
 ///          or `CRESULT_ERROR` if an error occurred.
 typedef enum {
-    CRESULT_OK,   ///< Indicates a successful operation.
+    CRESULT_OK,    ///< Indicates a successful operation.
     CRESULT_ERROR ///< Indicates an error occurred.
 } CResultStatus;
 
@@ -27,15 +27,17 @@ struct CResult {
         void *value; ///< Pointer to the successful result value.
         CError *err; ///< Pointer to the error if the operation failed.
     };
+    Destructor destroy;
 };
 
-CResult *CResult_create(void *value) {
-    CResult *result = calloc(1, sizeof(struct CResult));
+CResult *CResult_create(void *value, Destructor destroy) {
+    CResult *result = malloc(sizeof(struct CResult));
     if (result == NULL)
         return NULL;
 
-    result->value = value; // Take ownership of value
+    result->value = value;
     result->status = CRESULT_OK;
+    result->destroy = destroy;
     return result;
 }
 
@@ -50,9 +52,7 @@ CResult *CResult_ecreate(CError *err) {
 }
 
 int CResult_is_error(const CResult *result) {
-    if (result == NULL)
-        return 1;
-    return result->status == CRESULT_ERROR;
+    return result == NULL || result->status == CRESULT_ERROR;
 }
 
 void *CResult_get(const CResult *result) {
@@ -67,24 +67,15 @@ CError *CResult_eget(const CResult *result) {
     return result->err;
 }
 
-void CResult_vfree(CResult **result) {
-    if ((*result)->value != NULL) {
-        free((*result)->value);
-    }
-}
-
 void CResult_free(CResult **result) {
     if (result == NULL || *result == NULL)
         return;
 
-    if ((*result)->status == CRESULT_ERROR) {
-        if ((*result)->err != NULL) {
-            CError_free(&(*result)->err);
-        }
-    } else {
-        if ((*result)->value != NULL) {
-            // free((*result)->value);
-        }
+    if ((*result)->status == CRESULT_ERROR && (*result)->err != NULL) {
+        CError_free(&(*result)->err);
+    } else if ((*result)->destroy != NULL) {
+        (*result)->destroy((*result)->value);
+        (*result)->value = NULL;
     }
 
     free(*result);

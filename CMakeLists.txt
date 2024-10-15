@@ -22,25 +22,17 @@
 
 cmake_minimum_required(VERSION 3.13)
 project(cstd C)
-set(SOURCE_FILES
-	${CMAKE_SOURCE_DIR}/src/debug.c
-	${CMAKE_SOURCE_DIR}/src/Operators.c
-	${CMAKE_SOURCE_DIR}/src/CError.c
-	${CMAKE_SOURCE_DIR}/src/CResult.c
-	${CMAKE_SOURCE_DIR}/src/CVector.c
-	${CMAKE_SOURCE_DIR}/src/CString.c
-	${CMAKE_SOURCE_DIR}/src/CHashMap.c
-	${CMAKE_SOURCE_DIR}/src/CHashSet.c
-	${CMAKE_SOURCE_DIR}/src/CSLinkedList.c
-	${CMAKE_SOURCE_DIR}/src/CDLinkedList.c
-	${CMAKE_SOURCE_DIR}/src/CStack.c
-)
+file(GLOB SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/*.c")
 option(NO_DEFAULT_FUNCTION_IMPLEMENTATIONS "Do not add default function implementations." ON)
 option(NO_TESTS "Do not enable tests." OFF)
-add_compile_options(-O3 -g -pipe -march=x86-64 -mtune=generic -Wall -flto=auto -fdiagnostics-color=always -fsanitize=address -fPIC -Werror)
+option(DEBUG_MODE "Enable debugging mode." OFF)
+add_compile_options(-O3 -g -pipe -march=x86-64 -mtune=generic -shared -Wall -flto=auto -fdiagnostics-color=always -Wno-pointer-to-int-cast -fsanitize=address -fPIC -Werror)
 if (NOT NO_DEFAULT_FUNCTION_IMPLEMENTATIONS)
 	add_compile_definitions(CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS)
-endif()		
+endif()
+if (DEBUG_MODE)
+	add_compile_definitions(CSTD_DEBUG_MODE)
+endif()
 add_library(cstd_static STATIC ${SOURCE_FILES})
 add_library(cstd SHARED ${SOURCE_FILES})
 target_include_directories(cstd_static PRIVATE include/)
@@ -48,11 +40,11 @@ target_include_directories(cstd PRIVATE include/)
 set_target_properties(cstd_static PROPERTIES OUTPUT_NAME "cstd")
 set_target_properties(cstd PROPERTIES OUTPUT_NAME "cstd")
 set_target_properties(cstd_static PROPERTIES
-	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 set_target_properties(cstd PROPERTIES
-	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
 
 # tests
@@ -61,6 +53,7 @@ if(NOT NO_TESTS)
 	foreach(TEST_FILE ${TEST_FILES})
 		get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
 		add_executable(${TEST_NAME} ${TEST_FILE})
+		target_compile_options(${TEST_NAME} PRIVATE -O3 -g -pipe -march=x86-64 -mtune=generic -Wall -flto=auto -fdiagnostics-color=always -fsanitize=address -fPIC -Werror)
 		target_include_directories(${TEST_NAME} PRIVATE include/)
 		target_link_libraries(${TEST_NAME} cstd_static)
 	endforeach()

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['next_0',['next',['../structCDNode.html#adb90c024cb5238e190ad7be6f03c7b5f',1,'CDNode::next'],['../structCSNode.html#ae45eec370c3aa131d3fcc418f14b5aa4',1,'CSNode::next']]]
+  ['info_0',['INFO',['../CLog_8h.html#ae1103fea1e1b3c41ca3322d5389f7162',1,'CLog.h']]],
+  ['intend_20to_20do_1',['What does it and does not intend to do ?',['../index.html#autotoc_md3',1,'']]],
+  ['it_20and_20does_20not_20intend_20to_20do_2',['What does it and does not intend to do ?',['../index.html#autotoc_md3',1,'']]]
 ];

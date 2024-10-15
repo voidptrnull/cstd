@@ -1,4 +1,4 @@
-#include <debug/debug.h>
+#include <logger/CLog.h>
 #include <stdlib.h>
 #include <string.h>
 #include <util/CError.h>
@@ -48,7 +48,9 @@ unsigned long int CError_get_code(const CError *error) {
 }
 
 #ifdef CUTILS_COMP_FUNCTIONS
+#include <logger/CLog.h>
 #include <stdio.h>
+
 void print_error(const CError *error) {
     if (error == NULL) {
         printf("Invalid error. Got pointer to NULL as error.");
@@ -56,29 +58,13 @@ void print_error(const CError *error) {
     }
 
     if (error->msg != NULL) {
-        CResult *res = CString_c_str(error->msg);
-        if (CResult_is_error(res)) {
-            printf("Unable to load error message.");
-        } else {
-            char *str = (char *)CResult_get(res);
-            printf("Error Message: \"%s\"", str);
-            free(str);
-        }
-        CResult_free(&res);
+        CLog(ERROR, "Message: \"%s\"", error->msg);
     }
 
     if (error->ctx != NULL) {
-        CResult *res = CString_c_str(error->ctx);
-        if (CResult_is_error(res)) {
-            printf("Unable to load context of error.");
-        } else {
-            char *str = (char *)CResult_get(res);
-            printf("Context: \"%s\"", str);
-            free(str);
-        }
-        CResult_free(&res);
+        CLog(ERROR, "Context: \"%s\"", error->ctx);
     }
 
-    printf("Error Code: %lu", error->err_code);
+    CLog(ERROR, "Error Code: %lu", error->err_code);
 }
 #endif

@@ -83,7 +83,7 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">CStack.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<a href="CStack_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * MIT License</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Copyright (c) 2024 Subhadip Roy Chowdhury</span></div>
@@ -101,38 +101,51 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * SOFTWARE.</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#ifndef CSTD_CSTACK_H</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define CSTD_CSTACK_H</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="CResult_8h.html">CResult.h</a>&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#define CSTACK_NULL_STACK -3</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#define CSTACK_OVERFLOW -2</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#define CSTACK_ALLOC_FAILURE -1</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#define CSTACK_SUCCESS 0</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCStack.html">CStack</a> <a class="code hl_struct" href="structCStack.html">CStack</a>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><a class="code hl_struct" href="structCResult.html">CResult</a> *CStack_new();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">int</span> CStack_init(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">int</span> CStack_push(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack, <span class="keywordtype">void</span> *item);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_struct" href="structCResult.html">CResult</a> *CStack_pop(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span> CStack_clear(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keywordtype">int</span> CStack_free(<a class="code hl_struct" href="structCStack.html">CStack</a> **stack);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifndef CSTD_CSTACK_H</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define CSTD_CSTACK_H</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="CResult_8h.html">CResult.h</a>&quot;</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Error codes for stack operations</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2169e63108d14798684739168cff1ed3">   46</a></span><span class="preprocessor">#define CSTACK_NULL_STACK -3    </span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="CStack_8h.html#a5d164e5c502389810c08de0b68c36ccf">   47</a></span><span class="preprocessor">#define CSTACK_OVERFLOW -2      </span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="CStack_8h.html#a7cdc31f301ea3908004794058fb9d38a">   48</a></span><span class="preprocessor">#define CSTACK_ALLOC_FAILURE -1 </span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="CStack_8h.html#af20ea84537a02748669e0e26d9c55cc7">   49</a></span><span class="preprocessor">#define CSTACK_SUCCESS 0        </span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">typedef</span> <span class="keyword">struct </span>_CStack <a class="code hl_struct" href="structCStack.html">CStack</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="CStack_8h.html#a8926b8834cef069d166ae80213c453cb">   65</a></span><a class="code hl_struct" href="structCResult.html">CResult</a> *<a class="code hl_function" href="CStack_8h.html#a8926b8834cef069d166ae80213c453cb">CStack_new</a>();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="CStack_8h.html#a10c025ab69db12277cac1b89438f1450">   75</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a10c025ab69db12277cac1b89438f1450">CStack_init</a>(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="CStack_8h.html#a4513f1c48e44f9fe7e40d2c014d6a3b9">   85</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a4513f1c48e44f9fe7e40d2c014d6a3b9">CStack_push</a>(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack, <span class="keywordtype">void</span> *item);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="CStack_8h.html#a67a62e25b289e5d2a7fe996132251942">   95</a></span><a class="code hl_struct" href="structCResult.html">CResult</a> *<a class="code hl_function" href="CStack_8h.html#a67a62e25b289e5d2a7fe996132251942">CStack_pop</a>(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2a421a6414938eb8ef01a58ef56a6237">  104</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a2a421a6414938eb8ef01a58ef56a6237">CStack_clear</a>(<a class="code hl_struct" href="structCStack.html">CStack</a> *stack);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="CStack_8h.html#adb9229683f5acbbde029afe05db5e283">  112</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#adb9229683f5acbbde029afe05db5e283">CStack_free</a>(<a class="code hl_struct" href="structCStack.html">CStack</a> **stack);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CSTACK_H</span></div>
 <div class="ttc" id="aCResult_8h_html"><div class="ttname"><a href="CResult_8h.html">CResult.h</a></div><div class="ttdoc">Header file for handling results and errors in the CUtils library.</div></div>
+<div class="ttc" id="aCStack_8h_html_a10c025ab69db12277cac1b89438f1450"><div class="ttname"><a href="CStack_8h.html#a10c025ab69db12277cac1b89438f1450">CStack_init</a></div><div class="ttdeci">int CStack_init(CStack *stack)</div><div class="ttdoc">Initializes a stack.</div></div>
+<div class="ttc" id="aCStack_8h_html_a2a421a6414938eb8ef01a58ef56a6237"><div class="ttname"><a href="CStack_8h.html#a2a421a6414938eb8ef01a58ef56a6237">CStack_clear</a></div><div class="ttdeci">int CStack_clear(CStack *stack)</div><div class="ttdoc">Clears the stack.</div></div>
+<div class="ttc" id="aCStack_8h_html_a4513f1c48e44f9fe7e40d2c014d6a3b9"><div class="ttname"><a href="CStack_8h.html#a4513f1c48e44f9fe7e40d2c014d6a3b9">CStack_push</a></div><div class="ttdeci">int CStack_push(CStack *stack, void *item)</div><div class="ttdoc">Pushes an item onto the stack.</div></div>
+<div class="ttc" id="aCStack_8h_html_a67a62e25b289e5d2a7fe996132251942"><div class="ttname"><a href="CStack_8h.html#a67a62e25b289e5d2a7fe996132251942">CStack_pop</a></div><div class="ttdeci">CResult * CStack_pop(CStack *stack)</div><div class="ttdoc">Pops an item from the stack.</div></div>
+<div class="ttc" id="aCStack_8h_html_a8926b8834cef069d166ae80213c453cb"><div class="ttname"><a href="CStack_8h.html#a8926b8834cef069d166ae80213c453cb">CStack_new</a></div><div class="ttdeci">CResult * CStack_new()</div><div class="ttdoc">Creates a new stack.</div></div>
+<div class="ttc" id="aCStack_8h_html_adb9229683f5acbbde029afe05db5e283"><div class="ttname"><a href="CStack_8h.html#adb9229683f5acbbde029afe05db5e283">CStack_free</a></div><div class="ttdeci">int CStack_free(CStack **stack)</div><div class="ttdoc">Frees the stack.</div></div>
 <div class="ttc" id="astructCResult_html"><div class="ttname"><a href="structCResult.html">CResult</a></div><div class="ttdoc">Structure for wrapping the value or error.</div></div>
 <div class="ttc" id="astructCStack_html"><div class="ttname"><a href="structCStack.html">CStack</a></div><div class="ttdoc">Structure for representing the stack.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

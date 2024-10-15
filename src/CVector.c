@@ -1,33 +1,33 @@
-#include <debug/debug.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "vector.h"
+#include <logger/CLog.h>
+#include <util/CVector.h>
 
-// Align the capacity.
-inline size_t min_capacity(size_t cap) {
-    size_t newSize = cap;
-    newSize |= newSize >> 1;
-    newSize |= newSize >> 2;
-    newSize |= newSize >> 4;
-    newSize |= newSize >> 8;
-    newSize |= newSize >> 16;
-    if (sizeof(newSize) > 4)
-        newSize |= newSize >> 32;
-    newSize++;
-    newSize = (newSize <= cap) ? newSize : cap;
-    if (newSize == 0) {
-        newSize = cap;
+struct _CVector {
+    void **data;        ///< Array to store data.
+    size_t size;        ///< Number of elements in the vector.
+    size_t capacity;    ///< Capacity of the vector.
+    Destructor destroy; ///< Function pointer to the destructor for cleaning up
+                        ///< individual elements.
+    char DYN_ALLOC; ///< whether it was dynamically allocated.
+};
+
+static size_t __ceil(double x) {
+    size_t int_part = (size_t)x;
+    if (x > int_part) {
+        return int_part + 1;
     }
-    return newSize;
+    CLog(DEBUG, "__ceil:%llu", int_part);
+    return int_part;
 }
 
-inline int alloc(CVector *vector) {
+static int alloc(CVector *vector) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
 
     if (vector->data == NULL) {
-        vector->data = calloc(CVECTOR_DEFAULT_ALLOC_SIZE, sizeof(void *));
+        vector->data = malloc(CVECTOR_DEFAULT_ALLOC_SIZE * sizeof(void *));
         if (vector->data == NULL)
             return CVECTOR_ALLOC_FAILURE;
         vector->size = 0;
@@ -36,10 +36,10 @@ inline int alloc(CVector *vector) {
     }
 
     if (vector->size == vector->capacity) {
-        size_t new_size = (size_t)(min_capacity(vector->capacity *
-                                                CVECTOR_DEFAULT_GROWTH_RATE));
+        size_t new_size =
+            __ceil((vector->capacity * CVECTOR_DEFAULT_GROWTH_RATE));
 
-        debug("Making a realloc call in alloc.");
+        CLog(DEBUG, "Making a realloc call in alloc.");
         void **data = realloc(vector->data, new_size * sizeof(void *));
         if (data == NULL)
             return CVECTOR_ALLOC_FAILURE;
@@ -63,8 +63,8 @@ size_t CVector_size(CVector *vector) {
 int CVector_init(CVector *vector, size_t reserve_capacity, Destructor destroy) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
-    size_t cap = min_capacity(reserve_capacity);
-    vector->data = calloc(cap, sizeof(void *));
+    size_t cap = reserve_capacity;
+    vector->data = malloc(cap * sizeof(void *));
     if (vector->data == NULL)
         return CVECTOR_ALLOC_FAILURE;
 
@@ -76,9 +76,10 @@ int CVector_init(CVector *vector, size_t reserve_capacity, Destructor destroy) {
 }
 
 CResult *CVector_new(size_t reserve_capacity, Destructor destroy) {
-    debug("Making a calloc call in CVector_new.");
-    debug_i(reserve_capacity);
-    CVector *vector = calloc(1, sizeof(struct CVector));
+    CLog(DEBUG,
+         "Making a malloc call in CVector_new with reserve capacity '%llu'.",
+         reserve_capacity);
+    CVector *vector = malloc(sizeof(CVector));
     if (vector == NULL)
         return CResult_ecreate(
             CError_create("Failed memory allocation for the vector.",
@@ -89,12 +90,15 @@ CResult *CVector_new(size_t reserve_capacity, Destructor destroy) {
         return CResult_ecreate(
             CError_create("Failed memory allocation for the vector's data.",
                           "CVector_new", code));
-    return CResult_create(vector);
+    return CResult_create(vector, NULL);
 }
 
 int CVector_add(CVector *vector, void *element) {
     int code;
     if (vector == NULL)
+        return CVECTOR_NULL_VECTOR;
+
+    if (vector->data == NULL)
         return CVECTOR_NULL_VECTOR;
 
     if (!(code = alloc(vector))) {
@@ -127,7 +131,7 @@ CResult *CVector_get(const CVector *vector, size_t index) {
         return CResult_ecreate(
             CError_create("Index exceeds the size of the vector.",
                           "CVector_get", CVECTOR_INDEX_OUT_OF_BOUNDS));
-    return CResult_create(vector->data[index]);
+    return CResult_create(vector->data[index], NULL);
 }
 
 size_t CVector_find(const CVector *vector, void *key, CompareTo cmp) {
@@ -158,8 +162,8 @@ static void merge(void **data, size_t l, size_t m, size_t r, CompareTo cmp) {
     size_t len1 = m - l + 1;
     size_t len2 = r - m;
 
-    void **left = calloc(len1, sizeof(void *));
-    void **right = calloc(len2, sizeof(void *));
+    void **left = malloc(len1 * sizeof(void *));
+    void **right = malloc(len2 * sizeof(void *));
 
     if (left == NULL || right == NULL) {
         free(left);
@@ -232,11 +236,15 @@ int CVector_sort(CVector *vector, CompareTo cmp) {
 int CVector_clear(CVector *vector) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
-    if (vector->destroy) {
+    if (vector->destroy != NULL) {
         for (size_t i = 0; i < vector->size; ++i) {
-            vector->destroy(vector->data[i]);
+            if (vector->data[i] != NULL) {
+                vector->destroy(vector->data[i]);
+                vector->data[i] = NULL;
+            }
         }
     }
+
     free(vector->data);
     vector->data = NULL;
     vector->size = 0;
@@ -256,7 +264,7 @@ int CVector_free(CVector **vector) {
     return CVECTOR_SUCCESS;
 }
 
-CResult *CVector_copy(const CVector *source) {
+CResult *CVector_clone(const CVector *source, CloneFn cloner) {
     // NULL CVector indicates error somewhere down the line.
     if (source == NULL)
         return CResult_ecreate(
@@ -267,8 +275,8 @@ CResult *CVector_copy(const CVector *source) {
     if (source->data == NULL || source->size == 0)
         return CVector_new(source->size, source->destroy);
 
-    debug("Making a calloc call in CVector_copy for copy CVector.");
-    CVector *copy = calloc(1, sizeof(CVector));
+    CLog(DEBUG, "Making a malloc call in CVector_copy for copy CVector.");
+    CVector *copy = malloc(sizeof(CVector));
 
     if (copy == NULL) {
         return CResult_ecreate(
@@ -282,9 +290,15 @@ CResult *CVector_copy(const CVector *source) {
             CError_create("Unable to initialize the new copy vector.",
                           "CVector_copy", CVECTOR_ALLOC_FAILURE));
     }
+    if (cloner == NULL) {
+        free(copy);
+        return CResult_ecreate(
+            CError_create("Unable to clone the data to new copy vector..",
+                          "CVector_copy", CVECTOR_ALLOC_FAILURE));
+    }
 
     for (size_t i = 0; i < source->size; i++) {
-        void *element = CVector_get(source, i);
+        void *element = cloner(source->data[i]);
         if (CVector_add(copy, element) != CVECTOR_SUCCESS) {
             CVector_free(&copy);
             return CResult_ecreate(
@@ -293,7 +307,7 @@ CResult *CVector_copy(const CVector *source) {
         }
     }
 
-    return CResult_create(copy);
+    return CResult_create(copy, NULL);
 }
 
 int CVector_reserve(CVector *vector, size_t new_capacity) {
@@ -305,7 +319,7 @@ int CVector_reserve(CVector *vector, size_t new_capacity) {
         return CVECTOR_SUCCESS;
     }
 
-    debug("Making a realloc call in CVector_reserve.");
+    CLog(DEBUG, "Making a realloc call in CVector_reserve.");
     void **new_data = realloc(vector->data, new_capacity * sizeof(void *));
     if (new_data == NULL) {
         return CVECTOR_ALLOC_FAILURE;

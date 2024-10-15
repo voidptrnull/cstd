@@ -84,8 +84,9 @@ $(document).ready(function() { init_codefold(0); });
 </div><!--header-->
 <div class="contents">
 <a href="Operators_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#ifndef CSTD_OPERATORS_H</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define CSTD_OPERATORS_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef CSTD_OPERATORS_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define CSTD_OPERATORS_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define HAVE_CSTD_DEFAULTS</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
@@ -95,18 +96,22 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">   36</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>)(<span class="keywordtype">void</span> *data);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">   43</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">ccompare_pointer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">   49</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="Operators_8h.html#a8c07bbba1050ecd045a9fe5b10c8a171">   42</a></span><span class="keyword">typedef</span> <span class="keywordtype">void</span> *(*CloneFn)(<span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#ifndef CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">   49</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">ccompare_pointer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">   54</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">chash_string</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">   59</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">// CUTILS_COMP_FUNCTIONS</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_OPERATORS_H</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">   55</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">   60</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">chash_string</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">   65</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">   70</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_OPERATORS_H</span></div>
 <div class="ttc" id="aOperators_8h_html_a2353e69e9b641fd66c9419b05ab8333f"><div class="ttname"><a href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a></div><div class="ttdeci">void(* Destructor)(void *data)</div><div class="ttdoc">Function pointer type for destructor functions.</div><div class="ttdef"><b>Definition</b> Operators.h:36</div></div>
 <div class="ttc" id="aOperators_8h_html_a37eb4a0a536b9fe626c06b7922fcfc9c"><div class="ttname"><a href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a></div><div class="ttdeci">int ccompare_integer(const void *a, const void *b)</div><div class="ttdoc">Compare function for integers.</div></div>
 <div class="ttc" id="aOperators_8h_html_a4157eb754c9aac92a47107789351d66d"><div class="ttname"><a href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">chash_string</a></div><div class="ttdeci">size_t chash_string(const void *key)</div><div class="ttdoc">Hash function for strings.</div></div>
@@ -114,10 +119,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aOperators_8h_html_a9764777f85b7d30037a75b50921f5662"><div class="ttname"><a href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a></div><div class="ttdeci">size_t(* Hash)(const void *key)</div><div class="ttdoc">Function pointer type for hash functions.</div><div class="ttdef"><b>Definition</b> Operators.h:29</div></div>
 <div class="ttc" id="aOperators_8h_html_abbbf765bb3df5c959af0e4f89e1f00f6"><div class="ttname"><a href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a></div><div class="ttdeci">size_t cdefault_hash(const void *key)</div><div class="ttdoc">Default hash function for void pointers.</div></div>
 <div class="ttc" id="aOperators_8h_html_ac8eabdee85391c9a1a59b1df256bceef"><div class="ttname"><a href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">ccompare_pointer</a></div><div class="ttdeci">int ccompare_pointer(const void *a, const void *b)</div><div class="ttdoc">Compare function for pointers.</div></div>
+<div class="ttc" id="aOperators_8h_html_aca6c89c74ced32fa71304ed19bae086b"><div class="ttname"><a href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a></div><div class="ttdeci">void * cclone_integer(const void *data)</div><div class="ttdoc">Default clone function for integers.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

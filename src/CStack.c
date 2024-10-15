@@ -1,3 +1,4 @@
+#include <logger/CLog.h>
 #include <stdlib.h>
 #include <util/CStack.h>
 
@@ -6,7 +7,7 @@ struct CStackNode {
     struct CStackNode *next;
 };
 
-struct CStack {
+struct _CStack {
     struct CStackNode *top;
     unsigned long int size;
 };
@@ -24,7 +25,7 @@ CResult *CStack_new() {
             CError_create("Unable to initialize the newly created stack.",
                           "CStack_new()", k));
     }
-    return CResult_create(stack);
+    return CResult_create(stack, free);
 }
 
 int CStack_init(CStack *stack) {
@@ -60,7 +61,7 @@ CResult *CStack_pop(CStack *stack) {
     free(temp);
     stack->size--;
 
-    return CResult_create(data);
+    return CResult_create(data, NULL);
 }
 
 int CStack_push(CStack *stack, void *item) {

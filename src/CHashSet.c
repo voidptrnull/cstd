@@ -1,4 +1,4 @@
-#include <debug/debug.h>
+#include <logger/CLog.h>
 #include <stdlib.h>
 #include <string.h>
 #include <util/CHashSet.h>
@@ -8,14 +8,16 @@ typedef struct Node {
     struct Node *next;
 } Node;
 
-struct CHashSet  {
+struct _CHashSet {
     size_t capacity;
     size_t size;
-    Node** buckets;
+    Node **buckets;
     Hash hash;
+    Destructor destroy;
 };
 
-CResult *CHashSet_create(unsigned long int capacity, Hash hash) {
+CResult *CHashSet_create(size_t capacity, Hash hash,
+                         Destructor destroy) {
     CHashSet *set = malloc(sizeof(CHashSet));
     if (!set) {
         return CResult_ecreate(
@@ -23,44 +25,28 @@ CResult *CHashSet_create(unsigned long int capacity, Hash hash) {
                           "CHashSet_create", CHASHSET_ALLOC_FAILURE));
     }
     int k = 0;
-    if ((k = CHashSet_init(set, capacity, hash)) != 0) {
+    if ((k = CHashSet_init(set, capacity, hash, destroy)) != 0) {
         free(set);
         return CResult_ecreate(
             CError_create("Failed to initialize the newly created CHashSet.",
                           "CHashSet_create", k));
     }
-    return CResult_create(set);
+    return CResult_create(set, free);
 }
 
-int CHashSet_init(CHashSet *set, unsigned long int capacity, Hash hash) {
+int CHashSet_init(CHashSet *set, size_t capacity, Hash hash,
+                  Destructor destroy) {
     if (!set)
         return CHASHSET_NULL_HASHSET;
     set->capacity = capacity;
     set->size = 0;
     set->hash = hash;
-    set->buckets = calloc(capacity, sizeof(Node *));
+    set->buckets = malloc(capacity * sizeof(Node *));
+    set->destroy = destroy;
+
     if (!set->buckets) {
         return CHASHSET_ALLOC_FAILURE;
     }
-    return CHASHSET_SUCCESS;
-}
-
-int CHashSet_clear(CHashSet *set) {
-    if (!set || !set->buckets) {
-        return CHASHSET_NULL_HASHSET;
-    }
-
-    for (unsigned long int i = 0; i < set->capacity; ++i) {
-        Node *current = set->buckets[i];
-        while (current) {
-            Node *to_free = current;
-            current = current->next;
-            free(to_free);
-        }
-        set->buckets[i] = NULL;
-    }
-    set->size = 0;
-
     return CHASHSET_SUCCESS;
 }
 
@@ -69,12 +55,12 @@ int CHashSet_add(CHashSet *set, void *value) {
         return CHASHSET_NULL_HASHSET;
     }
 
-    unsigned long int index = set->hash(value) % set->capacity;
+    size_t index = set->hash(value) % set->capacity;
     Node *current = set->buckets[index];
     while (current) {
         if (set->hash(current->value) == set->hash(value) &&
             current->value == value) {
-            return CHASHSET_VALUE_PRESENT;
+            return CHASHSET_VALUE_PRESENT_OR_NOT_FOUND;
         }
         current = current->next;
     }
@@ -96,7 +82,7 @@ int CHashSet_remove(CHashSet *set, void *value) {
         return CHASHSET_NULL_HASHSET;
     }
 
-    unsigned long int index = set->hash(value) % set->capacity;
+    size_t index = set->hash(value) % set->capacity;
     Node *current = set->buckets[index];
     Node *prev = NULL;
 
@@ -124,7 +110,7 @@ int CHashSet_contains(CHashSet *set, void *value) {
         return CHASHSET_NULL_HASHSET;
     }
 
-    unsigned long int index = set->hash(value) % set->capacity;
+    size_t index = set->hash(value) % set->capacity;
     Node *current = set->buckets[index];
     while (current) {
         if (set->hash(current->value) == set->hash(value) &&
@@ -137,25 +123,48 @@ int CHashSet_contains(CHashSet *set, void *value) {
     return CHASHSET_INDEX_OUT_OF_BOUNDS;
 }
 
-CResult *CHashSet_get(CHashSet *set, unsigned long int key) {
+CResult *CHashSet_get(CHashSet *set, size_t key) {
     if (!set || !set->buckets) {
         return CResult_ecreate(
             CError_create("Unable to operate on null hash sets.",
                           "CHashSet_get", CHASHSET_NULL_HASHSET));
     }
 
-    unsigned long int index = key % set->capacity;
+    size_t index = key % set->capacity;
     Node *current = set->buckets[index];
 
     while (current) {
         if (set->hash(current->value) == key) {
-            return current->value;
+            return CResult_create(current->value, NULL);
         }
         current = current->next;
     }
 
-    return CResult_create(NULL);
+    return CResult_ecreate(CError_create("Could not find the value for the specified key.", "CHashSet_get", CHASHSET_VALUE_PRESENT_OR_NOT_FOUND));
 }
+
+
+int CHashSet_clear(CHashSet *set) {
+    if (!set || !set->buckets) {
+        return CHASHSET_NULL_HASHSET;
+    }
+
+    for (size_t i = 0; i < set->capacity; ++i) {
+        Node *current = set->buckets[i];
+        while (current) {
+            Node *to_free = current;
+            current = current->next;
+            if (!set->destroy) {
+                set->destroy(to_free);
+            }
+        }
+        set->buckets[i] = NULL;
+    }
+    set->size = 0;
+
+    return CHASHSET_SUCCESS;
+}
+
 
 int CHashSet_free(CHashSet *set) {
     if (!set) {

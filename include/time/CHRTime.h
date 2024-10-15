@@ -30,7 +30,7 @@
 /// measurement. The functions utilize platform-specific APIs to ensure
 /// accurate time retrieval across different operating systems.
 ///
-/// The header includes inline functions to get the current time based on
+/// The header functions to get the current time based on
 /// the available platform (Windows, Linux, Unix, or macOS).
 ///
 /// \note Ensure to include this header only once per compilation unit
@@ -48,7 +48,7 @@ typedef uint64_t hrtime_t;
 
 /// \brief Retrieve the current time in nanoseconds.
 /// \return The current high-resolution time in nanoseconds.
-inline hrtime_t hrtime_ns() {
+hrtime_t hrtime_ns() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&counter);
@@ -57,7 +57,7 @@ inline hrtime_t hrtime_ns() {
 
 /// \brief Retrieve the current time in microseconds.
 /// \return The current high-resolution time in microseconds.
-inline hrtime_t hrtime_us() {
+hrtime_t hrtime_us() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&counter);
@@ -66,7 +66,7 @@ inline hrtime_t hrtime_us() {
 
 /// \brief Retrieve the current time in milliseconds.
 /// \return The current high-resolution time in milliseconds.
-inline hrtime_t hrtime_ms() {
+hrtime_t hrtime_ms() {
     LARGE_INTEGER frequency, counter;
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&counter);
@@ -79,7 +79,7 @@ typedef uint64_t hrtime_t;
 
 /// \brief Retrieve the current time in nanoseconds.
 /// \return The current high-resolution time in nanoseconds.
-inline hrtime_t hrtime_ns() {
+hrtime_t hrtime_ns() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (hrtime_t)ts.tv_sec * 1000000000ULL + ts.tv_nsec;
@@ -87,7 +87,7 @@ inline hrtime_t hrtime_ns() {
 
 /// \brief Retrieve the current time in microseconds.
 /// \return The current high-resolution time in microseconds.
-inline hrtime_t hrtime_us() {
+hrtime_t hrtime_us() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (hrtime_t)ts.tv_sec * 1000000ULL + ts.tv_nsec / 1000ULL;
@@ -95,7 +95,7 @@ inline hrtime_t hrtime_us() {
 
 /// \brief Retrieve the current time in milliseconds.
 /// \return The current high-resolution time in milliseconds.
-inline hrtime_t hrtime_ms() {
+hrtime_t hrtime_ms() {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return (hrtime_t)ts.tv_sec * 1000ULL + ts.tv_nsec / 1000000ULL;

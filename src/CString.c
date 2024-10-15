@@ -1,18 +1,18 @@
-#include <debug/debug.h>
+#include <logger/CLog.h>
 #include <stdlib.h>
 #include <string.h>
 #include <util/CString.h>
 
-struct CString {
+struct _CString {
     CVector *characters; ///< Vector storing the characters of the string.
 };
 
-void freeChar(void *data) { free(data); }
+// void freeChar(void *data) { free(data); }
 
 CResult *CString_new() {
     CString *string = malloc(sizeof(CString));
 
-    debug("Making a CString_init call in CString_new.");
+    CLog(DEBUG, "Making a CString_init call in CString_new.");
     int code = CString_init(string, CSTRING_DEFAULT_ALLOC_SIZE);
     if (code) {
         return CResult_ecreate(CError_create(
@@ -20,45 +20,43 @@ CResult *CString_new() {
             "CString_new", code));
     }
 
-    return CResult_create(string);
+    return CResult_create(string, NULL);
 }
 
 int CString_init(CString *string, size_t size) {
     if (string == NULL)
         return CSTRING_NULL_STRING;
 
-    debug("Making a CVector_new call in CString_init.");
-    debug_i(size);
-    CResult *res = CVector_new(size, freeChar);
+    CLog(DEBUG, "Making a CVector_new call in CString_init of size `%llu`.",
+         size);
+    CResult *res = CVector_new(size, NULL);
     if (CResult_is_error(res)) {
-        debug("Result is error (in CString_init;from CString_new).");
+        CLog(DEBUG, "Result is error (in CString_init).");
         CResult_free(&res);
         string->characters = NULL;
         return CSTRING_ALLOC_FAILURE;
     }
-    debug("Result is good (in CString_init;from CString_new).");
+    CLog(DEBUG, "Result is good (in CString_init).");
     string->characters = CResult_get(res);
     CResult_free(&res);
     return CSTRING_SUCCESS;
 }
 
-int CString_set(CString *string, const char *str) {
+int CString_set(CString *string, char *str) {
     if (string == NULL || str == NULL)
         return CSTRING_NULL_STRING;
 
     int code = CString_clear(string);
-    if (code)
+    if (code != 0)
         return code;
 
     size_t len = strlen(str);
-    debug("Making a CString_init call in CString_set.");
+    CLog(DEBUG, "Making a CString_init call in CString_set.");
     code = CString_init(string, len);
     if (code)
         return code;
     for (size_t i = 0; i < len; i++) {
-        char *ch = malloc(sizeof(char));
-        *ch = str[i];
-        code = CVector_add(string->characters, ch);
+        code = CVector_add(string->characters, &str[i]);
         if (code != CVECTOR_SUCCESS) {
             return CSTRING_OP_FAILURE;
         }
@@ -69,12 +67,19 @@ int CString_set(CString *string, const char *str) {
 
 char CString_at(const CString *string, size_t index) {
     if (string == NULL || string->characters == NULL)
-        return CSTRING_NULL_STRING;
+        return '\0';
 
     if (index >= CVector_size(string->characters))
-        return CSTRING_INDEX_OUT_OF_BOUNDS;
+        return '\0';
 
-    return *(char *)CVector_get(string->characters, index);
+    CResult *res = CVector_get(string->characters, index);
+    if (CResult_is_error(res)) {
+        CResult_free(&res);
+        return '\0';
+    }
+    char c = (char)CResult_get(res);
+    CResult_free(&res);
+    return c;
 }
 
 int CString_free(CString **string) {
@@ -128,12 +133,27 @@ int CString_append(CString *string, CString *str) {
             CVector_add(string->characters, CResult_get(res)) !=
                 CVECTOR_SUCCESS)
             return CSTRING_ALLOC_FAILURE;
-        free(res); // don't delete data, just free the pointer to result.
+        // don't delete data, just free the pointer to result.
+        CResult_free(&res);
     }
     return CSTRING_SUCCESS;
 }
 
-CResult *CString_copy(const CString *source) {
+void *clone_char(const void *data) {
+    char *ch = malloc(sizeof(char));
+    if (ch == NULL)
+        return NULL;
+
+    if (data == NULL || (*(uint8_t *)data & ~0x7F) != 0) {
+        *ch = '\0';
+        return ch;
+    }
+
+    *ch = *(const uint8_t *)data;
+    return ch;
+}
+
+CResult *CString_clone(const CString *source) {
     if (source == NULL)
         return NULL;
 
@@ -142,14 +162,14 @@ CResult *CString_copy(const CString *source) {
         return NULL;
 
     if (source->characters == NULL)
-        return CResult_create(copy);
+        return CResult_create(copy, free);
 
-    CResult *res = CVector_copy(source->characters);
+    CResult *res = CVector_clone(source->characters, clone_char);
     if (CResult_is_error(res))
         return res;
     copy->characters = CResult_get(res);
     CResult_free(&res);
-    return CResult_create(copy);
+    return CResult_create(copy, free);
 }
 
 int CString_clear(CString *string) {
@@ -162,14 +182,9 @@ int CString_clear(CString *string) {
             return CSTRING_OP_FAILURE;
     }
 
-    CResult *res = CString_new(CSTRING_DEFAULT_ALLOC_SIZE);
-    if (CResult_is_error(res)) {
-        CResult_free(&res);
-        return CSTRING_ALLOC_FAILURE;
+    if (string->characters) {
+        return CVector_free(&string->characters);
     }
-
-    string->characters = CResult_get(res);
-    CResult_free(&res);
 
     return CSTRING_SUCCESS;
 }
@@ -181,21 +196,42 @@ CResult *CString_c_str(CString *string) {
                           "C-style strings.",
                           "CString_c_str", CSTRING_NULL_STRING));
 
-    if (CVector_size(string->characters) <= 0 || string->characters == NULL)
-        return CResult_create("");
-
+    if (CVector_size(string->characters) <= 0 || string->characters == NULL) {
+        CLog(DEBUG, "Got an empty string with address: %llu", string);
+        char *empty_str = malloc(1);
+        if (!empty_str) {
+            return CResult_ecreate(
+                CError_create("Memory allocation failed for empty string.",
+                              "CString_c_str", CSTRING_ALLOC_FAILURE));
+        }
+        empty_str[0] = '\0';
+        return CResult_create(empty_str, free);
+    }
+    CLog(DEBUG, "Got a non-empty string with address: %llu", string);
     char *str = malloc(sizeof(char) * (CVector_size(string->characters) + 1));
     if (str == NULL)
         return CResult_ecreate(
             CError_create("Unable to allocate memory for C string.",
                           "CString_c_str", CSTRING_ALLOC_FAILURE));
-
+    CLog(DEBUG, "Created a non-NULL C string: %llu", str);
     for (size_t i = 0; i < CVector_size(string->characters); i++) {
-        str[i] = *(char *)CVector_get(string->characters, i);
+        CResult *res = CVector_get(string->characters, i);
+        if (CResult_is_error(res)) {
+            free(str);
+            CResult_free(&res);
+            return CResult_ecreate(CError_create("Unable to get the character.",
+                                                 "CString_c_str",
+                                                 CSTRING_OP_FAILURE));
+        }
+        CLog(DEBUG, "Copy index: %llu", i);
+        CLog(DEBUG, "Character at index above: %c", CResult_get(res));
+        str[i] = (char)CResult_get(res);
+        CResult_free(&res);
     }
+    CLog(DEBUG, "Copying null terminator.");
     str[CVector_size(string->characters)] = '\0'; // Null terminator
 
-    return CResult_create((void *)str);
+    return CResult_create((void *)str, free);
 }
 
 int CString_equals(CString *str1, CString *str2) {
@@ -263,7 +299,7 @@ CResult *CString_substring(const CString *string, size_t start, size_t end) {
     }
 
     size_t substring_length = end - start + 1;
-    CResult *res = CVector_new(substring_length, freeChar);
+    CResult *res = CVector_new(substring_length, NULL);
     if (CResult_is_error(res)) {
         CResult_free(&res);
         return CResult_ecreate(
@@ -306,5 +342,5 @@ CResult *CString_substring(const CString *string, size_t start, size_t end) {
     }
 
     substring->characters = substring_vector;
-    return CResult_create(substring);
+    return CResult_create(substring, free);
 }

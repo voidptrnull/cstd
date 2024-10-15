@@ -33,9 +33,36 @@
 /// The file also includes functions for creating, checking, and retrieving
 /// values or errors from a `CResult` object.
 ///
+/// \note Any time you encounter a library function returning a pointer to the
+/// `CResult` structure, you should infer that:
+///    - It had been dynamically allocated on the heap.
+///    - It needs to be freed when their use is sufficed and are no longer
+///    needed. <br><br>
+///   To accomplish both, assume the following example code:
+///   \code{.c}
+///   // assume <assert.h> is included.
+///   // Create the pointer
+///   int a = 5;
+///   void* ptr = &a;
+///   // Create the CResult object
+///   CResult* res = CResult_create(ptr, NULL); // If this was malloc'd
+///                               // you would pass free or custom function.
+///
+///   // If you wanted to create an error, you would be using `CResult_ecreate`
+///   // instead.
+///
+///   if (!CResult_is_error(res)) { // Check if the result is an error or
+///   invalid.
+///      // To get the CError structure/object, use `CResult_eget`.
+///      assert(*(int*)CResult_get(res) == a); // Perform some operation
+///   }
+///   CResult_free(&res); // Pass a reference to the pointer.
+///   \endcode
+///
 #ifndef CSTD_CRESULT_H
 #define CSTD_CRESULT_H
 
+#include "../ops/Operators.h"
 #include "CError.h"
 
 /// \struct CResult
@@ -44,12 +71,14 @@ typedef struct CResult CResult;
 
 /// \brief Creates a `CResult` object representing a successful result.
 /// \param value Pointer to the value to be encapsulated in the `CResult`.
-/// \return Pointer to a newly allocated `CResult` object with `status` set to
-/// `CRESULT_OK` and the `value` field populated.
+/// \param destroy Function pointer for custom free function. This is used to
+/// free the value.
+/// \return Pointer to a newly allocated `CResult` object with
+/// `status` set to `CRESULT_OK` and the `value` field populated.
 ///
 /// \note It is advisable that you avoid stack-allocation and use
 /// heap-allocation instead.
-CResult *CResult_create(void *value);
+CResult *CResult_create(void *value, Destructor destroy);
 
 /// \brief Creates a `CResult` object representing an error.
 /// \param err Pointer to the `CError` object representing the error.
@@ -79,13 +108,6 @@ void *CResult_get(const CResult *result);
 /// error. \return Pointer to the `CError` object encapsulated in the `CResult`
 /// if it represents an error, or `NULL` if the `result` is successful.
 CError *CResult_eget(const CResult *result);
-
-/// \brief Free the value used by the `CResult` object.
-/// \param result The pointer to the `CResult` object.
-///
-/// \attention This frees the value of the result object. If it was not
-/// heap-allocated (i.e. allocated on stack), it will cause a double free.
-void CResult_vfree(CResult **result);
 
 /// \brief Free the resources used by the `CResult` object.
 /// \param result  The pointer to the pointer to the `CResult` object.

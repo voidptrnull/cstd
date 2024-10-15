@@ -85,8 +85,8 @@ $(function() {
 
 <p>Header file for the <a class="el" href="structCHashMap.html" title="Structure representing a hash map.">CHashMap</a> library.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="CVector_8h_source.html">CVector.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Operators_8h_source.html">../ops/Operators.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Operators_8h_source.html">../ops/Operators.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="CVector_8h_source.html">CVector.h</a>&quot;</code><br />
 </div>
 <p><a href="CHashMap_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -118,30 +118,33 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae9dba2912572935ba29b32a295af7dd3" id="r_ae9dba2912572935ba29b32a295af7dd3"><td class="memItemLeft" align="right" valign="top"><a id="ae9dba2912572935ba29b32a295af7dd3" name="ae9dba2912572935ba29b32a295af7dd3"></a>
-typedef struct <a class="el" href="structCHashMap.html">CHashMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CHashMap</b></td></tr>
-<tr class="separator:ae9dba2912572935ba29b32a295af7dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8903d34b8f2f8aa82ca2ab72b76e8e" id="r_a4f8903d34b8f2f8aa82ca2ab72b76e8e"><td class="memItemLeft" align="right" valign="top"><a id="a4f8903d34b8f2f8aa82ca2ab72b76e8e" name="a4f8903d34b8f2f8aa82ca2ab72b76e8e"></a>
+typedef struct _CHashMap&#160;</td><td class="memItemRight" valign="bottom"><b>CHashMap</b></td></tr>
+<tr class="separator:a4f8903d34b8f2f8aa82ca2ab72b76e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a00f67ae1c5686a9b58b7ea20dce21646" id="r_a00f67ae1c5686a9b58b7ea20dce21646"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a00f67ae1c5686a9b58b7ea20dce21646">CHashMap_new</a> ()</td></tr>
+<tr class="memdesc:a00f67ae1c5686a9b58b7ea20dce21646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new hash map.  <br /></td></tr>
+<tr class="separator:a00f67ae1c5686a9b58b7ea20dce21646"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ef652e5dd190bda516b5ae58b9e74f" id="r_a23ef652e5dd190bda516b5ae58b9e74f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a23ef652e5dd190bda516b5ae58b9e74f">CHashMap_init</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, size_t capacity, <a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a> cmp, <a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a> hash, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyKey, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyValue)</td></tr>
 <tr class="memdesc:a23ef652e5dd190bda516b5ae58b9e74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a hash map.  <br /></td></tr>
 <tr class="separator:a23ef652e5dd190bda516b5ae58b9e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9753fc6f5f971dd489c5d22f922eeaa2" id="r_a9753fc6f5f971dd489c5d22f922eeaa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a9753fc6f5f971dd489c5d22f922eeaa2">CHashMap_insert</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key, void *value)</td></tr>
 <tr class="memdesc:a9753fc6f5f971dd489c5d22f922eeaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a key-value pair into the hash map.  <br /></td></tr>
 <tr class="separator:a9753fc6f5f971dd489c5d22f922eeaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07fe90b2d4e430a6dc3b27ad0acb6a95" id="r_a07fe90b2d4e430a6dc3b27ad0acb6a95"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a07fe90b2d4e430a6dc3b27ad0acb6a95">CHashMap_lookup</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key)</td></tr>
-<tr class="memdesc:a07fe90b2d4e430a6dc3b27ad0acb6a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup a value by key in the hash map.  <br /></td></tr>
-<tr class="separator:a07fe90b2d4e430a6dc3b27ad0acb6a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af506b2b684ef96b7600954d5b8274ba3" id="r_af506b2b684ef96b7600954d5b8274ba3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#af506b2b684ef96b7600954d5b8274ba3">CHashMap_get</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key)</td></tr>
+<tr class="memdesc:af506b2b684ef96b7600954d5b8274ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup a value by key in the hash map.  <br /></td></tr>
+<tr class="separator:af506b2b684ef96b7600954d5b8274ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ef73902f50a47b26082f86847dc8383" id="r_a7ef73902f50a47b26082f86847dc8383"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a7ef73902f50a47b26082f86847dc8383">CHashMap_remove</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key)</td></tr>
 <tr class="memdesc:a7ef73902f50a47b26082f86847dc8383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key-value pair from the hash map.  <br /></td></tr>
 <tr class="separator:a7ef73902f50a47b26082f86847dc8383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b5f97948691d3ef7ccadd1cebf85469" id="r_a9b5f97948691d3ef7ccadd1cebf85469"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a9b5f97948691d3ef7ccadd1cebf85469">CHashMap_free</a> (<a class="el" href="structCHashMap.html">CHashMap</a> **map)</td></tr>
 <tr class="memdesc:a9b5f97948691d3ef7ccadd1cebf85469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources used by the hash map.  <br /></td></tr>
 <tr class="separator:a9b5f97948691d3ef7ccadd1cebf85469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d763c2d367f5429ecb98b8881b8994" id="r_aa1d763c2d367f5429ecb98b8881b8994"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#aa1d763c2d367f5429ecb98b8881b8994">CHashMap_update</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, const void *key, const void *new_value)</td></tr>
-<tr class="memdesc:aa1d763c2d367f5429ecb98b8881b8994"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value associated with a key in the hash map.  <br /></td></tr>
-<tr class="separator:aa1d763c2d367f5429ecb98b8881b8994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ecff8b9e2e297f01f852e59df074d8" id="r_af6ecff8b9e2e297f01f852e59df074d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#af6ecff8b9e2e297f01f852e59df074d8">CHashMap_update</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key, void *new_value)</td></tr>
+<tr class="memdesc:af6ecff8b9e2e297f01f852e59df074d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value associated with a key in the hash map.  <br /></td></tr>
+<tr class="separator:af6ecff8b9e2e297f01f852e59df074d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae59f279a595d1d22765e782e591e03f0" id="r_ae59f279a595d1d22765e782e591e03f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#ae59f279a595d1d22765e782e591e03f0">CHashMap_clear</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map)</td></tr>
 <tr class="memdesc:ae59f279a595d1d22765e782e591e03f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all key-value pairs from the hash map.  <br /></td></tr>
 <tr class="separator:ae59f279a595d1d22765e782e591e03f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,8 +157,9 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the <a class="el" href="structCHashMap.html" title="Structure representing a hash map.">CHashMap</a> library. </p>
-<p>This file defines the data structures and functions for implementing a hash map (also known as a hash table). The hash map allows for efficient insertion, lookup, and removal of key-value pairs. The hash map uses a vector of buckets and hash functions to manage and access stored elements.</p>
-<p>The hash map's key-value pairs are managed with user-defined comparison and hash functions. </p>
+<p>This file defines the data structures and functions for implementing a hash map (also known as a hash table). The hash map allows for efficient insertion, lookup, and removal of key-value pairs. The hash map uses a array and hash functions to manage and access stored elements. Use of open-addressing and linear probing has also been made.</p>
+<p>The hash map's key-value pairs are managed with user-defined comparison and hash functions.</p>
+<dl class="section note"><dt>Note</dt><dd>The functions in this header are intended to be used with dynamic memory allocation and require error checking to ensure successful memory operations. If you do intend to use stack-allocated structures, do not use <code>new</code> and <code>free</code> methods associated to that structure. </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a2ff404c7d5822fb8efd0f2325f45ac7d" name="a2ff404c7d5822fb8efd0f2325f45ac7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ff404c7d5822fb8efd0f2325f45ac7d">&#9670;&#160;</a></span>CHASHMAP_DEFAULT_CAPACITY</h2>
@@ -238,6 +242,46 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Ensure that <code>map</code> is not NULL before calling this function. After freeing, the hash map should not be used.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>If <code>map</code> is NULL, the function will return <code>CHASHMAP_NULL_MAP</code> and will not perform any operation. </dd></dl>
+
+</div>
+</div>
+<a id="af506b2b684ef96b7600954d5b8274ba3" name="af506b2b684ef96b7600954d5b8274ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af506b2b684ef96b7600954d5b8274ba3">&#9670;&#160;</a></span>CHashMap_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CHashMap_get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lookup a value by key in the hash map. </p>
+<p>Retrieves the value associated with the given key from the hash map. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Pointer to the hash map. </td></tr>
+    <tr><td class="paramname">key</td><td>Pointer to the key to look up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a> object encapsulated with the value, which is further associated with the key, or <code>NULL</code> if the key was not found.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Ensure that <code>key</code> is not NULL before calling this function. The function will return <code>NULL</code> if the key is not found in the hash map.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If <code>key</code> is NULL, the function may return unexpected results or fail to perform the lookup. </dd></dl>
 
 </div>
 </div>
@@ -393,43 +437,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a07fe90b2d4e430a6dc3b27ad0acb6a95" name="a07fe90b2d4e430a6dc3b27ad0acb6a95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07fe90b2d4e430a6dc3b27ad0acb6a95">&#9670;&#160;</a></span>CHashMap_lookup()</h2>
+<a id="a00f67ae1c5686a9b58b7ea20dce21646" name="a00f67ae1c5686a9b58b7ea20dce21646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f67ae1c5686a9b58b7ea20dce21646">&#9670;&#160;</a></span>CHashMap_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void * CHashMap_lookup </td>
+          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CHashMap_new </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
-          <td class="paramname"><em>map</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>key</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Lookup a value by key in the hash map. </p>
-<p>Retrieves the value associated with the given key from the hash map. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">map</td><td>Pointer to the hash map. </td></tr>
-    <tr><td class="paramname">key</td><td>Pointer to the key to look up. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the value associated with the key, or <code>NULL</code> if the key was not found.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Ensure that <code>key</code> is not NULL before calling this function. The function will return <code>NULL</code> if the key is not found in the hash map.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If <code>key</code> is NULL, the function may return unexpected results or fail to perform the lookup. </dd></dl>
+<p>Create a new hash map. </p>
+<p>Allocates memory for a new hash map.</p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object encapsulating the created hash map. The result is successful if the hash map was created successfuly.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method <b>DOES NOT</b> initialize the hash map. Please initialize it using <a class="el" href="CHashMap_8h.html#a23ef652e5dd190bda516b5ae58b9e74f" title="Initialize a hash map.">CHashMap_init()</a> method.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If memory allocation fails during the creation of the hash map, this function will return an error, and no hash map will be created. </dd></dl>
 
 </div>
 </div>
@@ -482,9 +509,6 @@ Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t CHashMap_size </td>
@@ -494,11 +518,6 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Retrieve the number of key-value pairs in the hash map. </p>
@@ -514,8 +533,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1d763c2d367f5429ecb98b8881b8994" name="aa1d763c2d367f5429ecb98b8881b8994"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d763c2d367f5429ecb98b8881b8994">&#9670;&#160;</a></span>CHashMap_update()</h2>
+<a id="af6ecff8b9e2e297f01f852e59df074d8" name="af6ecff8b9e2e297f01f852e59df074d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6ecff8b9e2e297f01f852e59df074d8">&#9670;&#160;</a></span>CHashMap_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,13 +548,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>new_value</em>&#160;</td>
         </tr>
         <tr>
@@ -568,7 +587,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 22 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
