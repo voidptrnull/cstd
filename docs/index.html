@@ -95,7 +95,11 @@ What does it and does not intend to do ?</h1>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Usage Philosophy</h1>
 <p>To use any of the data structure provided in the implementation, the following functions are used:</p><ul>
-<li><code>new</code> - for creating a dynamically allocated </li>
+<li><code>new</code> - for creating a dynamically allocated memory. It initializes the data too, with the <br  />
+exception of <code><a class="el" href="structCHashMap.html" title="Structure representing a hash map.">CHashMap</a></code> data structure.</li>
+<li><code>init</code> - for initializing data structures.</li>
+<li><code>clear</code> - for clearing resources. Does not free the structure itself, just its resources.</li>
+<li><code>free</code> - does what <code>clear</code> does, and frees the structure too in addition. </li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
