@@ -45,7 +45,7 @@
 /// an error code.
 ///          It is used to provide detailed information about errors that occur
 ///          during the execution of various library functions.
-typedef struct CError CError;
+typedef struct CError CError_t;
 
 /// \brief Creates a new `CError` object.
 /// \details Allocates and initializes a `CError` object with the provided
@@ -53,30 +53,30 @@ typedef struct CError CError;
 /// string. \param ctx The context in which the error occurred as a C string.
 /// \param err_code The error code as an unsigned long integer.
 /// \return Pointer to the newly allocated `CError` object.
-CError *CError_create(const char *msg, const char *ctx,
+CError_t *CError_create(const char *msg, const char *ctx,
                       unsigned long int err_code);
 
 /// \brief Frees a `CError` object.
 /// \details Releases the memory associated with the given `CError` object,
 /// including its message and context strings. \param error Pointer to the
 /// pointer to the `CError` object to free.
-void CError_free(CError **error);
+void CError_free(CError_t **error);
 
 /// \brief Retrieves the error message from a `CError` object.
 /// \param error Pointer to the `CError` object.
 /// \return Pointer to the string containing the error message.
-const char *CError_get_message(const CError *error);
+const char *CError_get_message(const CError_t *error);
 
 /// \brief Retrieves the context from a `CError` object.
 /// \param error Pointer to the `CError` object.
 /// \return Pointer to the string containing the context in which the error
 /// occurred.
-const char *CError_get_context(const CError *error);
+const char *CError_get_context(const CError_t *error);
 
 /// \brief Retrieves the error code from a `CError` object.
 /// \param error Pointer to the `CError` object.
 /// \return The error code as an unsigned long integer.
-unsigned long int CError_get_code(const CError *error);
+unsigned long int CError_get_code(const CError_t *error);
 
 /// \typedef ErrorHandler
 /// \brief Function pointer type for error handling functions.
@@ -85,7 +85,7 @@ unsigned long int CError_get_code(const CError *error);
 ///          Error handling functions of this type can be used to log, display,
 ///          or otherwise process errors.
 /// \param error Pointer to the `CError` object representing the error.
-typedef void (*ErrorHandler)(const CError *error);
+typedef void (*ErrorHandler)(const CError_t *error);
 
 #ifdef CUTILS_COMP_FUNCTIONS
 /// \brief Prints a `CError` object to standard output.
@@ -93,7 +93,7 @@ typedef void (*ErrorHandler)(const CError *error);
 /// be used to print the details of a `CError`
 ///          object, including the error message, context, and error code.
 /// \param error Pointer to the `CError` object to print.
-void print_error(const CError *error);
+void print_error(const CError_t *error);
 #endif
 
 #endif // CSTD_CERROR_H

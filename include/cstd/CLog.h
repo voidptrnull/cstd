@@ -110,4 +110,8 @@ void enable_location(void);
 /// \see enable_location
 void disable_location(void);
 
+/// \brief Restrict the location to only be the file name, do noot include the parent directories.
+/// Calling this once enables shortened location, else disables it.
+void shortened_location(void);
+
 #endif // CSTD_LOG_H

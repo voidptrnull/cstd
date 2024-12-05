@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/ops/Operators.h File Reference</title>
+<title>cstd: include/cstd/Operators.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;0.0.1-alpha</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -71,7 +71,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_0b727cd7251749978f8525c62f2c4a38.html">ops</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_354441a1b143fd68566432fc2a479184.html">cstd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -85,7 +85,7 @@ $(function() {
 
 <p>Header file for all definitions of functions to be used or provided by the user.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="Operators_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -94,7 +94,7 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a4c4b78c82a1e9277aa9d977c4652bb10" id="r_a4c4b78c82a1e9277aa9d977c4652bb10"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>) (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a4c4b78c82a1e9277aa9d977c4652bb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for comparison functions.  <br /></td></tr>
 <tr class="separator:a4c4b78c82a1e9277aa9d977c4652bb10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9764777f85b7d30037a75b50921f5662" id="r_a9764777f85b7d30037a75b50921f5662"><td class="memItemLeft" align="right" valign="top">typedef size_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>) (const void *key)</td></tr>
+<tr class="memitem:a9764777f85b7d30037a75b50921f5662" id="r_a9764777f85b7d30037a75b50921f5662"><td class="memItemLeft" align="right" valign="top">typedef int64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>) (const void *key)</td></tr>
 <tr class="memdesc:a9764777f85b7d30037a75b50921f5662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for hash functions.  <br /></td></tr>
 <tr class="separator:a9764777f85b7d30037a75b50921f5662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2353e69e9b641fd66c9419b05ab8333f" id="r_a2353e69e9b641fd66c9419b05ab8333f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>) (void *data)</td></tr>
@@ -112,12 +112,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a37eb4a0a536b9fe626c06b7922fcfc9c" id="r_a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a> (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare function for integers.  <br /></td></tr>
 <tr class="separator:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4157eb754c9aac92a47107789351d66d" id="r_a4157eb754c9aac92a47107789351d66d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a4157eb754c9aac92a47107789351d66d">chash_string</a> (const void *key)</td></tr>
-<tr class="memdesc:a4157eb754c9aac92a47107789351d66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
-<tr class="separator:a4157eb754c9aac92a47107789351d66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbbf765bb3df5c959af0e4f89e1f00f6" id="r_abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a> (const void *key)</td></tr>
-<tr class="memdesc:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
-<tr class="separator:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9215a29138cc10280a741fe174a3d49" id="r_ad9215a29138cc10280a741fe174a3d49"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#ad9215a29138cc10280a741fe174a3d49">chash_string</a> (const void *key)</td></tr>
+<tr class="memdesc:ad9215a29138cc10280a741fe174a3d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
+<tr class="separator:ad9215a29138cc10280a741fe174a3d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f3be084bc1dbe22f8b83da042f813d" id="r_a78f3be084bc1dbe22f8b83da042f813d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a78f3be084bc1dbe22f8b83da042f813d">cdefault_hash</a> (const void *key)</td></tr>
+<tr class="memdesc:a78f3be084bc1dbe22f8b83da042f813d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
+<tr class="separator:a78f3be084bc1dbe22f8b83da042f813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6c89c74ced32fa71304ed19bae086b" id="r_aca6c89c74ced32fa71304ed19bae086b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a> (const void *data)</td></tr>
 <tr class="memdesc:aca6c89c74ced32fa71304ed19bae086b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default clone function for integers.  <br /></td></tr>
 <tr class="separator:aca6c89c74ced32fa71304ed19bae086b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,7 +125,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for all definitions of functions to be used or provided by the user. </p>
 <p>This file defines the functions for performing operations which are required for other structures. This provides a standalone, standardized or one way for the definitions.</p>
-<p>The file, if enabled during compilation, also enables default implementations of certain functions. To detect their presence, simply use the <code>HAVE_CSTD_DEFAULTS</code> macro. </p>
+<p>The file, if enabled during compilation, also enables default implementations of certain functions. To detect it's presence, simply use the <code>HAVE_CSTD_DEFAULTS</code> macro. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a8c07bbba1050ecd045a9fe5b10c8a171" name="a8c07bbba1050ecd045a9fe5b10c8a171"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c07bbba1050ecd045a9fe5b10c8a171">&#9670;&#160;</a></span>CloneFn</h2>
@@ -187,7 +187,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function pointer type for destructor functions. </p>
-<p>This type is used for functions that clean up memory or resources associated with a pointer.</p><dl class="params"><dt>Parameters</dt><dd>
+<p>This type is used for functions that clean up memory or resources associated with a pointer. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Pointer to the element to be destroyed or cleaned up. </td></tr>
   </table>
@@ -215,7 +215,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <code>size_t</code> value representing the hash of the element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code>int64_t</code> value representing the hash of the element. </dd></dl>
 
 </div>
 </div>
@@ -243,7 +243,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the cloned integer. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the cloned integer.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This method may be absent. Use the <code>HAVE_CSTD_DEFAULTS</code> macro to check for it's presence. </dd></dl>
 
 </div>
 </div>
@@ -281,7 +282,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An integer value indicating the result of the comparison. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An integer value indicating the result of the comparison.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This method may be absent. Use the <code>HAVE_CSTD_DEFAULTS</code> macro to check for it's presence. </dd></dl>
 
 </div>
 </div>
@@ -319,18 +321,19 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An integer value indicating the result of the comparison. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An integer value indicating the result of the comparison.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This method may be absent. Use the <code>HAVE_CSTD_DEFAULTS</code> macro to check for it's presence. </dd></dl>
 
 </div>
 </div>
-<a id="abbbf765bb3df5c959af0e4f89e1f00f6" name="abbbf765bb3df5c959af0e4f89e1f00f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbbf765bb3df5c959af0e4f89e1f00f6">&#9670;&#160;</a></span>cdefault_hash()</h2>
+<a id="a78f3be084bc1dbe22f8b83da042f813d" name="a78f3be084bc1dbe22f8b83da042f813d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f3be084bc1dbe22f8b83da042f813d">&#9670;&#160;</a></span>cdefault_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t cdefault_hash </td>
+          <td class="memname">int64_t cdefault_hash </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -346,18 +349,19 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <code>size_t</code> value representing the hash of the pointer. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code>int64_t</code> value representing the hash of the pointer.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This method may be absent. Use the <code>HAVE_CSTD_DEFAULTS</code> macro to check for it's presence. </dd></dl>
 
 </div>
 </div>
-<a id="a4157eb754c9aac92a47107789351d66d" name="a4157eb754c9aac92a47107789351d66d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4157eb754c9aac92a47107789351d66d">&#9670;&#160;</a></span>chash_string()</h2>
+<a id="ad9215a29138cc10280a741fe174a3d49" name="ad9215a29138cc10280a741fe174a3d49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9215a29138cc10280a741fe174a3d49">&#9670;&#160;</a></span>chash_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t chash_string </td>
+          <td class="memname">int64_t chash_string </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -373,14 +377,15 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A <code>size_t</code> value representing the hash of the string. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code>int64_t</code> value representing the hash of the string.</dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This method may be absent. Use the <code>HAVE_CSTD_DEFAULTS</code> macro to check for it's presence. </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

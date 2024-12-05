@@ -54,15 +54,16 @@
 /// The CStack structure implements a dynamic stack for storing elements.
 /// It supports standard stack operations such as push, pop, and clearing the
 /// stack.
-typedef struct _CStack CStack;
+typedef struct _CStack CStack_t;
 
 /// \brief Creates a new stack.
 ///
 /// Allocates memory for a new stack and initializes it.
 /// The stack is ready for use after calling this function.
 ///
+/// \param destroy The destructor intended to free up the pushed values.
 /// \return A pointer to a CResult structure containing the stack or an error.
-CResult *CStack_new();
+CResult_t *CStack_new(Destructor destroy);
 
 /// \brief Initializes a stack.
 ///
@@ -71,8 +72,9 @@ CResult *CStack_new();
 /// a stack that has already been allocated memory.
 ///
 /// \param stack A pointer to the stack to be initialized.
+/// \param destroy The destructor intended to free up the pushed values.
 /// \return CSTACK_SUCCESS on success, or an error code on failure.
-int CStack_init(CStack *stack);
+int CStack_init(CStack_t *stack, Destructor destroy);
 
 /// \brief Pushes an item onto the stack.
 ///
@@ -82,7 +84,7 @@ int CStack_init(CStack *stack);
 /// \param stack A pointer to the stack.
 /// \param item A pointer to the item to be pushed onto the stack.
 /// \return CSTACK_SUCCESS on success, or an error code on failure.
-int CStack_push(CStack *stack, void *item);
+int CStack_push(CStack_t *stack, void *item);
 
 /// \brief Pops an item from the stack.
 ///
@@ -92,7 +94,7 @@ int CStack_push(CStack *stack, void *item);
 /// \param stack A pointer to the stack.
 /// \return A pointer to a CResult structure containing the popped item
 ///         or an error.
-CResult *CStack_pop(CStack *stack);
+CResult_t *CStack_pop(CStack_t *stack);
 
 /// \brief Clears the stack.
 ///
@@ -101,7 +103,7 @@ CResult *CStack_pop(CStack *stack);
 ///
 /// \param stack A pointer to the stack.
 /// \return CSTACK_SUCCESS on success, or an error code on failure.
-int CStack_clear(CStack *stack);
+int CStack_clear(CStack_t *stack);
 
 /// \brief Frees the stack.
 ///
@@ -109,6 +111,6 @@ int CStack_clear(CStack *stack);
 ///
 /// \param stack A pointer to a pointer to the stack to be freed.
 /// \return CSTACK_SUCCESS on success, or an error code on failure.
-int CStack_free(CStack **stack);
+int CStack_free(CStack_t **stack);
 
 #endif // CSTD_CSTACK_H

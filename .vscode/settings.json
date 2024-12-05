@@ -17,6 +17,9 @@
         "chashmap.h": "c",
         "map": "c",
         "format": "c",
-        "exception": "c"
+        "exception": "c",
+        "*.tcc": "cpp",
+        "clinkedlist.h": "c",
+        "chashset.h": "c"
     }
 }

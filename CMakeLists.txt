@@ -26,9 +26,9 @@ file(GLOB SOURCE_FILES "${CMAKE_SOURCE_DIR}/src/*.c")
 option(NO_DEFAULT_FUNCTION_IMPLEMENTATIONS "Do not add default function implementations." ON)
 option(NO_TESTS "Do not enable tests." OFF)
 option(DEBUG_MODE "Enable debugging mode." OFF)
-add_compile_options(-O3 -g -pipe -march=x86-64 -mtune=generic -shared -Wall -flto=auto -fdiagnostics-color=always -Wno-pointer-to-int-cast -fsanitize=address -fPIC -Werror)
+add_compile_options(-O3 -pipe -march=native -shared -Wall -flto=auto -fdiagnostics-color=always -Wno-pointer-to-int-cast -fsanitize=address -fPIC -Werror)
 if (NOT NO_DEFAULT_FUNCTION_IMPLEMENTATIONS)
-	add_compile_definitions(CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS)
+	add_compile_definitions(CSTD_NO_DEF_FN_IMPL)
 endif()
 if (DEBUG_MODE)
 	add_compile_definitions(CSTD_DEBUG_MODE)
@@ -46,6 +46,19 @@ set_target_properties(cstd PROPERTIES
 	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
 )
+
+install(TARGETS cstd cstd_static
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+)
+
+install(DIRECTORY include/
+    DESTINATION include
+)
+
+target_compile_definitions(cstd PUBLIC CSTD_INCLUDE_DIR="${CMAKE_INSTALL_PREFIX}/include")
+target_compile_definitions(cstd_static PUBLIC CSTD_INCLUDE_DIR="${CMAKE_INSTALL_PREFIX}/include")
 
 # tests
 if(NOT NO_TESTS)

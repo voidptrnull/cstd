@@ -7,13 +7,13 @@
 /// for the definitions.
 ///
 /// The file, if enabled during compilation, also enables default
-/// implementations of certain functions. To detect their presence,
+/// implementations of certain functions. To detect it's presence,
 /// simply use the `HAVE_CSTD_DEFAULTS` macro.
 #ifndef CSTD_OPERATORS_H
 #define CSTD_OPERATORS_H
 #define HAVE_CSTD_DEFAULTS
 
-#include <stddef.h>
+#include <stdint.h>
 
 /// \typedef CompareTo
 /// \brief Function pointer type for comparison functions.
@@ -25,14 +25,14 @@ typedef int (*CompareTo)(const void *a, const void *b);
 /// \typedef Hash
 /// \brief Function pointer type for hash functions.
 /// \param key Pointer to the element to hash.
-/// \return A `size_t` value representing the hash of the element.
-typedef size_t (*Hash)(const void *key);
+/// \return A `int64_t` value representing the hash of the element.
+typedef int64_t (*Hash)(const void *key);
 
 /// \typedef Destructor
 /// \brief Function pointer type for destructor functions.
 /// \details This type is used for functions that clean up memory or resources
-/// associated with a pointer. \param data Pointer to the element to be
-/// destroyed or cleaned up.
+/// associated with a pointer.
+/// \param data Pointer to the element to be destroyed or cleaned up.
 typedef void (*Destructor)(void *data);
 
 /// \typedef CloneFn
@@ -41,34 +41,49 @@ typedef void (*Destructor)(void *data);
 /// \return A pointer to the cloned element.
 typedef void *(*CloneFn)(const void *data);
 
-#ifndef CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS
+#ifndef CSTD_NO_DEF_FN_IMPL
 /// \brief Compare function for pointers.
 /// \param a Pointer to the first element to compare.
 /// \param b Pointer to the second element to compare.
 /// \return An integer value indicating the result of the comparison.
+///
+/// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
+/// check for it's presence.
 int ccompare_pointer(const void *a, const void *b);
 
 /// \brief Compare function for integers.
 /// \param a Pointer to the first integer to compare.
 /// \param b Pointer to the second integer to compare.
 /// \return An integer value indicating the result of the comparison.
+///
+/// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
+/// check for it's presence.
 int ccompare_integer(const void *a, const void *b);
 
 /// \brief Hash function for strings.
 /// \param key Pointer to the string to hash.
-/// \return A `size_t` value representing the hash of the string.
-size_t chash_string(const void *key);
+/// \return A `int64_t` value representing the hash of the string.
+///
+/// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
+/// check for it's presence.
+int64_t chash_string(const void *key);
 
 /// \brief Default hash function for void pointers.
 /// \param key Pointer to the element to hash.
-/// \return A `size_t` value representing the hash of the pointer.
-size_t cdefault_hash(const void *key);
+/// \return A `int64_t` value representing the hash of the pointer.
+///
+/// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
+/// check for it's presence.
+int64_t cdefault_hash(const void *key);
 
 /// \brief Default clone function for integers.
 /// \param data Pointer to the integer to clone.
 /// \return A pointer to the cloned integer.
+///
+/// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
+/// check for it's presence.
 void *cclone_integer(const void *data);
 
-#endif // CSTD_NO_DEFAULT_FUNCTION_IMPLEMENTATIONS
+#endif // CSTD_NO_DEF_FN_IMPL
 
 #endif // CSTD_OPERATORS_H

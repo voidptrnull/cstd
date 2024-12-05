@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/util/CResult.h File Reference</title>
+<title>cstd: include/cstd/CResult.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;0.0.1-alpha</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -71,7 +71,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_586ad3c2f85d776b984733890d824e3e.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_354441a1b143fd68566432fc2a479184.html">cstd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -84,37 +84,37 @@ $(function() {
 
 <p>Header file for handling results and errors in the CUtils library.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="Operators_8h_source.html">../ops/Operators.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Operators_8h_source.html">Operators.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="CError_8h_source.html">CError.h</a>&quot;</code><br />
 </div>
 <p><a href="CResult_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ad40cc1b28644cdc721f7b0a5b81d4639" id="r_ad40cc1b28644cdc721f7b0a5b81d4639"><td class="memItemLeft" align="right" valign="top"><a id="ad40cc1b28644cdc721f7b0a5b81d4639" name="ad40cc1b28644cdc721f7b0a5b81d4639"></a>
-typedef struct <a class="el" href="structCResult.html">CResult</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CResult</b></td></tr>
-<tr class="separator:ad40cc1b28644cdc721f7b0a5b81d4639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa12bfa6694bb7e4cf574b1d2b0d53de8" id="r_aa12bfa6694bb7e4cf574b1d2b0d53de8"><td class="memItemLeft" align="right" valign="top"><a id="aa12bfa6694bb7e4cf574b1d2b0d53de8" name="aa12bfa6694bb7e4cf574b1d2b0d53de8"></a>
+typedef struct <a class="el" href="structCResult.html">CResult</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CResult_t</b></td></tr>
+<tr class="separator:aa12bfa6694bb7e4cf574b1d2b0d53de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3ffef7c1c9d41da86d6926894e4f3687" id="r_a3ffef7c1c9d41da86d6926894e4f3687"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">CResult_create</a> (void *value, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroy)</td></tr>
-<tr class="memdesc:a3ffef7c1c9d41da86d6926894e4f3687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object representing a successful result.  <br /></td></tr>
-<tr class="separator:a3ffef7c1c9d41da86d6926894e4f3687"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39e1fe943556a228d4ef65277720989c" id="r_a39e1fe943556a228d4ef65277720989c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#a39e1fe943556a228d4ef65277720989c">CResult_ecreate</a> (<a class="el" href="structCError.html">CError</a> *err)</td></tr>
-<tr class="memdesc:a39e1fe943556a228d4ef65277720989c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object representing an error.  <br /></td></tr>
-<tr class="separator:a39e1fe943556a228d4ef65277720989c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef31a3d2b40a315f9f943180c5f6fbd3" id="r_aef31a3d2b40a315f9f943180c5f6fbd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">CResult_is_error</a> (const <a class="el" href="structCResult.html">CResult</a> *result)</td></tr>
-<tr class="memdesc:aef31a3d2b40a315f9f943180c5f6fbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object represents an error.  <br /></td></tr>
-<tr class="separator:aef31a3d2b40a315f9f943180c5f6fbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1eebc50f702496494d65e77677fe08c" id="r_ab1eebc50f702496494d65e77677fe08c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">CResult_get</a> (const <a class="el" href="structCResult.html">CResult</a> *result)</td></tr>
-<tr class="memdesc:ab1eebc50f702496494d65e77677fe08c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value from a successful <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
-<tr class="separator:ab1eebc50f702496494d65e77677fe08c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec4e0aaf6a0b50a681e4a2a395f1c84d" id="r_aec4e0aaf6a0b50a681e4a2a395f1c84d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCError.html">CError</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#aec4e0aaf6a0b50a681e4a2a395f1c84d">CResult_eget</a> (const <a class="el" href="structCResult.html">CResult</a> *result)</td></tr>
-<tr class="memdesc:aec4e0aaf6a0b50a681e4a2a395f1c84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the error from an error <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
-<tr class="separator:aec4e0aaf6a0b50a681e4a2a395f1c84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac9cc2cbf36c4d836352e6ed968721f8" id="r_aac9cc2cbf36c4d836352e6ed968721f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">CResult_free</a> (<a class="el" href="structCResult.html">CResult</a> **result)</td></tr>
-<tr class="memdesc:aac9cc2cbf36c4d836352e6ed968721f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources used by the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
-<tr class="separator:aac9cc2cbf36c4d836352e6ed968721f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9391e8cd3421ef399fe2267a4dc32a60" id="r_a9391e8cd3421ef399fe2267a4dc32a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">CResult_create</a> (void *value, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroy)</td></tr>
+<tr class="memdesc:a9391e8cd3421ef399fe2267a4dc32a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object representing a successful result.  <br /></td></tr>
+<tr class="separator:a9391e8cd3421ef399fe2267a4dc32a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2ea47faaf98f7318b4bf4ab6bdc715" id="r_a0f2ea47faaf98f7318b4bf4ab6bdc715"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#a0f2ea47faaf98f7318b4bf4ab6bdc715">CResult_ecreate</a> (<a class="el" href="structCError.html">CError_t</a> *err)</td></tr>
+<tr class="memdesc:a0f2ea47faaf98f7318b4bf4ab6bdc715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object representing an error.  <br /></td></tr>
+<tr class="separator:a0f2ea47faaf98f7318b4bf4ab6bdc715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62a5c13476ee1518365b6b96701d52c7" id="r_a62a5c13476ee1518365b6b96701d52c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">CResult_is_error</a> (const <a class="el" href="structCResult.html">CResult_t</a> *result)</td></tr>
+<tr class="memdesc:a62a5c13476ee1518365b6b96701d52c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object represents an error.  <br /></td></tr>
+<tr class="separator:a62a5c13476ee1518365b6b96701d52c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae088aa0111de66acfca988a417c69dfc" id="r_ae088aa0111de66acfca988a417c69dfc"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">CResult_get</a> (const <a class="el" href="structCResult.html">CResult_t</a> *result)</td></tr>
+<tr class="memdesc:ae088aa0111de66acfca988a417c69dfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value from a successful <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
+<tr class="separator:ae088aa0111de66acfca988a417c69dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace201961c7881150c31a31a525e2c41e" id="r_ace201961c7881150c31a31a525e2c41e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCError.html">CError_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#ace201961c7881150c31a31a525e2c41e">CResult_eget</a> (const <a class="el" href="structCResult.html">CResult_t</a> *result)</td></tr>
+<tr class="memdesc:ace201961c7881150c31a31a525e2c41e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the error from an error <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
+<tr class="separator:ace201961c7881150c31a31a525e2c41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d79b0905a4b64d8d678ab8bb2c4567" id="r_aa7d79b0905a4b64d8d678ab8bb2c4567"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">CResult_free</a> (<a class="el" href="structCResult.html">CResult_t</a> **result)</td></tr>
+<tr class="memdesc:aa7d79b0905a4b64d8d678ab8bb2c4567"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources used by the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object.  <br /></td></tr>
+<tr class="separator:aa7d79b0905a4b64d8d678ab8bb2c4567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for handling results and errors in the CUtils library. </p>
@@ -129,35 +129,35 @@ Functions</h2></td></tr>
 <div class="line"><span class="keywordtype">int</span> a = 5;</div>
 <div class="line"><span class="keywordtype">void</span>* ptr = &amp;a;</div>
 <div class="line"><span class="comment">// Create the CResult object</span></div>
-<div class="line"><a class="code hl_struct" href="structCResult.html">CResult</a>* res = <a class="code hl_function" href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">CResult_create</a>(ptr, NULL); <span class="comment">// If this was malloc&#39;d</span></div>
+<div class="line"><a class="code hl_struct" href="structCResult.html">CResult</a>* res = <a class="code hl_function" href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">CResult_create</a>(ptr, NULL); <span class="comment">// If this was malloc&#39;d</span></div>
 <div class="line">                            <span class="comment">// you would pass free or custom function.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// If you wanted to create an error, you would be using `CResult_ecreate`</span></div>
 <div class="line"><span class="comment">// instead.</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_function" href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">CResult_is_error</a>(res)) { <span class="comment">// Check if the result is an error or</span></div>
+<div class="line"><span class="keywordflow">if</span> (!<a class="code hl_function" href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">CResult_is_error</a>(res)) { <span class="comment">// Check if the result is an error or</span></div>
 <div class="line">invalid.</div>
 <div class="line">   <span class="comment">// To get the CError structure/object, use `CResult_eget`.</span></div>
-<div class="line">   assert(*(<span class="keywordtype">int</span>*)<a class="code hl_function" href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">CResult_get</a>(res) == a); <span class="comment">// Perform some operation</span></div>
+<div class="line">   assert(*(<span class="keywordtype">int</span>*)<a class="code hl_function" href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">CResult_get</a>(res) == a); <span class="comment">// Perform some operation</span></div>
 <div class="line">}</div>
-<div class="line"><a class="code hl_function" href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">CResult_free</a>(&amp;res); <span class="comment">// Pass a reference to the pointer.</span></div>
-<div class="ttc" id="aCResult_8h_html_a3ffef7c1c9d41da86d6926894e4f3687"><div class="ttname"><a href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">CResult_create</a></div><div class="ttdeci">CResult * CResult_create(void *value, Destructor destroy)</div><div class="ttdoc">Creates a CResult object representing a successful result.</div></div>
-<div class="ttc" id="aCResult_8h_html_aac9cc2cbf36c4d836352e6ed968721f8"><div class="ttname"><a href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">CResult_free</a></div><div class="ttdeci">void CResult_free(CResult **result)</div><div class="ttdoc">Free the resources used by the CResult object.</div></div>
-<div class="ttc" id="aCResult_8h_html_ab1eebc50f702496494d65e77677fe08c"><div class="ttname"><a href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">CResult_get</a></div><div class="ttdeci">void * CResult_get(const CResult *result)</div><div class="ttdoc">Retrieves the value from a successful CResult object.</div></div>
-<div class="ttc" id="aCResult_8h_html_aef31a3d2b40a315f9f943180c5f6fbd3"><div class="ttname"><a href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">CResult_is_error</a></div><div class="ttdeci">int CResult_is_error(const CResult *result)</div><div class="ttdoc">Checks if a CResult object represents an error.</div></div>
+<div class="line"><a class="code hl_function" href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">CResult_free</a>(&amp;res); <span class="comment">// Pass a reference to the pointer.</span></div>
+<div class="ttc" id="aCResult_8h_html_a62a5c13476ee1518365b6b96701d52c7"><div class="ttname"><a href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">CResult_is_error</a></div><div class="ttdeci">int CResult_is_error(const CResult_t *result)</div><div class="ttdoc">Checks if a CResult object represents an error.</div></div>
+<div class="ttc" id="aCResult_8h_html_a9391e8cd3421ef399fe2267a4dc32a60"><div class="ttname"><a href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">CResult_create</a></div><div class="ttdeci">CResult_t * CResult_create(void *value, Destructor destroy)</div><div class="ttdoc">Creates a CResult object representing a successful result.</div></div>
+<div class="ttc" id="aCResult_8h_html_aa7d79b0905a4b64d8d678ab8bb2c4567"><div class="ttname"><a href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">CResult_free</a></div><div class="ttdeci">void CResult_free(CResult_t **result)</div><div class="ttdoc">Free the resources used by the CResult object.</div></div>
+<div class="ttc" id="aCResult_8h_html_ae088aa0111de66acfca988a417c69dfc"><div class="ttname"><a href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">CResult_get</a></div><div class="ttdeci">void * CResult_get(const CResult_t *result)</div><div class="ttdoc">Retrieves the value from a successful CResult object.</div></div>
 <div class="ttc" id="astructCResult_html"><div class="ttname"><a href="structCResult.html">CResult</a></div><div class="ttdoc">Structure for wrapping the value or error.</div></div>
 </div><!-- fragment --> </li>
 </ul>
 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a3ffef7c1c9d41da86d6926894e4f3687" name="a3ffef7c1c9d41da86d6926894e4f3687"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ffef7c1c9d41da86d6926894e4f3687">&#9670;&#160;</a></span>CResult_create()</h2>
+<a id="a9391e8cd3421ef399fe2267a4dc32a60" name="a9391e8cd3421ef399fe2267a4dc32a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9391e8cd3421ef399fe2267a4dc32a60">&#9670;&#160;</a></span>CResult_create()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CResult_create </td>
+          <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CResult_create </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>value</em>, </td>
@@ -189,16 +189,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a39e1fe943556a228d4ef65277720989c" name="a39e1fe943556a228d4ef65277720989c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39e1fe943556a228d4ef65277720989c">&#9670;&#160;</a></span>CResult_ecreate()</h2>
+<a id="a0f2ea47faaf98f7318b4bf4ab6bdc715" name="a0f2ea47faaf98f7318b4bf4ab6bdc715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f2ea47faaf98f7318b4bf4ab6bdc715">&#9670;&#160;</a></span>CResult_ecreate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CResult_ecreate </td>
+          <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CResult_ecreate </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCError.html">CError</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structCError.html">CError_t</a> *&#160;</td>
           <td class="paramname"><em>err</em></td><td>)</td>
           <td></td>
         </tr>
@@ -217,16 +217,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aec4e0aaf6a0b50a681e4a2a395f1c84d" name="aec4e0aaf6a0b50a681e4a2a395f1c84d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec4e0aaf6a0b50a681e4a2a395f1c84d">&#9670;&#160;</a></span>CResult_eget()</h2>
+<a id="ace201961c7881150c31a31a525e2c41e" name="ace201961c7881150c31a31a525e2c41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace201961c7881150c31a31a525e2c41e">&#9670;&#160;</a></span>CResult_eget()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCError.html">CError</a> * CResult_eget </td>
+          <td class="memname"><a class="el" href="structCError.html">CError_t</a> * CResult_eget </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCResult.html">CResult</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structCResult.html">CResult_t</a> *&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
@@ -244,8 +244,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aac9cc2cbf36c4d836352e6ed968721f8" name="aac9cc2cbf36c4d836352e6ed968721f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac9cc2cbf36c4d836352e6ed968721f8">&#9670;&#160;</a></span>CResult_free()</h2>
+<a id="aa7d79b0905a4b64d8d678ab8bb2c4567" name="aa7d79b0905a4b64d8d678ab8bb2c4567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d79b0905a4b64d8d678ab8bb2c4567">&#9670;&#160;</a></span>CResult_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +253,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void CResult_free </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCResult.html">CResult</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="structCResult.html">CResult_t</a> **&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
@@ -267,12 +267,14 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section attention"><dt>Attention</dt><dd>This does not free the value if the result is successful. Use CResult_vfree() instead before calling this method. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This does not free the value if the result is successful. Instead, it uses the provided <code>destroy</code> function (if any) to free the value encapsulated in the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> when the result is successful. If the result represents an error, the error object is freed via <code>CError_free</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The <code>destroy</code> function should handle freeing the memory for the value stored in the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code>. If <code>destroy</code> is <code>NULL</code>, no custom cleanup will be done. For error results, the <code>err</code> field (if non-NULL) is freed using <code>CError_free</code>.</dd></dl>
+<p>After freeing the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object, the pointer to the <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> is set to <code>NULL</code> to avoid dangling references. </p>
 
 </div>
 </div>
-<a id="ab1eebc50f702496494d65e77677fe08c" name="ab1eebc50f702496494d65e77677fe08c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1eebc50f702496494d65e77677fe08c">&#9670;&#160;</a></span>CResult_get()</h2>
+<a id="ae088aa0111de66acfca988a417c69dfc" name="ae088aa0111de66acfca988a417c69dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae088aa0111de66acfca988a417c69dfc">&#9670;&#160;</a></span>CResult_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +282,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * CResult_get </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCResult.html">CResult</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structCResult.html">CResult_t</a> *&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
@@ -298,8 +300,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aef31a3d2b40a315f9f943180c5f6fbd3" name="aef31a3d2b40a315f9f943180c5f6fbd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef31a3d2b40a315f9f943180c5f6fbd3">&#9670;&#160;</a></span>CResult_is_error()</h2>
+<a id="a62a5c13476ee1518365b6b96701d52c7" name="a62a5c13476ee1518365b6b96701d52c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62a5c13476ee1518365b6b96701d52c7">&#9670;&#160;</a></span>CResult_is_error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,7 +309,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CResult_is_error </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCResult.html">CResult</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structCResult.html">CResult_t</a> *&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
@@ -329,7 +331,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

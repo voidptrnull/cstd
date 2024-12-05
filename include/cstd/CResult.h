@@ -62,12 +62,12 @@
 #ifndef CSTD_CRESULT_H
 #define CSTD_CRESULT_H
 
-#include "../ops/Operators.h"
+#include "Operators.h"
 #include "CError.h"
 
 /// \struct CResult
 /// \brief Structure for wrapping the value or error.
-typedef struct CResult CResult;
+typedef struct CResult CResult_t;
 
 /// \brief Creates a `CResult` object representing a successful result.
 /// \param value Pointer to the value to be encapsulated in the `CResult`.
@@ -78,7 +78,7 @@ typedef struct CResult CResult;
 ///
 /// \note It is advisable that you avoid stack-allocation and use
 /// heap-allocation instead.
-CResult *CResult_create(void *value, Destructor destroy);
+CResult_t *CResult_create(void *value, Destructor destroy);
 
 /// \brief Creates a `CResult` object representing an error.
 /// \param err Pointer to the `CError` object representing the error.
@@ -87,7 +87,7 @@ CResult *CResult_create(void *value, Destructor destroy);
 ///
 /// \note It is advisable that you avoid stack-allocation and use
 /// heap-allocation instead.
-CResult *CResult_ecreate(CError *err);
+CResult_t *CResult_ecreate(CError_t *err);
 
 /// \brief Checks if a `CResult` object represents an error.
 /// \param result Pointer to the `CResult` object to check.
@@ -95,25 +95,35 @@ CResult *CResult_ecreate(CError *err);
 /// otherwise.
 ///
 /// \note  Edge case: If  result is `NULL`, then `1` is returned.
-int CResult_is_error(const CResult *result);
+int CResult_is_error(const CResult_t *result);
 
 /// \brief Retrieves the value from a successful `CResult` object.
 /// \param result Pointer to the `CResult` object from which to retrieve the
 /// value. \return Pointer to the value encapsulated in the `CResult` if
 /// successful, or `NULL` if the `result` is an error.
-void *CResult_get(const CResult *result);
+void *CResult_get(const CResult_t *result);
 
 /// \brief Retrieves the error from an error `CResult` object.
 /// \param result Pointer to the `CResult` object from which to retrieve the
 /// error. \return Pointer to the `CError` object encapsulated in the `CResult`
 /// if it represents an error, or `NULL` if the `result` is successful.
-CError *CResult_eget(const CResult *result);
+CError_t *CResult_eget(const CResult_t *result);
 
 /// \brief Free the resources used by the `CResult` object.
 /// \param result  The pointer to the pointer to the `CResult` object.
 ///
-/// \attention This does not free the value if the result is successful. Use
-/// CResult_vfree() instead before calling this method.
-void CResult_free(CResult **result);
+/// \attention This does not free the value if the result is successful.
+/// Instead, it uses the provided `destroy` function (if any) to free the value
+/// encapsulated in the `CResult` when the result is successful. If the result
+/// represents an error, the error object is freed via `CError_free`.
+///
+/// \note The `destroy` function should handle freeing the memory for the value
+/// stored in the `CResult`. If `destroy` is `NULL`, no custom cleanup will be
+/// done. For error results, the `err` field (if non-NULL) is freed using
+/// `CError_free`.
+///
+/// After freeing the `CResult` object, the pointer to the `CResult` is set to
+/// `NULL` to avoid dangling references.
+void CResult_free(CResult_t **result);
 
 #endif // CSTD_CRESULT_H

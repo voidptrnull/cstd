@@ -22,51 +22,28 @@
  * SOFTWARE.
  */
 
-#include <cstd/Operators.h>
+/// \file CSTD.h
+/// \brief This file provides an all-in-one access to all the library
+/// co-routines provided in the CSTD implementation.
+///
+/// \note You will likely not want to use this, because:
+///     - It is a iwyu violation.
+///     - Everytime you include this file, unless you use a precompiled header,
+///     the compiler has to check the files multiple times and causing slowdowns
+///     in compile times.
+#ifndef CSTD_H
+#define CSTD_H
 
-#ifndef CSTD_NO_DEF_FN_IMPL
-#define HAVE_CSTD_DEFAULTS
+#define __CSTD_VERSION__ 100202412UL
 
-#include <stdint.h>
-#include <stdlib.h>
+#include "CError.h"
+#include "CHashMap.h"
+#include "CHashSet.h"
+#include "CLog.h"
+#include "CResult.h"
+#include "CStack.h"
+#include "CString.h"
+#include "CVector.h"
+#include "Operators.h"
 
-int ccompare_pointer(const void *a, const void *b) { return (a > b) - (a < b); }
-
-int ccompare_integer(const void *a, const void *b) {
-    const int *int_a = (const int *)a;
-    const int *int_b = (const int *)b;
-    return (*int_a > *int_b) - (*int_a < *int_b);
-}
-
-int64_t chash_string(const void *key) {
-    const char *str_key = (const char *)key;
-    int64_t hash = 5381;
-    int c;
-    while ((c = *str_key++)) {
-        hash = ((hash << 5) + hash) + c; // hash * 33 + c
-    }
-    return hash;
-}
-
-int64_t cdefault_hash(const void *key) {
-    uintptr_t ptr = (uintptr_t)key;
-    ptr ^= (ptr >> 33);
-    ptr *= 0xff51afd7ed558ccd;
-    ptr ^= (ptr >> 33);
-    ptr *= 0xc4ceb9fe1a85ec53;
-    ptr ^= (ptr >> 33);
-
-    return (int64_t)ptr;
-}
-
-void *cclone_integer(const void *data) {
-    if (data == NULL)
-        return NULL;
-    int *clone = malloc(sizeof(int));
-    if (clone) {
-        *clone = *(intmax_t *)data;
-    }
-    return clone;
-}
-
-#endif
+#endif // CSTD_H

@@ -1,5 +1,29 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 Subhadip Roy Chowdhury
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+#include <cstd/CResult.h>
 #include <stdlib.h>
-#include <util/CResult.h>
 
 /// \internal
 /// \enum CResultStatus
@@ -8,7 +32,7 @@
 /// successful,
 ///          or `CRESULT_ERROR` if an error occurred.
 typedef enum {
-    CRESULT_OK,    ///< Indicates a successful operation.
+    CRESULT_OK,   ///< Indicates a successful operation.
     CRESULT_ERROR ///< Indicates an error occurred.
 } CResultStatus;
 
@@ -24,14 +48,14 @@ struct CResult {
     CResultStatus
         status; ///< Status of the result (`CRESULT_OK` or `CRESULT_ERROR`).
     union {
-        void *value; ///< Pointer to the successful result value.
-        CError *err; ///< Pointer to the error if the operation failed.
+        void *value;   ///< Pointer to the successful result value.
+        CError_t *err; ///< Pointer to the error if the operation failed.
     };
     Destructor destroy;
 };
 
-CResult *CResult_create(void *value, Destructor destroy) {
-    CResult *result = malloc(sizeof(struct CResult));
+CResult_t *CResult_create(void *value, Destructor destroy) {
+    CResult_t *result = malloc(sizeof(struct CResult));
     if (result == NULL)
         return NULL;
 
@@ -41,33 +65,33 @@ CResult *CResult_create(void *value, Destructor destroy) {
     return result;
 }
 
-CResult *CResult_ecreate(CError *err) {
-    CResult *result = malloc(sizeof(CResult));
+CResult_t *CResult_ecreate(CError_t *err) {
+    CResult_t *result = malloc(sizeof(CResult_t));
     if (result == NULL)
         return NULL;
 
-    result->err = err; // Take ownership of err
+    result->err = err;
     result->status = CRESULT_ERROR;
     return result;
 }
 
-int CResult_is_error(const CResult *result) {
+int CResult_is_error(const CResult_t *result) {
     return result == NULL || result->status == CRESULT_ERROR;
 }
 
-void *CResult_get(const CResult *result) {
+void *CResult_get(const CResult_t *result) {
     if (result == NULL || result->status == CRESULT_ERROR)
         return NULL;
     return result->value;
 }
 
-CError *CResult_eget(const CResult *result) {
+CError_t *CResult_eget(const CResult_t *result) {
     if (result == NULL || result->status == CRESULT_OK)
         return NULL;
     return result->err;
 }
 
-void CResult_free(CResult **result) {
+void CResult_free(CResult_t **result) {
     if (result == NULL || *result == NULL)
         return;
 

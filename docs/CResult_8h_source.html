@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/util/CResult.h Source File</title>
+<title>cstd: include/cstd/CResult.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;0.0.1-alpha</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -76,7 +76,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_586ad3c2f85d776b984733890d824e3e.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_354441a1b143fd68566432fc2a479184.html">cstd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -110,38 +110,39 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#ifndef CSTD_CRESULT_H</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#define CSTD_CRESULT_H</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#include &quot;../ops/Operators.h&quot;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#include &quot;<a class="code" href="Operators_8h.html">Operators.h</a>&quot;</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#include &quot;<a class="code" href="CError_8h.html">CError.h</a>&quot;</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCResult.html">CResult</a> <a class="code hl_struct" href="structCResult.html">CResult</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCResult.html">CResult</a> <a class="code hl_struct" href="structCResult.html">CResult_t</a>;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">   81</a></span><a class="code hl_struct" href="structCResult.html">CResult</a> *<a class="code hl_function" href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">CResult_create</a>(<span class="keywordtype">void</span> *value, <a class="code hl_typedef" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroy);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">   81</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">CResult_create</a>(<span class="keywordtype">void</span> *value, <a class="code hl_typedef" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroy);</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="CResult_8h.html#a39e1fe943556a228d4ef65277720989c">   90</a></span><a class="code hl_struct" href="structCResult.html">CResult</a> *<a class="code hl_function" href="CResult_8h.html#a39e1fe943556a228d4ef65277720989c">CResult_ecreate</a>(<a class="code hl_struct" href="structCError.html">CError</a> *err);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="CResult_8h.html#a0f2ea47faaf98f7318b4bf4ab6bdc715">   90</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CResult_8h.html#a0f2ea47faaf98f7318b4bf4ab6bdc715">CResult_ecreate</a>(<a class="code hl_struct" href="structCError.html">CError_t</a> *err);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">   98</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">CResult_is_error</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult</a> *result);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">   98</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">CResult_is_error</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult_t</a> *result);</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">  104</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">CResult_get</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult</a> *result);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">  104</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">CResult_get</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult_t</a> *result);</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="CResult_8h.html#aec4e0aaf6a0b50a681e4a2a395f1c84d">  110</a></span><a class="code hl_struct" href="structCError.html">CError</a> *<a class="code hl_function" href="CResult_8h.html#aec4e0aaf6a0b50a681e4a2a395f1c84d">CResult_eget</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult</a> *result);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="CResult_8h.html#ace201961c7881150c31a31a525e2c41e">  110</a></span><a class="code hl_struct" href="structCError.html">CError_t</a> *<a class="code hl_function" href="CResult_8h.html#ace201961c7881150c31a31a525e2c41e">CResult_eget</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCResult.html">CResult_t</a> *result);</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">CResult_free</a>(<a class="code hl_struct" href="structCResult.html">CResult</a> **result);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CRESULT_H</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">  127</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">CResult_free</a>(<a class="code hl_struct" href="structCResult.html">CResult_t</a> **result);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CRESULT_H</span></div>
 <div class="ttc" id="aCError_8h_html"><div class="ttname"><a href="CError_8h.html">CError.h</a></div><div class="ttdoc">Header file for error handling in the CUtils library.</div></div>
-<div class="ttc" id="aCResult_8h_html_a39e1fe943556a228d4ef65277720989c"><div class="ttname"><a href="CResult_8h.html#a39e1fe943556a228d4ef65277720989c">CResult_ecreate</a></div><div class="ttdeci">CResult * CResult_ecreate(CError *err)</div><div class="ttdoc">Creates a CResult object representing an error.</div></div>
-<div class="ttc" id="aCResult_8h_html_a3ffef7c1c9d41da86d6926894e4f3687"><div class="ttname"><a href="CResult_8h.html#a3ffef7c1c9d41da86d6926894e4f3687">CResult_create</a></div><div class="ttdeci">CResult * CResult_create(void *value, Destructor destroy)</div><div class="ttdoc">Creates a CResult object representing a successful result.</div></div>
-<div class="ttc" id="aCResult_8h_html_aac9cc2cbf36c4d836352e6ed968721f8"><div class="ttname"><a href="CResult_8h.html#aac9cc2cbf36c4d836352e6ed968721f8">CResult_free</a></div><div class="ttdeci">void CResult_free(CResult **result)</div><div class="ttdoc">Free the resources used by the CResult object.</div></div>
-<div class="ttc" id="aCResult_8h_html_ab1eebc50f702496494d65e77677fe08c"><div class="ttname"><a href="CResult_8h.html#ab1eebc50f702496494d65e77677fe08c">CResult_get</a></div><div class="ttdeci">void * CResult_get(const CResult *result)</div><div class="ttdoc">Retrieves the value from a successful CResult object.</div></div>
-<div class="ttc" id="aCResult_8h_html_aec4e0aaf6a0b50a681e4a2a395f1c84d"><div class="ttname"><a href="CResult_8h.html#aec4e0aaf6a0b50a681e4a2a395f1c84d">CResult_eget</a></div><div class="ttdeci">CError * CResult_eget(const CResult *result)</div><div class="ttdoc">Retrieves the error from an error CResult object.</div></div>
-<div class="ttc" id="aCResult_8h_html_aef31a3d2b40a315f9f943180c5f6fbd3"><div class="ttname"><a href="CResult_8h.html#aef31a3d2b40a315f9f943180c5f6fbd3">CResult_is_error</a></div><div class="ttdeci">int CResult_is_error(const CResult *result)</div><div class="ttdoc">Checks if a CResult object represents an error.</div></div>
+<div class="ttc" id="aCResult_8h_html_a0f2ea47faaf98f7318b4bf4ab6bdc715"><div class="ttname"><a href="CResult_8h.html#a0f2ea47faaf98f7318b4bf4ab6bdc715">CResult_ecreate</a></div><div class="ttdeci">CResult_t * CResult_ecreate(CError_t *err)</div><div class="ttdoc">Creates a CResult object representing an error.</div></div>
+<div class="ttc" id="aCResult_8h_html_a62a5c13476ee1518365b6b96701d52c7"><div class="ttname"><a href="CResult_8h.html#a62a5c13476ee1518365b6b96701d52c7">CResult_is_error</a></div><div class="ttdeci">int CResult_is_error(const CResult_t *result)</div><div class="ttdoc">Checks if a CResult object represents an error.</div></div>
+<div class="ttc" id="aCResult_8h_html_a9391e8cd3421ef399fe2267a4dc32a60"><div class="ttname"><a href="CResult_8h.html#a9391e8cd3421ef399fe2267a4dc32a60">CResult_create</a></div><div class="ttdeci">CResult_t * CResult_create(void *value, Destructor destroy)</div><div class="ttdoc">Creates a CResult object representing a successful result.</div></div>
+<div class="ttc" id="aCResult_8h_html_aa7d79b0905a4b64d8d678ab8bb2c4567"><div class="ttname"><a href="CResult_8h.html#aa7d79b0905a4b64d8d678ab8bb2c4567">CResult_free</a></div><div class="ttdeci">void CResult_free(CResult_t **result)</div><div class="ttdoc">Free the resources used by the CResult object.</div></div>
+<div class="ttc" id="aCResult_8h_html_ace201961c7881150c31a31a525e2c41e"><div class="ttname"><a href="CResult_8h.html#ace201961c7881150c31a31a525e2c41e">CResult_eget</a></div><div class="ttdeci">CError_t * CResult_eget(const CResult_t *result)</div><div class="ttdoc">Retrieves the error from an error CResult object.</div></div>
+<div class="ttc" id="aCResult_8h_html_ae088aa0111de66acfca988a417c69dfc"><div class="ttname"><a href="CResult_8h.html#ae088aa0111de66acfca988a417c69dfc">CResult_get</a></div><div class="ttdeci">void * CResult_get(const CResult_t *result)</div><div class="ttdoc">Retrieves the value from a successful CResult object.</div></div>
+<div class="ttc" id="aOperators_8h_html"><div class="ttname"><a href="Operators_8h.html">Operators.h</a></div><div class="ttdoc">Header file for all definitions of functions to be used or provided by the user.</div></div>
 <div class="ttc" id="aOperators_8h_html_a2353e69e9b641fd66c9419b05ab8333f"><div class="ttname"><a href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a></div><div class="ttdeci">void(* Destructor)(void *data)</div><div class="ttdoc">Function pointer type for destructor functions.</div><div class="ttdef"><b>Definition</b> Operators.h:36</div></div>
 <div class="ttc" id="astructCError_html"><div class="ttname"><a href="structCError.html">CError</a></div><div class="ttdoc">Structure representing an error in the CUtils library.</div></div>
 <div class="ttc" id="astructCResult_html"><div class="ttname"><a href="structCResult.html">CResult</a></div><div class="ttdoc">Structure for wrapping the value or error.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

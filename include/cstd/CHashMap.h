@@ -28,7 +28,7 @@
 /// This file defines the data structures and functions for implementing a hash
 /// map (also known as a hash table). The hash map allows for efficient
 /// insertion, lookup, and removal of key-value pairs. The hash map uses a
-/// array and hash functions to manage and access stored elements. 
+/// array and hash functions to manage and access stored elements.
 /// Use of open-addressing and linear probing has also been made.
 ///
 /// The hash map's key-value pairs are managed with user-defined comparison and
@@ -36,12 +36,12 @@
 ///
 /// \note The functions in this header are intended to be used with dynamic
 /// memory allocation and require error checking to ensure successful memory
-/// operations. If you do intend to use stack-allocated structures, do not 
+/// operations. If you do intend to use stack-allocated structures, do not
 /// use `new` and `free` methods associated to that structure.
 #ifndef CSTD_CHASHMAP_H
 #define CSTD_CHASHMAP_H
 
-#include "../ops/Operators.h"
+#include "Operators.h"
 #include "CVector.h"
 
 /// \def CHASHMAP_NULL_VAL
@@ -78,7 +78,7 @@
 /// key-value pairs. Each bucket is a vector that can hold multiple entries. The
 /// hash map uses user-defined comparison (`cmp`) and hash (`hash`) functions to
 /// manage and access elements.
-typedef struct _CHashMap CHashMap;
+typedef struct _CHashMap CHashMap_t;
 
 /// \brief Create a new hash map.
 /// \details Allocates memory for a new hash map.
@@ -92,7 +92,8 @@ typedef struct _CHashMap CHashMap;
 /// \warning If memory allocation fails during the creation of the hash map,
 ///          this function will return an error, and no hash map will be
 ///          created.
-CResult *CHashMap_new();
+CResult_t *CHashMap_new(int64_t capacity, CompareTo cmp, Hash hash,
+                  Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Initialize a hash map.
 /// \details Allocates and initializes a new hash map with the specified
@@ -115,7 +116,7 @@ CResult *CHashMap_new();
 ///
 /// \warning If memory allocation fails or the parameters are invalid, the
 /// function will return `CHASHMAP_ALLOC_FAILURE`.
-int CHashMap_init(CHashMap *map, size_t capacity, CompareTo cmp, Hash hash,
+int CHashMap_init(CHashMap_t *map, int64_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Insert a key-value pair into the hash map.
@@ -135,7 +136,7 @@ int CHashMap_init(CHashMap *map, size_t capacity, CompareTo cmp, Hash hash,
 ///
 /// \warning If memory allocation fails, or `key` or `value` is NULL, the
 /// function will return `CHASHMAP_ALLOC_FAILURE`.
-int CHashMap_insert(CHashMap *map, void *key, void *value);
+int CHashMap_insert(CHashMap_t *map, void *key, void *value);
 
 /// \brief Lookup a value by key in the hash map.
 /// \details Retrieves the value associated with the given key from the hash
@@ -151,7 +152,7 @@ int CHashMap_insert(CHashMap *map, void *key, void *value);
 ///
 /// \warning If `key` is NULL, the function may return unexpected results or
 /// fail to perform the lookup.
-CResult *CHashMap_get(CHashMap *map, void *key);
+CResult_t *CHashMap_get(CHashMap_t *map, void *key);
 
 /// \brief Remove a key-value pair from the hash map.
 /// \details Removes the key-value pair associated with the given key from the
@@ -168,7 +169,7 @@ CResult *CHashMap_get(CHashMap *map, void *key);
 ///
 /// \warning If `key` is NULL, the function will return `CHASHMAP_NOT_FOUND`
 /// without performing the removal.
-int CHashMap_remove(CHashMap *map, void *key);
+int CHashMap_remove(CHashMap_t *map, void *key);
 
 /// \brief Free the resources used by the hash map.
 /// \details Deallocates the memory used by the hash map and its buckets. The
@@ -184,7 +185,7 @@ int CHashMap_remove(CHashMap *map, void *key);
 ///
 /// \warning If `map` is NULL, the function will return `CHASHMAP_NULL_MAP` and
 /// will not perform any operation.
-int CHashMap_free(CHashMap **map);
+int CHashMap_free(CHashMap_t **map);
 
 /// \brief Update the value associated with a key in the hash map.
 /// \details Updates the value for a given key in the hash map. If the key does
@@ -202,7 +203,7 @@ int CHashMap_free(CHashMap **map);
 ///
 /// \warning If memory allocation fails or `key` or `new_value` is NULL, the
 /// function may return `CHASHMAP_NOT_FOUND`.
-int CHashMap_update(CHashMap *map, void *key, void *new_value);
+int CHashMap_update(CHashMap_t *map, void *key, void *new_value);
 
 /// \brief Clear all key-value pairs from the hash map.
 /// \details Removes all entries from the hash map, freeing the memory
@@ -218,7 +219,7 @@ int CHashMap_update(CHashMap *map, void *key, void *new_value);
 ///
 /// \warning If `map` is NULL, the function will return `CHASHMAP_NULL_MAP` and
 /// will not perform the clearing operation.
-int CHashMap_clear(CHashMap *map);
+int CHashMap_clear(CHashMap_t *map);
 
 /// \brief Retrieve the number of key-value pairs in the hash map.
 /// \param map Pointer to the hash map.
@@ -228,7 +229,7 @@ int CHashMap_clear(CHashMap *map);
 /// stored in the hash map.
 ///
 /// \warning If `map` is NULL, the function returns 0.
-size_t CHashMap_size(const CHashMap *map);
+int64_t CHashMap_size(const CHashMap_t *map);
 
 /// \brief Calculate the load factor of the hash map.
 /// \details The load factor is defined as the ratio of the number of key-value
@@ -240,6 +241,6 @@ size_t CHashMap_size(const CHashMap *map);
 /// utilization.
 ///
 /// \warning If `map` is NULL, the function returns 0.0.
-double CHashMap_load_factor(const CHashMap *map);
+double CHashMap_load_factor(const CHashMap_t *map);
 
 #endif // CSTD_CHASHMAP_H

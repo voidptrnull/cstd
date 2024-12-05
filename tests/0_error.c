@@ -1,5 +1,5 @@
-#include <logger/CLog.h>
-#include <util/CResult.h>
+#include <cstd/CLog.h>
+#include <cstd/CResult.h>
 
 #include <assert.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #define MSG "This is some error msg."
 #define CTX "This is some function context."
 
-static void print_error(const CError *error) {
+static void print_error(const CError_t *error) {
     if (error == NULL) {
         printf("Invalid error. Got pointer to NULL as error.");
         return;
@@ -22,7 +22,9 @@ static void print_error(const CError *error) {
 
 int main() {
     enable_debugging();
-    CError *err = CError_create(MSG, CTX, ERR_CODE);
+    enable_location();
+    shortened_location();
+    CError_t *err = CError_create(MSG, CTX, ERR_CODE);
     assert(strcmp(CError_get_message(err), MSG) == 0);
     assert(strcmp(CError_get_context(err), CTX) == 0);
     assert(CError_get_code(err) == ERR_CODE);

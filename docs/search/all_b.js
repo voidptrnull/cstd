@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['usage_20fitness_0',['Usage &amp; Fitness',['../index.html#autotoc_md2',1,'']]],
-  ['usage_20philosophy_1',['Usage Philosophy',['../index.html#autotoc_md4',1,'']]]
+  ['to_20do_0',['What does it and does not intend to do ?',['../index.html#autotoc_md3',1,'']]]
 ];

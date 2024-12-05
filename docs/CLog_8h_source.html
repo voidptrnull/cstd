@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/logger/CLog.h Source File</title>
+<title>cstd: include/cstd/CLog.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;0.0.1-alpha</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -76,7 +76,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_72acffa14d54ee0aed1160907ab211a1.html">logger</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_354441a1b143fd68566432fc2a479184.html">cstd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -136,7 +136,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="CLog_8h.html#a8d2212572d0ebb350a74ca0066244f12">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CLog_8h.html#a8d2212572d0ebb350a74ca0066244f12">disable_location</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_LOG_H</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="CLog_8h.html#ad3b53fa508eb86ff6653ea0279dd06e2">  115</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CLog_8h.html#ad3b53fa508eb86ff6653ea0279dd06e2">shortened_location</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_LOG_H</span></div>
 <div class="ttc" id="aCLog_8h_html_a3a4c6c63779cb095b5d48d1ad03e1d71"><div class="ttname"><a href="CLog_8h.html#a3a4c6c63779cb095b5d48d1ad03e1d71">CLogImpl</a></div><div class="ttdeci">void CLogImpl(int level, char *loc, __uint64_t line, const char *format,...)</div><div class="ttdoc">Logs a message with a specific severity level.</div></div>
 <div class="ttc" id="aCLog_8h_html_a611c7a7608a3bc97a437687a9881a073"><div class="ttname"><a href="CLog_8h.html#a611c7a7608a3bc97a437687a9881a073">disable_debugging</a></div><div class="ttdeci">void disable_debugging(void)</div><div class="ttdoc">Disables debug outputs. This is likely what you want to use if you want to suppress debug outputs....</div></div>
 <div class="ttc" id="aCLog_8h_html_a8d2212572d0ebb350a74ca0066244f12"><div class="ttname"><a href="CLog_8h.html#a8d2212572d0ebb350a74ca0066244f12">disable_location</a></div><div class="ttdeci">void disable_location(void)</div><div class="ttdoc">Disables file and line number logging for log messages.</div></div>
@@ -144,10 +146,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="aCLog_8h_html_ab2f09908bf4f9b1f360e233b385ddb44"><div class="ttname"><a href="CLog_8h.html#ab2f09908bf4f9b1f360e233b385ddb44">enable_location</a></div><div class="ttdeci">void enable_location(void)</div><div class="ttdoc">Enables file and line number logging for log messages.</div></div>
 <div class="ttc" id="aCLog_8h_html_ac0976b531f986960a76a43e5061d5211"><div class="ttname"><a href="CLog_8h.html#ac0976b531f986960a76a43e5061d5211">disable_colors</a></div><div class="ttdeci">void disable_colors(void)</div><div class="ttdoc">Disables ANSI-colored output for log messages.</div></div>
 <div class="ttc" id="aCLog_8h_html_aca63ef6354d7c4566935db67592f3ad9"><div class="ttname"><a href="CLog_8h.html#aca63ef6354d7c4566935db67592f3ad9">enable_colors</a></div><div class="ttdeci">void enable_colors(void)</div><div class="ttdoc">Enables ANSI-colored output for log messages.</div></div>
+<div class="ttc" id="aCLog_8h_html_ad3b53fa508eb86ff6653ea0279dd06e2"><div class="ttname"><a href="CLog_8h.html#ad3b53fa508eb86ff6653ea0279dd06e2">shortened_location</a></div><div class="ttdeci">void shortened_location(void)</div><div class="ttdoc">Restrict the location to only be the file name, do noot include the parent directories....</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cstd: include/util/CHashMap.h File Reference</title>
+<title>cstd: include/cstd/CHashMap.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;0.0.1-alpha</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -71,7 +71,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_586ad3c2f85d776b984733890d824e3e.html">util</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_354441a1b143fd68566432fc2a479184.html">cstd</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -85,7 +85,7 @@ $(function() {
 
 <p>Header file for the <a class="el" href="structCHashMap.html" title="Structure representing a hash map.">CHashMap</a> library.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="Operators_8h_source.html">../ops/Operators.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Operators_8h_source.html">Operators.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="CVector_8h_source.html">CVector.h</a>&quot;</code><br />
 </div>
 <p><a href="CHashMap_8h_source.html">Go to the source code of this file.</a></p>
@@ -118,42 +118,42 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a4f8903d34b8f2f8aa82ca2ab72b76e8e" id="r_a4f8903d34b8f2f8aa82ca2ab72b76e8e"><td class="memItemLeft" align="right" valign="top"><a id="a4f8903d34b8f2f8aa82ca2ab72b76e8e" name="a4f8903d34b8f2f8aa82ca2ab72b76e8e"></a>
-typedef struct _CHashMap&#160;</td><td class="memItemRight" valign="bottom"><b>CHashMap</b></td></tr>
-<tr class="separator:a4f8903d34b8f2f8aa82ca2ab72b76e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e2af894999d522d1e2f22791e623f43" id="r_a8e2af894999d522d1e2f22791e623f43"><td class="memItemLeft" align="right" valign="top"><a id="a8e2af894999d522d1e2f22791e623f43" name="a8e2af894999d522d1e2f22791e623f43"></a>
+typedef struct _CHashMap&#160;</td><td class="memItemRight" valign="bottom"><b>CHashMap_t</b></td></tr>
+<tr class="separator:a8e2af894999d522d1e2f22791e623f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a00f67ae1c5686a9b58b7ea20dce21646" id="r_a00f67ae1c5686a9b58b7ea20dce21646"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a00f67ae1c5686a9b58b7ea20dce21646">CHashMap_new</a> ()</td></tr>
-<tr class="memdesc:a00f67ae1c5686a9b58b7ea20dce21646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new hash map.  <br /></td></tr>
-<tr class="separator:a00f67ae1c5686a9b58b7ea20dce21646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23ef652e5dd190bda516b5ae58b9e74f" id="r_a23ef652e5dd190bda516b5ae58b9e74f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a23ef652e5dd190bda516b5ae58b9e74f">CHashMap_init</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, size_t capacity, <a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a> cmp, <a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a> hash, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyKey, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyValue)</td></tr>
-<tr class="memdesc:a23ef652e5dd190bda516b5ae58b9e74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a hash map.  <br /></td></tr>
-<tr class="separator:a23ef652e5dd190bda516b5ae58b9e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9753fc6f5f971dd489c5d22f922eeaa2" id="r_a9753fc6f5f971dd489c5d22f922eeaa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a9753fc6f5f971dd489c5d22f922eeaa2">CHashMap_insert</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key, void *value)</td></tr>
-<tr class="memdesc:a9753fc6f5f971dd489c5d22f922eeaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a key-value pair into the hash map.  <br /></td></tr>
-<tr class="separator:a9753fc6f5f971dd489c5d22f922eeaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af506b2b684ef96b7600954d5b8274ba3" id="r_af506b2b684ef96b7600954d5b8274ba3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#af506b2b684ef96b7600954d5b8274ba3">CHashMap_get</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key)</td></tr>
-<tr class="memdesc:af506b2b684ef96b7600954d5b8274ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup a value by key in the hash map.  <br /></td></tr>
-<tr class="separator:af506b2b684ef96b7600954d5b8274ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ef73902f50a47b26082f86847dc8383" id="r_a7ef73902f50a47b26082f86847dc8383"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a7ef73902f50a47b26082f86847dc8383">CHashMap_remove</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key)</td></tr>
-<tr class="memdesc:a7ef73902f50a47b26082f86847dc8383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key-value pair from the hash map.  <br /></td></tr>
-<tr class="separator:a7ef73902f50a47b26082f86847dc8383"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b5f97948691d3ef7ccadd1cebf85469" id="r_a9b5f97948691d3ef7ccadd1cebf85469"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a9b5f97948691d3ef7ccadd1cebf85469">CHashMap_free</a> (<a class="el" href="structCHashMap.html">CHashMap</a> **map)</td></tr>
-<tr class="memdesc:a9b5f97948691d3ef7ccadd1cebf85469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources used by the hash map.  <br /></td></tr>
-<tr class="separator:a9b5f97948691d3ef7ccadd1cebf85469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6ecff8b9e2e297f01f852e59df074d8" id="r_af6ecff8b9e2e297f01f852e59df074d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#af6ecff8b9e2e297f01f852e59df074d8">CHashMap_update</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map, void *key, void *new_value)</td></tr>
-<tr class="memdesc:af6ecff8b9e2e297f01f852e59df074d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value associated with a key in the hash map.  <br /></td></tr>
-<tr class="separator:af6ecff8b9e2e297f01f852e59df074d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae59f279a595d1d22765e782e591e03f0" id="r_ae59f279a595d1d22765e782e591e03f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#ae59f279a595d1d22765e782e591e03f0">CHashMap_clear</a> (<a class="el" href="structCHashMap.html">CHashMap</a> *map)</td></tr>
-<tr class="memdesc:ae59f279a595d1d22765e782e591e03f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all key-value pairs from the hash map.  <br /></td></tr>
-<tr class="separator:ae59f279a595d1d22765e782e591e03f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0737268883477d252b542b7f1a1229ae" id="r_a0737268883477d252b542b7f1a1229ae"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a0737268883477d252b542b7f1a1229ae">CHashMap_size</a> (const <a class="el" href="structCHashMap.html">CHashMap</a> *map)</td></tr>
-<tr class="memdesc:a0737268883477d252b542b7f1a1229ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of key-value pairs in the hash map.  <br /></td></tr>
-<tr class="separator:a0737268883477d252b542b7f1a1229ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade228ae582707f6462634d06a50a1f2b" id="r_ade228ae582707f6462634d06a50a1f2b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#ade228ae582707f6462634d06a50a1f2b">CHashMap_load_factor</a> (const <a class="el" href="structCHashMap.html">CHashMap</a> *map)</td></tr>
-<tr class="memdesc:ade228ae582707f6462634d06a50a1f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the load factor of the hash map.  <br /></td></tr>
-<tr class="separator:ade228ae582707f6462634d06a50a1f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c9861e98dc14a88661f265e7bfedad" id="r_a39c9861e98dc14a88661f265e7bfedad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a39c9861e98dc14a88661f265e7bfedad">CHashMap_new</a> (int64_t capacity, <a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a> cmp, <a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a> hash, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyKey, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyValue)</td></tr>
+<tr class="memdesc:a39c9861e98dc14a88661f265e7bfedad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new hash map.  <br /></td></tr>
+<tr class="separator:a39c9861e98dc14a88661f265e7bfedad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2713e9545e841183f8e8842493a60d7" id="r_ac2713e9545e841183f8e8842493a60d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#ac2713e9545e841183f8e8842493a60d7">CHashMap_init</a> (CHashMap_t *map, int64_t capacity, <a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a> cmp, <a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a> hash, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyKey, <a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a> destroyValue)</td></tr>
+<tr class="memdesc:ac2713e9545e841183f8e8842493a60d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a hash map.  <br /></td></tr>
+<tr class="separator:ac2713e9545e841183f8e8842493a60d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a399266be7e0228ce3a95e259866e73" id="r_a9a399266be7e0228ce3a95e259866e73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a9a399266be7e0228ce3a95e259866e73">CHashMap_insert</a> (CHashMap_t *map, void *key, void *value)</td></tr>
+<tr class="memdesc:a9a399266be7e0228ce3a95e259866e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a key-value pair into the hash map.  <br /></td></tr>
+<tr class="separator:a9a399266be7e0228ce3a95e259866e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b0a14044cf70a9fab20dbb3fb5b939" id="r_a12b0a14044cf70a9fab20dbb3fb5b939"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a12b0a14044cf70a9fab20dbb3fb5b939">CHashMap_get</a> (CHashMap_t *map, void *key)</td></tr>
+<tr class="memdesc:a12b0a14044cf70a9fab20dbb3fb5b939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup a value by key in the hash map.  <br /></td></tr>
+<tr class="separator:a12b0a14044cf70a9fab20dbb3fb5b939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af283493b16b519fb64b8b04d4787ef9a" id="r_af283493b16b519fb64b8b04d4787ef9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#af283493b16b519fb64b8b04d4787ef9a">CHashMap_remove</a> (CHashMap_t *map, void *key)</td></tr>
+<tr class="memdesc:af283493b16b519fb64b8b04d4787ef9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a key-value pair from the hash map.  <br /></td></tr>
+<tr class="separator:af283493b16b519fb64b8b04d4787ef9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aa86f1a21113e57878ff3ad432065f3" id="r_a5aa86f1a21113e57878ff3ad432065f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a5aa86f1a21113e57878ff3ad432065f3">CHashMap_free</a> (CHashMap_t **map)</td></tr>
+<tr class="memdesc:a5aa86f1a21113e57878ff3ad432065f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the resources used by the hash map.  <br /></td></tr>
+<tr class="separator:a5aa86f1a21113e57878ff3ad432065f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a976c2d55c104ff42feea2a2d55fec" id="r_a92a976c2d55c104ff42feea2a2d55fec"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a92a976c2d55c104ff42feea2a2d55fec">CHashMap_update</a> (CHashMap_t *map, void *key, void *new_value)</td></tr>
+<tr class="memdesc:a92a976c2d55c104ff42feea2a2d55fec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value associated with a key in the hash map.  <br /></td></tr>
+<tr class="separator:a92a976c2d55c104ff42feea2a2d55fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa26bdf477cc776cba750e2027be46eca" id="r_aa26bdf477cc776cba750e2027be46eca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#aa26bdf477cc776cba750e2027be46eca">CHashMap_clear</a> (CHashMap_t *map)</td></tr>
+<tr class="memdesc:aa26bdf477cc776cba750e2027be46eca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all key-value pairs from the hash map.  <br /></td></tr>
+<tr class="separator:aa26bdf477cc776cba750e2027be46eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6c702990f531cdd141a85dc3bdae5a" id="r_aca6c702990f531cdd141a85dc3bdae5a"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#aca6c702990f531cdd141a85dc3bdae5a">CHashMap_size</a> (const CHashMap_t *map)</td></tr>
+<tr class="memdesc:aca6c702990f531cdd141a85dc3bdae5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of key-value pairs in the hash map.  <br /></td></tr>
+<tr class="separator:aca6c702990f531cdd141a85dc3bdae5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e205b82dc9e0d98bd46c19d151d9d4" id="r_a79e205b82dc9e0d98bd46c19d151d9d4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CHashMap_8h.html#a79e205b82dc9e0d98bd46c19d151d9d4">CHashMap_load_factor</a> (const CHashMap_t *map)</td></tr>
+<tr class="memdesc:a79e205b82dc9e0d98bd46c19d151d9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the load factor of the hash map.  <br /></td></tr>
+<tr class="separator:a79e205b82dc9e0d98bd46c19d151d9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the <a class="el" href="structCHashMap.html" title="Structure representing a hash map.">CHashMap</a> library. </p>
@@ -179,8 +179,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae59f279a595d1d22765e782e591e03f0" name="ae59f279a595d1d22765e782e591e03f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae59f279a595d1d22765e782e591e03f0">&#9670;&#160;</a></span>CHashMap_clear()</h2>
+<a id="aa26bdf477cc776cba750e2027be46eca" name="aa26bdf477cc776cba750e2027be46eca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa26bdf477cc776cba750e2027be46eca">&#9670;&#160;</a></span>CHashMap_clear()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,7 +188,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_clear </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em></td><td>)</td>
           <td></td>
         </tr>
@@ -212,8 +212,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b5f97948691d3ef7ccadd1cebf85469" name="a9b5f97948691d3ef7ccadd1cebf85469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b5f97948691d3ef7ccadd1cebf85469">&#9670;&#160;</a></span>CHashMap_free()</h2>
+<a id="a5aa86f1a21113e57878ff3ad432065f3" name="a5aa86f1a21113e57878ff3ad432065f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aa86f1a21113e57878ff3ad432065f3">&#9670;&#160;</a></span>CHashMap_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +221,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_free </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> **&#160;</td>
+          <td class="paramtype">CHashMap_t **&#160;</td>
           <td class="paramname"><em>map</em></td><td>)</td>
           <td></td>
         </tr>
@@ -245,16 +245,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af506b2b684ef96b7600954d5b8274ba3" name="af506b2b684ef96b7600954d5b8274ba3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af506b2b684ef96b7600954d5b8274ba3">&#9670;&#160;</a></span>CHashMap_get()</h2>
+<a id="a12b0a14044cf70a9fab20dbb3fb5b939" name="a12b0a14044cf70a9fab20dbb3fb5b939"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b0a14044cf70a9fab20dbb3fb5b939">&#9670;&#160;</a></span>CHashMap_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CHashMap_get </td>
+          <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CHashMap_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -285,8 +285,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a23ef652e5dd190bda516b5ae58b9e74f" name="a23ef652e5dd190bda516b5ae58b9e74f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23ef652e5dd190bda516b5ae58b9e74f">&#9670;&#160;</a></span>CHashMap_init()</h2>
+<a id="ac2713e9545e841183f8e8842493a60d7" name="ac2713e9545e841183f8e8842493a60d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2713e9545e841183f8e8842493a60d7">&#9670;&#160;</a></span>CHashMap_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,13 +294,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype">int64_t&#160;</td>
           <td class="paramname"><em>capacity</em>, </td>
         </tr>
         <tr>
@@ -357,8 +357,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9753fc6f5f971dd489c5d22f922eeaa2" name="a9753fc6f5f971dd489c5d22f922eeaa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9753fc6f5f971dd489c5d22f922eeaa2">&#9670;&#160;</a></span>CHashMap_insert()</h2>
+<a id="a9a399266be7e0228ce3a95e259866e73" name="a9a399266be7e0228ce3a95e259866e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a399266be7e0228ce3a95e259866e73">&#9670;&#160;</a></span>CHashMap_insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +366,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -408,8 +408,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ade228ae582707f6462634d06a50a1f2b" name="ade228ae582707f6462634d06a50a1f2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade228ae582707f6462634d06a50a1f2b">&#9670;&#160;</a></span>CHashMap_load_factor()</h2>
+<a id="a79e205b82dc9e0d98bd46c19d151d9d4" name="a79e205b82dc9e0d98bd46c19d151d9d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79e205b82dc9e0d98bd46c19d151d9d4">&#9670;&#160;</a></span>CHashMap_load_factor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -417,7 +417,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">double CHashMap_load_factor </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">const CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em></td><td>)</td>
           <td></td>
         </tr>
@@ -437,17 +437,46 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a00f67ae1c5686a9b58b7ea20dce21646" name="a00f67ae1c5686a9b58b7ea20dce21646"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00f67ae1c5686a9b58b7ea20dce21646">&#9670;&#160;</a></span>CHashMap_new()</h2>
+<a id="a39c9861e98dc14a88661f265e7bfedad" name="a39c9861e98dc14a88661f265e7bfedad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39c9861e98dc14a88661f265e7bfedad">&#9670;&#160;</a></span>CHashMap_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structCResult.html">CResult</a> * CHashMap_new </td>
+          <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CHashMap_new </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>capacity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>&#160;</td>
+          <td class="paramname"><em>cmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>&#160;</td>
+          <td class="paramname"><em>hash</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>&#160;</td>
+          <td class="paramname"><em>destroyKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>&#160;</td>
+          <td class="paramname"><em>destroyValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -455,13 +484,13 @@ Functions</h2></td></tr>
 <p>Create a new hash map. </p>
 <p>Allocates memory for a new hash map.</p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to a <code><a class="el" href="structCResult.html" title="Structure for wrapping the value or error.">CResult</a></code> object encapsulating the created hash map. The result is successful if the hash map was created successfuly.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This method <b>DOES NOT</b> initialize the hash map. Please initialize it using <a class="el" href="CHashMap_8h.html#a23ef652e5dd190bda516b5ae58b9e74f" title="Initialize a hash map.">CHashMap_init()</a> method.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This method <b>DOES NOT</b> initialize the hash map. Please initialize it using <a class="el" href="CHashMap_8h.html#ac2713e9545e841183f8e8842493a60d7" title="Initialize a hash map.">CHashMap_init()</a> method.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>If memory allocation fails during the creation of the hash map, this function will return an error, and no hash map will be created. </dd></dl>
 
 </div>
 </div>
-<a id="a7ef73902f50a47b26082f86847dc8383" name="a7ef73902f50a47b26082f86847dc8383"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ef73902f50a47b26082f86847dc8383">&#9670;&#160;</a></span>CHashMap_remove()</h2>
+<a id="af283493b16b519fb64b8b04d4787ef9a" name="af283493b16b519fb64b8b04d4787ef9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af283493b16b519fb64b8b04d4787ef9a">&#9670;&#160;</a></span>CHashMap_remove()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +498,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_remove </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -504,16 +533,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0737268883477d252b542b7f1a1229ae" name="a0737268883477d252b542b7f1a1229ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0737268883477d252b542b7f1a1229ae">&#9670;&#160;</a></span>CHashMap_size()</h2>
+<a id="aca6c702990f531cdd141a85dc3bdae5a" name="aca6c702990f531cdd141a85dc3bdae5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6c702990f531cdd141a85dc3bdae5a">&#9670;&#160;</a></span>CHashMap_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t CHashMap_size </td>
+          <td class="memname">int64_t CHashMap_size </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">const CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em></td><td>)</td>
           <td></td>
         </tr>
@@ -533,8 +562,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af6ecff8b9e2e297f01f852e59df074d8" name="af6ecff8b9e2e297f01f852e59df074d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6ecff8b9e2e297f01f852e59df074d8">&#9670;&#160;</a></span>CHashMap_update()</h2>
+<a id="a92a976c2d55c104ff42feea2a2d55fec" name="a92a976c2d55c104ff42feea2a2d55fec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a976c2d55c104ff42feea2a2d55fec">&#9670;&#160;</a></span>CHashMap_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -542,7 +571,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int CHashMap_update </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structCHashMap.html">CHashMap</a> *&#160;</td>
+          <td class="paramtype">CHashMap_t *&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -587,7 +616,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 15 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

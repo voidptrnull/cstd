@@ -1,5 +1,5 @@
-#include <logger/CLog.h>
-#include <util/CResult.h>
+#include <cstd/CLog.h>
+#include <cstd/CResult.h>
 
 #include <assert.h>
 #include <stdio.h>
@@ -11,7 +11,7 @@
 
 int test_ok() {
     int v = 5;
-    CResult *result = CResult_create(&v, NULL);
+    CResult_t *result = CResult_create(&v, NULL);
     assert(!CResult_is_error(result));
     assert((*(int *)CResult_get(result)) == 5);
     CResult_free(&result);
@@ -19,9 +19,9 @@ int test_ok() {
 }
 
 int test_error() {
-    CResult *result = CResult_ecreate(CError_create(MSG, CTX, ERR_CODE));
+    CResult_t *result = CResult_ecreate(CError_create(MSG, CTX, ERR_CODE));
     assert(CResult_is_error(result));
-    CError *err = CResult_eget(result);
+    CError_t *err = CResult_eget(result);
     assert(strcmp(CError_get_message(err), MSG) == 0);
     assert(strcmp(CError_get_context(err), CTX) == 0);
     assert(CError_get_code(err) == ERR_CODE);
@@ -36,7 +36,7 @@ int test_example() {
     int a = 5;
     void *ptr = &a;
     // Create the CResult object
-    CResult *res = CResult_create(ptr, NULL);
+    CResult_t *res = CResult_create(ptr, NULL);
     // If you wanted to create an error, you would be using `CResult_ecreate`
     // instead.
 
@@ -53,6 +53,8 @@ int test_example() {
 
 int main() {
     enable_debugging();
+    enable_location();
+    shortened_location();
     assert(!test_ok());
     assert(!test_error());
     assert(!test_example());

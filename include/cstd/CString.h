@@ -39,7 +39,7 @@
 ///
 /// \note The functions in this header are intended to be used with dynamic
 /// memory allocation and require error checking to ensure successful memory
-/// operations. If you do intend to use stack-allocated structures, do not 
+/// operations. If you do intend to use stack-allocated structures, do not
 /// use `new` and `free` methods associated to that structure.
 #ifndef CSTD_CSTRING_H
 #define CSTD_CSTRING_H
@@ -80,7 +80,7 @@
 /// It supports various
 ///          operations such as initialization, setting, retrieving, appending,
 ///          copying, and clearing.
-typedef struct _CString CString;
+typedef struct _CString CString_t;
 
 /// \brief Create a new CString object.
 /// \return Returns a pointer to a newly created `CString` structure,
@@ -93,7 +93,7 @@ typedef struct _CString CString;
 ///
 /// \warning If the memory allocation fails, the returned `CResult` will
 /// indicate an error.
-CResult *CString_new();
+CResult_t *CString_new();
 
 /// \brief Initialize the CString object with a specified initial capacity.
 /// \param string Pointer to the `CString` structure to be initialized.
@@ -106,7 +106,7 @@ CResult *CString_new();
 ///
 /// \warning If the memory allocation fails or the vector cannot be initialized,
 /// an appropriate error code will be returned.
-int CString_init(CString *string, size_t size);
+int CString_init(CString_t *string, int64_t size);
 
 /// \brief Get a character at a specific index in the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -120,7 +120,7 @@ int CString_init(CString *string, size_t size);
 ///
 /// \warning If `index` is out of bounds, or if `string` is NULL, the function
 /// may not behave as expected.
-char CString_at(const CString *string, size_t index);
+char CString_at(const CString_t *string, int64_t index);
 
 /// \brief Get the length of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -132,7 +132,7 @@ char CString_at(const CString *string, size_t index);
 ///
 /// \warning If `string` is NULL or not properly initialized, the function may
 /// return an error code.
-size_t CString_length(const CString *string);
+int64_t CString_length(const CString_t *string);
 
 /// \brief Append a string to the end of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -145,7 +145,7 @@ size_t CString_length(const CString *string);
 ///
 /// \warning If memory allocation fails or the string cannot be appended, an
 /// appropriate error code will be returned.
-int CString_append_c(CString *string, const char *str);
+int CString_append_c(CString_t *string, const char *str);
 
 /// \brief Append a string to the end of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -158,7 +158,7 @@ int CString_append_c(CString *string, const char *str);
 ///
 /// \warning If memory allocation fails or the `CString` cannot be appended, an
 /// appropriate error code will be returned.
-int CString_append(CString *string, CString *str_to_add);
+int CString_append(CString_t *string, CString_t *str_to_add);
 
 /// \brief Check if two `CString` objects are equal.
 /// \param str1 Pointer to the first `CString` object.
@@ -171,7 +171,7 @@ int CString_append(CString *string, CString *str_to_add);
 ///
 /// \warning If either of the `CString` objects is NULL or not properly
 /// initialized, the function may return unexpected results.
-int CString_equals(CString *str1, CString *str2);
+int CString_equals(CString_t *str1, CString_t *str2);
 
 /// \brief Extract a substring from the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -191,7 +191,8 @@ int CString_equals(CString *str1, CString *str2);
 ///
 /// \warning If `string` is NULL or the indices are out of bounds, the function
 /// returns a result encapsulating an error.
-CResult *CString_substring(const CString *string, size_t start, size_t end);
+CResult_t *CString_substring(const CString_t *string, int64_t start,
+                             int64_t end);
 
 /// \brief Create a deep-copy of the CString object.
 /// \param source Pointer to the source `CString` structure.
@@ -204,7 +205,7 @@ CResult *CString_substring(const CString *string, size_t start, size_t end);
 ///
 /// \warning If the source `CString` is NULL or memory allocation fails, the
 /// function will return an error `CResult`.
-CResult *CString_clone(const CString *source);
+CResult_t *CString_clone(const CString_t *source);
 
 /// \brief Convert the contents of the CString object to a C-Style string.
 /// \param string Pointer to the `CString` structure to be converted from.
@@ -217,7 +218,7 @@ CResult *CString_clone(const CString *source);
 ///
 /// \warning If memory allocation fails or `string` is NULL, the function will
 /// return an error `CResult`.
-CResult *CString_c_str(CString *string);
+CResult_t *CString_c_str(CString_t *string);
 
 /// \brief Set the contents of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -230,7 +231,7 @@ CResult *CString_c_str(CString *string);
 ///
 /// \warning If memory allocation fails or the provided string cannot be
 /// processed, an appropriate error code will be returned.
-int CString_set(CString *string, char *str);
+int CString_set(CString_t *string, char *str);
 
 /// \brief Compare two CString objects lexicographically.
 /// \param str1 Pointer to the first `CString` structure.
@@ -247,7 +248,7 @@ int CString_set(CString *string, char *str);
 ///
 /// \warning If either `CString` object is NULL or contains non-standard
 /// characters, the function returns `-0x8000000000000000L`.
-int64_t CString_compare(CString *str1, CString *str2);
+int64_t CString_compare(CString_t *str1, CString_t *str2);
 
 /// \brief Clear the contents of the CString object.
 /// \param string Pointer to the `CString` structure to be cleared.
@@ -260,18 +261,46 @@ int64_t CString_compare(CString *str1, CString *str2);
 ///
 /// \warning If `string` is NULL or memory allocation fails during clearing, the
 /// function may return an error code.
-int CString_clear(CString *string);
+int CString_clear(CString_t *string);
 
 /// \brief Free the resources used by the CString object. This is equivalent to
-/// freeing/deleting the object. \param string Pointer to the pointer to the
-/// `CString` structure to be freed. \return Returns `CSTRING_SUCCESS` on
-/// success, or an error code if the freeing operation fails.
+/// freeing/deleting the object.
+///
+/// \param string Pointer to the pointer to the `CString` structure to be freed.
+///
+/// \return Returns `CSTRING_SUCCESS` on success, or an error code if the
+/// freeing operation fails.
 ///
 /// \note This function releases the memory allocated for the CString's internal
 /// data and the CString itself.
 ///
 /// \warning Ensure that `string` is properly initialized before calling this
 /// function. If `string` is NULL, the function will return `CSTRING_SUCCESS`.
-int CString_free(CString **string);
+int CString_free(CString_t **string);
+
+#if __STDC_VERSION__ >= 201112L // C11 support
+
+#include <wchar.h>
+/// \brief Convert the contents of a CString object to a wide character string
+/// (wchar_t*).
+///
+/// This function converts the content of a `CString_t` object into a wide
+/// character string (`wchar_t*`), which can then be used in functions that
+/// expect a wide character encoding. The result is dynamically allocated and
+/// needs to be freed by the caller.
+///
+/// \param string A pointer to the `CString_t` structure to be converted.
+///
+/// @return A `CResult_t*` structure containing the result of the operation:
+///         - On success, the `CResult` structure contains a `wchar_t*` pointer
+///         to the converted string.
+///         - On failure, the `CResult` structure contains an error code
+///         indicating the reason for failure (e.g., null string, allocation
+///         failure).
+///
+/// \note The returned `wchar_t*` string is null-terminated.
+CResult_t *CString_c_wchar_t(CString_t *string);
+
+#endif // __STDC_VERSION__ >= 201112L
 
 #endif // CSTD_CSTRING_H
