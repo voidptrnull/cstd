@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.1-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -91,10 +91,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a4c4b78c82a1e9277aa9d977c4652bb10" id="r_a4c4b78c82a1e9277aa9d977c4652bb10"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>) (const void *a, const void *b)</td></tr>
+<tr class="memitem:a4c4b78c82a1e9277aa9d977c4652bb10" id="r_a4c4b78c82a1e9277aa9d977c4652bb10"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>) (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a4c4b78c82a1e9277aa9d977c4652bb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for comparison functions.  <br /></td></tr>
 <tr class="separator:a4c4b78c82a1e9277aa9d977c4652bb10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9764777f85b7d30037a75b50921f5662" id="r_a9764777f85b7d30037a75b50921f5662"><td class="memItemLeft" align="right" valign="top">typedef int64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>) (const void *key)</td></tr>
+<tr class="memitem:a9764777f85b7d30037a75b50921f5662" id="r_a9764777f85b7d30037a75b50921f5662"><td class="memItemLeft" align="right" valign="top">typedef uint64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>) (const void *key)</td></tr>
 <tr class="memdesc:a9764777f85b7d30037a75b50921f5662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for hash functions.  <br /></td></tr>
 <tr class="separator:a9764777f85b7d30037a75b50921f5662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2353e69e9b641fd66c9419b05ab8333f" id="r_a2353e69e9b641fd66c9419b05ab8333f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>) (void *data)</td></tr>
@@ -112,12 +112,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a37eb4a0a536b9fe626c06b7922fcfc9c" id="r_a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a> (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare function for integers.  <br /></td></tr>
 <tr class="separator:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9215a29138cc10280a741fe174a3d49" id="r_ad9215a29138cc10280a741fe174a3d49"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#ad9215a29138cc10280a741fe174a3d49">chash_string</a> (const void *key)</td></tr>
-<tr class="memdesc:ad9215a29138cc10280a741fe174a3d49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
-<tr class="separator:ad9215a29138cc10280a741fe174a3d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78f3be084bc1dbe22f8b83da042f813d" id="r_a78f3be084bc1dbe22f8b83da042f813d"><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a78f3be084bc1dbe22f8b83da042f813d">cdefault_hash</a> (const void *key)</td></tr>
-<tr class="memdesc:a78f3be084bc1dbe22f8b83da042f813d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
-<tr class="separator:a78f3be084bc1dbe22f8b83da042f813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03fdc24b989585a54914b303c40aee8d" id="r_a03fdc24b989585a54914b303c40aee8d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#a03fdc24b989585a54914b303c40aee8d">chash_string</a> (const void *key)</td></tr>
+<tr class="memdesc:a03fdc24b989585a54914b303c40aee8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
+<tr class="separator:a03fdc24b989585a54914b303c40aee8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab26a4e15d309c9b426cf03ba8c0dc541" id="r_ab26a4e15d309c9b426cf03ba8c0dc541"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#ab26a4e15d309c9b426cf03ba8c0dc541">cdefault_hash</a> (const void *key)</td></tr>
+<tr class="memdesc:ab26a4e15d309c9b426cf03ba8c0dc541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
+<tr class="separator:ab26a4e15d309c9b426cf03ba8c0dc541"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6c89c74ced32fa71304ed19bae086b" id="r_aca6c89c74ced32fa71304ed19bae086b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a> (const void *data)</td></tr>
 <tr class="memdesc:aca6c89c74ced32fa71304ed19bae086b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default clone function for integers.  <br /></td></tr>
 <tr class="separator:aca6c89c74ced32fa71304ed19bae086b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -326,14 +326,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a78f3be084bc1dbe22f8b83da042f813d" name="a78f3be084bc1dbe22f8b83da042f813d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78f3be084bc1dbe22f8b83da042f813d">&#9670;&#160;</a></span>cdefault_hash()</h2>
+<a id="ab26a4e15d309c9b426cf03ba8c0dc541" name="ab26a4e15d309c9b426cf03ba8c0dc541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab26a4e15d309c9b426cf03ba8c0dc541">&#9670;&#160;</a></span>cdefault_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t cdefault_hash </td>
+          <td class="memname">uint64_t cdefault_hash </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -354,14 +354,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad9215a29138cc10280a741fe174a3d49" name="ad9215a29138cc10280a741fe174a3d49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9215a29138cc10280a741fe174a3d49">&#9670;&#160;</a></span>chash_string()</h2>
+<a id="a03fdc24b989585a54914b303c40aee8d" name="a03fdc24b989585a54914b303c40aee8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03fdc24b989585a54914b303c40aee8d">&#9670;&#160;</a></span>chash_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64_t chash_string </td>
+          <td class="memname">uint64_t chash_string </td>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>key</em></td><td>)</td>
@@ -385,7 +385,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sun Dec 8 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.0-202412</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.1-202412</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -90,9 +90,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">   23</a></span><span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">   23</a></span><span class="keyword">typedef</span> int32_t (*<a class="code hl_typedef" href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">   29</a></span><span class="keyword">typedef</span> int64_t (*<a class="code hl_typedef" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">   29</a></span><span class="keyword">typedef</span> uint64_t (*<a class="code hl_typedef" href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">   36</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a>)(<span class="keywordtype">void</span> *data);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
@@ -103,27 +103,27 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">   61</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="Operators_8h.html#ad9215a29138cc10280a741fe174a3d49">   69</a></span>int64_t <a class="code hl_function" href="Operators_8h.html#ad9215a29138cc10280a741fe174a3d49">chash_string</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="Operators_8h.html#a03fdc24b989585a54914b303c40aee8d">   69</a></span>uint64_t <a class="code hl_function" href="Operators_8h.html#a03fdc24b989585a54914b303c40aee8d">chash_string</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="Operators_8h.html#a78f3be084bc1dbe22f8b83da042f813d">   77</a></span>int64_t <a class="code hl_function" href="Operators_8h.html#a78f3be084bc1dbe22f8b83da042f813d">cdefault_hash</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="Operators_8h.html#ab26a4e15d309c9b426cf03ba8c0dc541">   77</a></span>uint64_t <a class="code hl_function" href="Operators_8h.html#ab26a4e15d309c9b426cf03ba8c0dc541">cdefault_hash</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">   85</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_NO_DEF_FN_IMPL</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_OPERATORS_H</span></div>
+<div class="ttc" id="aOperators_8h_html_a03fdc24b989585a54914b303c40aee8d"><div class="ttname"><a href="Operators_8h.html#a03fdc24b989585a54914b303c40aee8d">chash_string</a></div><div class="ttdeci">uint64_t chash_string(const void *key)</div><div class="ttdoc">Hash function for strings.</div></div>
 <div class="ttc" id="aOperators_8h_html_a2353e69e9b641fd66c9419b05ab8333f"><div class="ttname"><a href="Operators_8h.html#a2353e69e9b641fd66c9419b05ab8333f">Destructor</a></div><div class="ttdeci">void(* Destructor)(void *data)</div><div class="ttdoc">Function pointer type for destructor functions.</div><div class="ttdef"><b>Definition</b> Operators.h:36</div></div>
 <div class="ttc" id="aOperators_8h_html_a37eb4a0a536b9fe626c06b7922fcfc9c"><div class="ttname"><a href="Operators_8h.html#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a></div><div class="ttdeci">int ccompare_integer(const void *a, const void *b)</div><div class="ttdoc">Compare function for integers.</div></div>
-<div class="ttc" id="aOperators_8h_html_a4c4b78c82a1e9277aa9d977c4652bb10"><div class="ttname"><a href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a></div><div class="ttdeci">int(* CompareTo)(const void *a, const void *b)</div><div class="ttdoc">Function pointer type for comparison functions.</div><div class="ttdef"><b>Definition</b> Operators.h:23</div></div>
-<div class="ttc" id="aOperators_8h_html_a78f3be084bc1dbe22f8b83da042f813d"><div class="ttname"><a href="Operators_8h.html#a78f3be084bc1dbe22f8b83da042f813d">cdefault_hash</a></div><div class="ttdeci">int64_t cdefault_hash(const void *key)</div><div class="ttdoc">Default hash function for void pointers.</div></div>
-<div class="ttc" id="aOperators_8h_html_a9764777f85b7d30037a75b50921f5662"><div class="ttname"><a href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a></div><div class="ttdeci">int64_t(* Hash)(const void *key)</div><div class="ttdoc">Function pointer type for hash functions.</div><div class="ttdef"><b>Definition</b> Operators.h:29</div></div>
+<div class="ttc" id="aOperators_8h_html_a4c4b78c82a1e9277aa9d977c4652bb10"><div class="ttname"><a href="Operators_8h.html#a4c4b78c82a1e9277aa9d977c4652bb10">CompareTo</a></div><div class="ttdeci">int32_t(* CompareTo)(const void *a, const void *b)</div><div class="ttdoc">Function pointer type for comparison functions.</div><div class="ttdef"><b>Definition</b> Operators.h:23</div></div>
+<div class="ttc" id="aOperators_8h_html_a9764777f85b7d30037a75b50921f5662"><div class="ttname"><a href="Operators_8h.html#a9764777f85b7d30037a75b50921f5662">Hash</a></div><div class="ttdeci">uint64_t(* Hash)(const void *key)</div><div class="ttdoc">Function pointer type for hash functions.</div><div class="ttdef"><b>Definition</b> Operators.h:29</div></div>
+<div class="ttc" id="aOperators_8h_html_ab26a4e15d309c9b426cf03ba8c0dc541"><div class="ttname"><a href="Operators_8h.html#ab26a4e15d309c9b426cf03ba8c0dc541">cdefault_hash</a></div><div class="ttdeci">uint64_t cdefault_hash(const void *key)</div><div class="ttdoc">Default hash function for void pointers.</div></div>
 <div class="ttc" id="aOperators_8h_html_ac8eabdee85391c9a1a59b1df256bceef"><div class="ttname"><a href="Operators_8h.html#ac8eabdee85391c9a1a59b1df256bceef">ccompare_pointer</a></div><div class="ttdeci">int ccompare_pointer(const void *a, const void *b)</div><div class="ttdoc">Compare function for pointers.</div></div>
 <div class="ttc" id="aOperators_8h_html_aca6c89c74ced32fa71304ed19bae086b"><div class="ttname"><a href="Operators_8h.html#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a></div><div class="ttdeci">void * cclone_integer(const void *data)</div><div class="ttdoc">Default clone function for integers.</div></div>
-<div class="ttc" id="aOperators_8h_html_ad9215a29138cc10280a741fe174a3d49"><div class="ttname"><a href="Operators_8h.html#ad9215a29138cc10280a741fe174a3d49">chash_string</a></div><div class="ttdeci">int64_t chash_string(const void *key)</div><div class="ttdoc">Hash function for strings.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 5 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sun Dec 8 2024 for cstd by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
