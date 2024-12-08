@@ -36,16 +36,16 @@ struct CHashMapEntry {
 
 struct _CHashMap {
     struct CHashMapEntry *entries;
-    int64_t size;
-    int64_t capacity;
+    uint64_t size;
+    uint64_t capacity;
     CompareTo cmp;
     Hash hash;
     Destructor destroyKey;
     Destructor destroyValue;
 };
 
-static int64_t __ceil(double x) {
-    int64_t int_part = (int64_t)x;
+static uint64_t __ceil(double x) {
+    uint64_t int_part = (uint64_t)x;
     if (x > int_part) {
         return int_part + 1;
     }
@@ -53,7 +53,7 @@ static int64_t __ceil(double x) {
 }
 
 static int CHashMap_resize(CHashMap_t *map);
-CResult_t *CHashMap_new(int64_t capacity, CompareTo cmp, Hash hash,
+CResult_t *CHashMap_new(uint64_t capacity, CompareTo cmp, Hash hash,
                         Destructor destroyKey, Destructor destroyValue) {
     CHashMap_t *map = malloc(sizeof(CHashMap_t));
     if (!map)
@@ -71,7 +71,7 @@ CResult_t *CHashMap_new(int64_t capacity, CompareTo cmp, Hash hash,
     return CResult_create(map, NULL);
 }
 
-int CHashMap_init(CHashMap_t *map, int64_t capacity, CompareTo cmp, Hash hash,
+int CHashMap_init(CHashMap_t *map, uint64_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey, Destructor destroyValue) {
     if (!map || !cmp || !hash)
         return CHASHMAP_NULL_MAP;
@@ -84,25 +84,25 @@ int CHashMap_init(CHashMap_t *map, int64_t capacity, CompareTo cmp, Hash hash,
     map->entries = calloc(map->capacity, sizeof(struct CHashMapEntry));
     if (!map->entries)
         return CHASHMAP_ALLOC_FAILURE;
-    for (int64_t i = 0; i < map->capacity; i++) {
+    for (uint64_t i = 0; i < map->capacity; i++) {
         map->entries[i].key = NULL;
         map->entries[i].value = NULL;
     }
     return CHASHMAP_SUCCESS;
 }
 
-int64_t CHashMap_size(const CHashMap_t *map) { return map ? map->size : 0; }
+uint64_t CHashMap_size(const CHashMap_t *map) { return map ? map->size : 0; }
 
 static int CHashMap_resize(CHashMap_t *map) {
-    int64_t new_capacity = __ceil(map->capacity * 1.5);
+    uint64_t new_capacity = __ceil(map->capacity * 1.5);
     struct CHashMapEntry *new_entries =
         calloc(new_capacity, sizeof(struct CHashMapEntry));
     if (!new_entries)
         return CHASHMAP_ALLOC_FAILURE;
-    for (int64_t i = 0; i < map->capacity; i++) {
+    for (uint64_t i = 0; i < map->capacity; i++) {
         struct CHashMapEntry *entry = &map->entries[i];
         if (entry->key && entry->key != DELETED) {
-            int64_t new_index = map->hash(entry->key) % new_capacity;
+            uint64_t new_index = map->hash(entry->key) % new_capacity;
             while (new_entries[new_index].key != NULL) {
                 new_index = (new_index + 1) % new_capacity;
             }
@@ -122,7 +122,7 @@ int CHashMap_insert(CHashMap_t *map, void *key, void *value) {
         if (CHashMap_resize(map) != CHASHMAP_SUCCESS)
             return CHASHMAP_ALLOC_FAILURE;
     }
-    int64_t index = map->hash(key) % map->capacity;
+    uint64_t index = map->hash(key) % map->capacity;
     while (map->entries[index].key && map->entries[index].key != DELETED) {
         if (map->cmp(map->entries[index].key, key) == 0) {
             if (map->destroyValue)
@@ -141,7 +141,7 @@ int CHashMap_insert(CHashMap_t *map, void *key, void *value) {
 CResult_t *CHashMap_get(CHashMap_t *map, void *key) {
     if (!map || !key)
         return NULL;
-    int64_t index = map->hash(key) % map->capacity;
+    uint64_t index = map->hash(key) % map->capacity;
     while (map->entries[index].key) {
         if (map->entries[index].key != DELETED &&
             map->cmp(map->entries[index].key, key) == 0) {
@@ -156,7 +156,7 @@ CResult_t *CHashMap_get(CHashMap_t *map, void *key) {
 int CHashMap_remove(CHashMap_t *map, void *key) {
     if (!map || !key)
         return CHASHMAP_NULL_VAL;
-    int64_t index = map->hash(key) % map->capacity;
+    uint64_t index = map->hash(key) % map->capacity;
     while (map->entries[index].key) {
         if (map->entries[index].key != DELETED &&
             map->cmp(map->entries[index].key, key) == 0) {
@@ -177,7 +177,7 @@ int CHashMap_remove(CHashMap_t *map, void *key) {
 int CHashMap_clear(CHashMap_t *map) {
     if (!map)
         return CHASHMAP_NULL_MAP;
-    for (int64_t i = 0; i < map->capacity; i++) {
+    for (uint64_t i = 0; i < map->capacity; i++) {
         if (map->entries[i].key && map->entries[i].key != DELETED) {
             if (map->destroyKey)
                 map->destroyKey(map->entries[i].key);
@@ -195,7 +195,7 @@ int CHashMap_clear(CHashMap_t *map) {
 int CHashMap_free(CHashMap_t **map) {
     if (!map || !*map)
         return CHASHMAP_NULL_MAP;
-    for (int64_t i = 0; i < (*map)->capacity; i++) {
+    for (uint64_t i = 0; i < (*map)->capacity; i++) {
         if ((*map)->entries[i].key && (*map)->entries[i].key != DELETED) {
             if ((*map)->destroyKey)
                 (*map)->destroyKey((*map)->entries[i].key);
@@ -216,7 +216,7 @@ double CHashMap_load_factor(const CHashMap_t *map) {
 int CHashMap_update(CHashMap_t *map, void *key, void *new_value) {
     if (!map || !key || !new_value)
         return CHASHMAP_NULL_VAL;
-    int64_t index = map->hash(key) % map->capacity;
+    uint64_t index = map->hash(key) % map->capacity;
     while (map->entries[index].key) {
         if (map->entries[index].key != DELETED &&
             map->cmp(map->entries[index].key, key) == 0) {

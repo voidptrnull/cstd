@@ -20,13 +20,13 @@
 /// \param a Pointer to the first element to compare.
 /// \param b Pointer to the second element to compare.
 /// \return An integer indicating the result of the comparison.
-typedef int (*CompareTo)(const void *a, const void *b);
+typedef int32_t (*CompareTo)(const void *a, const void *b);
 
 /// \typedef Hash
 /// \brief Function pointer type for hash functions.
 /// \param key Pointer to the element to hash.
 /// \return A `int64_t` value representing the hash of the element.
-typedef int64_t (*Hash)(const void *key);
+typedef uint64_t (*Hash)(const void *key);
 
 /// \typedef Destructor
 /// \brief Function pointer type for destructor functions.
@@ -66,7 +66,7 @@ int ccompare_integer(const void *a, const void *b);
 ///
 /// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
 /// check for it's presence.
-int64_t chash_string(const void *key);
+uint64_t chash_string(const void *key);
 
 /// \brief Default hash function for void pointers.
 /// \param key Pointer to the element to hash.
@@ -74,7 +74,7 @@ int64_t chash_string(const void *key);
 ///
 /// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
 /// check for it's presence.
-int64_t cdefault_hash(const void *key);
+uint64_t cdefault_hash(const void *key);
 
 /// \brief Default clone function for integers.
 /// \param data Pointer to the integer to clone.

@@ -92,7 +92,7 @@ typedef struct _CHashMap CHashMap_t;
 /// \warning If memory allocation fails during the creation of the hash map,
 ///          this function will return an error, and no hash map will be
 ///          created.
-CResult_t *CHashMap_new(int64_t capacity, CompareTo cmp, Hash hash,
+CResult_t *CHashMap_new(uint64_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Initialize a hash map.
@@ -116,7 +116,7 @@ CResult_t *CHashMap_new(int64_t capacity, CompareTo cmp, Hash hash,
 ///
 /// \warning If memory allocation fails or the parameters are invalid, the
 /// function will return `CHASHMAP_ALLOC_FAILURE`.
-int CHashMap_init(CHashMap_t *map, int64_t capacity, CompareTo cmp, Hash hash,
+int CHashMap_init(CHashMap_t *map, uint64_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Insert a key-value pair into the hash map.
@@ -229,7 +229,7 @@ int CHashMap_clear(CHashMap_t *map);
 /// stored in the hash map.
 ///
 /// \warning If `map` is NULL, the function returns 0.
-int64_t CHashMap_size(const CHashMap_t *map);
+uint64_t CHashMap_size(const CHashMap_t *map);
 
 /// \brief Calculate the load factor of the hash map.
 /// \details The load factor is defined as the ratio of the number of key-value

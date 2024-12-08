@@ -12,7 +12,7 @@ int int_compare(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
 }
 
-int64_t int_hash(const void *key) { return (*(int *)key) % 4096 + 127; }
+uint64_t int_hash(const void *key) { return (*(int *)key) % 4096 + 127; }
 
 int create_hash_map(CHashMap_t **map) {
     CLog(INFO, "create_hash_map()");
@@ -99,18 +99,6 @@ void test_free(CHashMap_t **map) {
     CLog(INFO, "test_free()");
     int result = CHashMap_free(map);
     assert(result == CHASHMAP_SUCCESS);
-}
-
-int64_t cdefault_hash(const void *key) {
-    uintptr_t ptr = (uintptr_t)key;
-    ptr ^= (ptr >> 21);
-    ptr ^= (ptr >> 35);
-    ptr ^= (ptr >> 4);
-    ptr *= 0xD45F3; // A random prime number for mixing
-    ptr ^= (ptr >> 11);
-    ptr ^= (ptr >> 17);
-
-    return (int64_t)ptr;
 }
 
 int ccompare_integer(const void *a, const void *b) {

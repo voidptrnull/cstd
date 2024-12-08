@@ -106,7 +106,7 @@ CResult_t *CString_new();
 ///
 /// \warning If the memory allocation fails or the vector cannot be initialized,
 /// an appropriate error code will be returned.
-int CString_init(CString_t *string, int64_t size);
+int CString_init(CString_t *string, uint64_t size);
 
 /// \brief Get a character at a specific index in the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -120,7 +120,7 @@ int CString_init(CString_t *string, int64_t size);
 ///
 /// \warning If `index` is out of bounds, or if `string` is NULL, the function
 /// may not behave as expected.
-char CString_at(const CString_t *string, int64_t index);
+char CString_at(const CString_t *string, uint64_t index);
 
 /// \brief Get the length of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -132,7 +132,7 @@ char CString_at(const CString_t *string, int64_t index);
 ///
 /// \warning If `string` is NULL or not properly initialized, the function may
 /// return an error code.
-int64_t CString_length(const CString_t *string);
+uint64_t CString_length(const CString_t *string);
 
 /// \brief Append a string to the end of the CString object.
 /// \param string Pointer to the `CString` structure.
@@ -191,8 +191,8 @@ int CString_equals(CString_t *str1, CString_t *str2);
 ///
 /// \warning If `string` is NULL or the indices are out of bounds, the function
 /// returns a result encapsulating an error.
-CResult_t *CString_substring(const CString_t *string, int64_t start,
-                             int64_t end);
+CResult_t *CString_substring(const CString_t *string, uint64_t start,
+                             uint64_t end);
 
 /// \brief Create a deep-copy of the CString object.
 /// \param source Pointer to the source `CString` structure.

@@ -10,7 +10,7 @@ int int_compare(const void *a, const void *b) {
     return (*(int *)a - *(int *)b);
 }
 
-int64_t int_hash(const void *key) { return (*(int *)key) % 4096 + 127; }
+uint64_t int_hash(const void *key) { return (*(int *)key) + 1; }
 
 void test_insert(CHashSet_t *set) {
     CLog(INFO, "test_insert()");

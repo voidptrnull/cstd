@@ -91,7 +91,7 @@ typedef struct _CVector CVector_t;
 /// use for cleaning up elements, or `NULL` if no destructor is needed. \return
 /// Returns a pointer to the newly created `CVector` structure, encapsulated in
 /// CResult for better error handling.
-CResult_t *CVector_new(int64_t reserve_capacity, Destructor destroy);
+CResult_t *CVector_new(uint64_t reserve_capacity, Destructor destroy);
 
 /// \brief Initialize the vector with a specified initial capacity.
 /// \param vector Pointer to the `CVector` structure to be initialized.
@@ -99,13 +99,13 @@ CResult_t *CVector_new(int64_t reserve_capacity, Destructor destroy);
 /// default capacity is used. \param destroy The destructor function to use for
 /// cleaning up elements, or `NULL` if no destructor is needed. \return Returns
 /// `CVECTOR_SUCCESS` on success, or an error code if initialization fails.
-int CVector_init(CVector_t *vector, int64_t reserve_capacity,
+int CVector_init(CVector_t *vector, uint64_t reserve_capacity,
                  Destructor destroy);
 
 /// \brief Returns the size of the vector. Not to be confused with capacity or
 /// allocated size. \param vector The vector to retrieve the size from. \return
 /// The point
-int64_t CVector_size(CVector_t *vector);
+uint64_t CVector_size(CVector_t *vector);
 
 /// \brief Add an element to the end of the vector.
 /// \param vector Pointer to the `CVector` structure.
@@ -119,14 +119,14 @@ int CVector_add(CVector_t *vector, void *element);
 /// \param index The index of the element to be deleted.
 /// \return Returns `CVECTOR_SUCCESS` on success, or an error code if the
 /// operation fails (e.g., invalid index).
-int CVector_del(CVector_t *vector, int64_t index);
+int CVector_del(CVector_t *vector, uint64_t index);
 
 /// \brief Retrieve an element from the vector at the specified index.
 /// \param vector Pointer to the `CVector` structure.
 /// \param index The index of the element to retrieve.
 /// \return Returns a pointer to CResult, which in turn contains the element at
 /// the specified index, or `NULL` if the index is invalid.
-CResult_t *CVector_get(const CVector_t *vector, int64_t index);
+CResult_t *CVector_get(const CVector_t *vector, uint64_t index);
 
 /// \brief Find the index of a specific element in the vector.
 /// \param vector Pointer to the `CVector` structure.
@@ -134,7 +134,7 @@ CResult_t *CVector_get(const CVector_t *vector, int64_t index);
 /// \param cmp The function pointer to compare the values with key.
 /// \return Returns the index of the `key` if found, or `-1` if the element is
 /// not present.
-int64_t CVector_find(const CVector_t *vector, void *key, CompareTo cmp);
+uint64_t CVector_find(const CVector_t *vector, void *key, CompareTo cmp);
 
 /// \brief Sort the elements of the vector using a comparison function by
 /// timsort.
@@ -192,7 +192,7 @@ CResult_t *CVector_clone(const CVector_t *source, CloneFn cloner);
 /// If the current capacity is insufficient, the vector is resized to
 /// accommodate the new capacity. If `new_capacity` is less than or equal to the
 /// current capacity, no resizing is performed.
-int CVector_reserve(CVector_t *vector, int64_t new_capacity);
+int CVector_reserve(CVector_t *vector, uint64_t new_capacity);
 
 /// \brief Set the element at the specified index in the vector.
 /// \param vector Pointer to the `CVector` structure.
@@ -206,6 +206,6 @@ int CVector_reserve(CVector_t *vector, int64_t new_capacity);
 /// `new_element`. If the index is out of bounds, an error code is returned. The
 /// memory for the existing element at that index is automatically freed using
 /// the destructor.
-int CVector_set(CVector_t *vector, int64_t index, void *new_element);
+int CVector_set(CVector_t *vector, uint64_t index, void *new_element);
 
 #endif // CSTD_CVECTOR_H

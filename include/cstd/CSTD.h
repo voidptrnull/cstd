@@ -34,11 +34,12 @@
 #ifndef CSTD_H
 #define CSTD_H
 
-#define __CSTD_VERSION__ 100202412UL
+#define __CSTD_VERSION__ 101202412UL
 
 #include "CError.h"
 #include "CHashMap.h"
 #include "CHashSet.h"
+#include "CLinkedList.h"
 #include "CLog.h"
 #include "CResult.h"
 #include "CStack.h"

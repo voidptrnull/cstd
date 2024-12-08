@@ -28,8 +28,8 @@
 
 struct _CVector {
     void **data;        ///< Array to store data.
-    int64_t size;       ///< Number of elements in the vector.
-    int64_t capacity;   ///< Capacity of the vector.
+    uint64_t size;       ///< Number of elements in the vector.
+    uint64_t capacity;   ///< Capacity of the vector.
     Destructor destroy; ///< Function pointer to the destructor for cleaning up
                         ///< individual elements.
 };
@@ -48,7 +48,7 @@ static int alloc(CVector_t *vector) {
     }
 
     if (vector->size == vector->capacity) {
-        int64_t new_size = vector->capacity * CVECTOR_DEFAULT_GROWTH_RATE;
+        uint64_t new_size = vector->capacity * CVECTOR_DEFAULT_GROWTH_RATE;
         void **data = realloc(vector->data, new_size * sizeof(void *));
         if (data == NULL)
             return CVECTOR_ALLOC_FAILURE;
@@ -63,17 +63,17 @@ static int alloc(CVector_t *vector) {
     return CVECTOR_SUCCESS;
 }
 
-int64_t CVector_size(CVector_t *vector) {
+uint64_t CVector_size(CVector_t *vector) {
     if (vector == NULL)
         return 0;
     return vector->size;
 }
 
-int CVector_init(CVector_t *vector, int64_t reserve_capacity,
+int CVector_init(CVector_t *vector, uint64_t reserve_capacity,
                  Destructor destroy) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
-    int64_t cap = reserve_capacity;
+    uint64_t cap = reserve_capacity;
     vector->data = malloc(cap * sizeof(void *));
     if (vector->data == NULL)
         return CVECTOR_ALLOC_FAILURE;
@@ -85,7 +85,7 @@ int CVector_init(CVector_t *vector, int64_t reserve_capacity,
     return CVECTOR_SUCCESS;
 }
 
-CResult_t *CVector_new(int64_t reserve_capacity, Destructor destroy) {
+CResult_t *CVector_new(uint64_t reserve_capacity, Destructor destroy) {
     CVector_t *vector = malloc(sizeof(CVector_t));
     if (vector == NULL)
         return CResult_ecreate(
@@ -115,13 +115,13 @@ int CVector_add(CVector_t *vector, void *element) {
     return code;
 }
 
-int CVector_del(CVector_t *vector, int64_t index) {
+int CVector_del(CVector_t *vector, uint64_t index) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
     if (index >= vector->size)
         return CVECTOR_INDEX_OUT_OF_BOUNDS;
 
-    for (int64_t i = index; i < vector->size - 1; ++i) {
+    for (uint64_t i = index; i < vector->size - 1; ++i) {
         vector->data[i] = vector->data[i + 1];
     }
 
@@ -129,7 +129,7 @@ int CVector_del(CVector_t *vector, int64_t index) {
     return CVECTOR_SUCCESS;
 }
 
-CResult_t *CVector_get(const CVector_t *vector, int64_t index) {
+CResult_t *CVector_get(const CVector_t *vector, uint64_t index) {
     if (vector == NULL)
         return CResult_ecreate(
             CError_create("Recieved a NULL pointer to the vector as source.",
@@ -141,10 +141,10 @@ CResult_t *CVector_get(const CVector_t *vector, int64_t index) {
     return CResult_create(vector->data[index], NULL);
 }
 
-int64_t CVector_find(const CVector_t *vector, void *key, CompareTo cmp) {
+uint64_t CVector_find(const CVector_t *vector, void *key, CompareTo cmp) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
-    for (int64_t i = 0; i < vector->size; i++) {
+    for (uint64_t i = 0; i < vector->size; i++) {
         if (cmp(vector->data[i], key) == 0) {
             return i;
         }
@@ -152,11 +152,11 @@ int64_t CVector_find(const CVector_t *vector, void *key, CompareTo cmp) {
     return CVECTOR_INDEX_OUT_OF_BOUNDS;
 }
 
-static void insertion_sort(void **data, int64_t left, int64_t right,
+static void insertion_sort(void **data, uint64_t left, uint64_t right,
                            CompareTo cmp) {
-    for (int64_t i = left + 1; i <= right; ++i) {
+    for (uint64_t i = left + 1; i <= right; ++i) {
         void *key = data[i];
-        int64_t j = i;
+        uint64_t j = i;
         while (j > left && cmp(data[j - 1], key) > 0) {
             data[j] = data[j - 1];
             --j;
@@ -165,9 +165,9 @@ static void insertion_sort(void **data, int64_t left, int64_t right,
     }
 }
 
-static void merge(void **data, int64_t l, int64_t m, int64_t r, CompareTo cmp) {
-    int64_t len1 = m - l + 1;
-    int64_t len2 = r - m;
+static void merge(void **data, uint64_t l, uint64_t m, uint64_t r, CompareTo cmp) {
+    uint64_t len1 = m - l + 1;
+    uint64_t len2 = r - m;
 
     void **left = malloc(len1 * sizeof(void *));
     void **right = malloc(len2 * sizeof(void *));
@@ -181,7 +181,7 @@ static void merge(void **data, int64_t l, int64_t m, int64_t r, CompareTo cmp) {
     memcpy(left, &data[l], len1 * sizeof(void *));
     memcpy(right, &data[m + 1], len2 * sizeof(void *));
 
-    int64_t i = 0, j = 0, k = l;
+    uint64_t i = 0, j = 0, k = l;
     while (i < len1 && j < len2) {
         if (cmp(left[i], right[j]) <= 0) {
             data[k++] = left[i++];
@@ -205,19 +205,19 @@ static void merge(void **data, int64_t l, int64_t m, int64_t r, CompareTo cmp) {
 // Thanks to Patrick Perry and other authors.
 // I referenced this from
 // https://github.com/patperry/timsort/blob/master/timsort.c
-static void timsort(void **data, int64_t size, CompareTo cmp) {
-    const int64_t min_run = 32;
+static void timsort(void **data, uint64_t size, CompareTo cmp) {
+    const uint64_t min_run = 32;
 
-    for (int64_t i = 0; i < size; i += min_run) {
-        int64_t end = (i + min_run - 1 < size) ? i + min_run - 1 : size - 1;
+    for (uint64_t i = 0; i < size; i += min_run) {
+        uint64_t end = (i + min_run - 1 < size) ? i + min_run - 1 : size - 1;
         insertion_sort(data, i, end, cmp);
     }
 
-    int64_t run_size = min_run;
+    uint64_t run_size = min_run;
     while (run_size < size) {
-        for (int64_t start = 0; start < size; start += 2 * run_size) {
-            int64_t mid = start + run_size - 1;
-            int64_t end = (start + 2 * run_size - 1 < size)
+        for (uint64_t start = 0; start < size; start += 2 * run_size) {
+            uint64_t mid = start + run_size - 1;
+            uint64_t end = (start + 2 * run_size - 1 < size)
                               ? start + 2 * run_size - 1
                               : size - 1;
 
@@ -244,7 +244,7 @@ int CVector_clear(CVector_t *vector) {
     if (vector == NULL)
         return CVECTOR_NULL_VECTOR;
     if (vector->destroy != NULL) {
-        for (int64_t i = 0; i < vector->size; ++i) {
+        for (uint64_t i = 0; i < vector->size; ++i) {
             if (vector->data[i] != NULL) {
                 vector->destroy(vector->data[i]);
                 vector->data[i] = NULL;
@@ -303,7 +303,7 @@ CResult_t *CVector_clone(const CVector_t *source, CloneFn cloner) {
                           "CVector_copy", CVECTOR_ALLOC_FAILURE));
     }
 
-    for (int64_t i = 0; i < source->size; i++) {
+    for (uint64_t i = 0; i < source->size; i++) {
         void *element = cloner(source->data[i]);
         if (CVector_add(copy, element) != CVECTOR_SUCCESS) {
             CVector_free(&copy);
@@ -316,7 +316,7 @@ CResult_t *CVector_clone(const CVector_t *source, CloneFn cloner) {
     return CResult_create(copy, NULL);
 }
 
-int CVector_reserve(CVector_t *vector, int64_t new_capacity) {
+int CVector_reserve(CVector_t *vector, uint64_t new_capacity) {
     if (vector == NULL) {
         return CVECTOR_NULL_VECTOR;
     }
@@ -336,7 +336,7 @@ int CVector_reserve(CVector_t *vector, int64_t new_capacity) {
     return CVECTOR_SUCCESS;
 }
 
-int CVector_set(CVector_t *vector, int64_t index, void *new_element) {
+int CVector_set(CVector_t *vector, uint64_t index, void *new_element) {
     if (vector == NULL || vector->data == NULL) {
         return CVECTOR_NULL_VECTOR;
     }
