@@ -29,14 +29,13 @@
 #include <string.h>
 
 struct CError {
-    const char *msg;            ///< Error message describing the issue.
-    const char *ctx;            ///< Context in which the error occurred.
-    unsigned long int err_code; ///< Error code representing the type or
-                                ///< category of the error.
+    const char *msg;  ///< Error message describing the issue.
+    const char *ctx;  ///< Context in which the error occurred.
+    int64_t err_code; ///< Error code representing the type or
+                      ///< category of the error.
 };
 
-CError_t *CError_create(const char *msg, const char *ctx,
-                        unsigned long int err_code) {
+CError_t *CError_create(const char *msg, const char *ctx, int64_t err_code) {
     CError_t *error = malloc(sizeof(CError_t));
     if (error == NULL)
         return NULL;
@@ -65,10 +64,23 @@ const char *CError_get_context(const CError_t *error) {
     return error->ctx;
 }
 
-unsigned long int CError_get_code(const CError_t *error) {
+int64_t CError_get_code(const CError_t *error) {
     if (error == NULL)
-        return 1 << sizeof(unsigned long int);
+        return 1 << sizeof(int64_t);
     return error->err_code;
+}
+
+int CError_modify(CError_t *error, const char *msg, const char *ctx,
+                  int64_t err_code) {
+    if (error == NULL) {
+        return 1;
+    }
+
+    error->msg = msg;
+    error->ctx = ctx;
+    error->err_code = err_code;
+
+    return 0;
 }
 
 #ifdef CUTILS_COMP_FUNCTIONS

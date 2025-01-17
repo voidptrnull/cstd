@@ -1,16 +1,41 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 Subhadip Roy Chowdhury
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 #include <assert.h>
-#include <cstd/CLog.h>
 #include <cstd/CLinkedList.h>
+#include <cstd/CLog.h>
 #include <stdlib.h>
 #include <string.h>
 
-int scmp(const void* s1,const void* s2) {
-    return strcmp((const char*) s1, (const char*) s2);
+int scmp(const void *s1, const void *s2) {
+    return strcmp((const char *)s1, (const char *)s2);
 }
 
 int test_strings() {
     CLog(INFO, "test_strings()");
-    CResult_t *res = CLinkedList_new(CLINKEDLIST_TYPE_SINGLE, free); // Singly linked list
+    CResult_t *res =
+        CLinkedList_new(CLINKEDLIST_TYPE_SINGLE, free); // Singly linked list
     assert(!CResult_is_error(res));
     CLinkedList_t *list = CResult_get(res);
     char *test_strings[] = {"Hello", "World", "CLinkedList", "Test"};
@@ -27,10 +52,9 @@ int test_strings() {
         CResult_free(&res1);
     }
 
-
     int to_find = rand() % 4;
     assert(CLinkedList_find(list, test_strings[to_find], scmp) == to_find);
-    
+
     CLinkedList_free(&list);
     CResult_free(&res);
     return 0;
@@ -38,7 +62,8 @@ int test_strings() {
 
 int test_integers() {
     CLog(INFO, "test_integers()");
-    CResult_t *res = CLinkedList_new(CLINKEDLIST_TYPE_DOUBLE, free); // Doubly linked list
+    CResult_t *res =
+        CLinkedList_new(CLINKEDLIST_TYPE_DOUBLE, free); // Doubly linked list
     assert(!CResult_is_error(res));
 
     CLinkedList_t *list = CResult_get(res);
@@ -100,7 +125,8 @@ int test_custom_structs() {
 
 int test_clear() {
     CLog(INFO, "test_clear()");
-    CResult_t *res = CLinkedList_new(CLINKEDLIST_TYPE_DOUBLE, free); // Doubly linked list
+    CResult_t *res =
+        CLinkedList_new(CLINKEDLIST_TYPE_DOUBLE, free); // Doubly linked list
     assert(!CResult_is_error(res));
 
     CLinkedList_t *list = CResult_get(res);
@@ -121,7 +147,8 @@ int test_clear() {
 }
 
 void *cclone_integer(const void *data) {
-    if (!data) return NULL;
+    if (!data)
+        return NULL;
     int *clone = malloc(sizeof(int));
     assert(clone != NULL);
     *clone = *(const int *)data;
@@ -130,7 +157,8 @@ void *cclone_integer(const void *data) {
 
 int test_clone() {
     CLog(INFO, "test_clone()");
-    CResult_t *res = CLinkedList_new(CLINKEDLIST_TYPE_SINGLE, free); // Singly linked list
+    CResult_t *res =
+        CLinkedList_new(CLINKEDLIST_TYPE_SINGLE, free); // Singly linked list
     assert(!CResult_is_error(res));
 
     CLinkedList_t *list = CResult_get(res);

@@ -2,18 +2,15 @@
 
 ## Purpose
 
-The purpose of CSTD is to provide the standard C library and provide general implementations of widely or commonly used features
-like that in other languages.
+The purpose of CSTD is to provide an extension for the standard C library and provide general implementations of widely or commonly used features like that in other languages. The project is not meant to provide a monolithic versions of everything but rather bits and pieces for which standalones don't make sense.
 
 ## Usage & Fitness
 
 I have written this library merely to ease-up developement when writing software with C.
-You may use CSTD for any purpose you may deem fit.
+You may use CSTD for any purpose you may deem fit. It does not make any specific claims of usability or fitness for a particular purpose.
 
-While CSTD does not provide emphasis on performance, it tries to be as performant as possible while being able to used.
-This does not mean that CSTD will never be a performance "bottle-neck" for your application. If you are encountering such issues,
-you are better off writing your own "performant" versions for your use-case. However, if you do think the library can be improved,
-please do not hesitate to create a pull request.
+While CSTD does not provide emphasis on performance, it tries to be as performant as possible while being as general as it can get.
+This does not mean that CSTD can and will never be a performance "bottle-neck" for your application. If you are encountering such issues, you are better off writing your own "performant" versions for your use-case. It also includes abstractions for error handling, which can be a overhead and even cause **MAJOR** headaches. However, if you do think the library can be improved, please do not hesitate to create a pull request.
 
 ## What does it and does not intend to do ?
 
@@ -23,7 +20,7 @@ CSTD intends to do the following:
 - Provide a general way to perform common system coroutines or tasks (like buffered file readers).
 
 CSTD does not intend to do the following:
-- Provide things that are already in the standard C library (like memory allocators, etc.)
+- Provide things that are already in the standard C library (like memory allocators, regex, etc.)
 
 ## Usage Philosophy
 
@@ -49,7 +46,7 @@ int main() {
     enable_debugging();
     CResult_t *r = CVector_new(
         20,
-        NULL); // NULL because they are stack-allocated, do not free them.
+        NULL); // NULL for destructor because they are stack-allocated, do not free them.
     if (CResult_is_error(r)) {
         CResult_free(&r);
         return 1;
@@ -87,6 +84,6 @@ int main() {
         CResult_free(&res);
     }
 
-    CVector_free(&vector);
+    CVector_free(&vector); // Every data strucutre has their own free method. They are not freed with CResult_free.
 }
 ```

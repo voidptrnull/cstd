@@ -26,21 +26,22 @@
 /// \brief This file provides an all-in-one access to all the library
 /// co-routines provided in the CSTD implementation.
 ///
-/// \note You will likely not want to use this, because:
-///     - It is a iwyu violation.
-///     - Everytime you include this file, unless you use a precompiled header,
-///     the compiler has to check the files multiple times and causing slowdowns
-///     in compile times.
+/// \note Including this header file may lead to performance issues:
+///     - It violates the "Include What You Use" (IWYU) principle.
+///     - Including this file multiple times (without a precompiled header) can
+///     cause unnecessary slowdowns due to the repeated compilation of included
+///     files.
 #ifndef CSTD_H
 #define CSTD_H
 
-#define __CSTD_VERSION__ 101202412UL
+#define CSTD_VERSION 102202501UL
 
 #include "CError.h"
 #include "CHashMap.h"
 #include "CHashSet.h"
 #include "CLinkedList.h"
 #include "CLog.h"
+#include "CQueue.h"
 #include "CResult.h"
 #include "CStack.h"
 #include "CString.h"

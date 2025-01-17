@@ -37,9 +37,10 @@
  *
  * Example usage:
  * \code
- * #include <cstd/logger/CLog.h> // Make sure that the include path is set.
+ * #include <cstd/CLog.h> // Make sure that the include path is set.
  *
  * int main() {
+ *     enable_debugging(); // Enables debug messages
  *     enable_colors(); // Enable ANSI-colored output
  *     CLog(INFO, "Application started successfully.");
  *     CLog(DEBUG, "Debugging some variables: x=%d, y=%d", x, y);

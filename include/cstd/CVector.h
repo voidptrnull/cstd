@@ -41,18 +41,13 @@
 #ifndef CSTD_CVECTOR_H
 #define CSTD_CVECTOR_H
 
-#include "Operators.h"
 #include "CResult.h"
+#include "Operators.h"
 
 /// \brief Default growth rate for resizing the vector's capacity.
 /// \details When resizing, the vector's capacity is multiplied by this growth
 /// rate.
 #define CVECTOR_DEFAULT_GROWTH_RATE 2ULL
-
-/// \brief Default initial capacity for the vector.
-/// \details The default size of the vector when it is first initialized.
-///          The default value is 32.
-#define CVECTOR_DEFAULT_ALLOC_SIZE 32
 
 /// \brief Error code indicating that the vector pointer is null.
 /// \details This code is returned when a function receives a NULL pointer for
@@ -86,25 +81,30 @@
 typedef struct _CVector CVector_t;
 
 /// \brief Create a new vector and initialize it with a specified initial
-/// capacity. \param reserve_capacity The capacity to reserve for the vector. If
-/// zero, a default capacity is used. \param destroy The destructor function to
-/// use for cleaning up elements, or `NULL` if no destructor is needed. \return
-/// Returns a pointer to the newly created `CVector` structure, encapsulated in
-/// CResult for better error handling.
+/// capacity.
+/// \param reserve_capacity The capacity to reserve for the vector. If
+/// zero, a default capacity is used.
+/// \param destroy The destructor function to
+/// use for cleaning up elements, or `NULL` if no destructor is needed.
+/// \return Returns a pointer to the newly created `CVector` structure,
+/// encapsulated in CResult for better error handling.
 CResult_t *CVector_new(uint64_t reserve_capacity, Destructor destroy);
 
 /// \brief Initialize the vector with a specified initial capacity.
 /// \param vector Pointer to the `CVector` structure to be initialized.
 /// \param reserve_capacity The capacity to reserve for the vector. If zero, a
-/// default capacity is used. \param destroy The destructor function to use for
-/// cleaning up elements, or `NULL` if no destructor is needed. \return Returns
-/// `CVECTOR_SUCCESS` on success, or an error code if initialization fails.
+/// default capacity is used.
+/// \param destroy The destructor function to use for cleaning up elements, or
+/// `NULL` if no destructor is needed.
+/// \return Returns `CVECTOR_SUCCESS` on success, or an error code if
+/// initialization fails.
 int CVector_init(CVector_t *vector, uint64_t reserve_capacity,
                  Destructor destroy);
 
 /// \brief Returns the size of the vector. Not to be confused with capacity or
-/// allocated size. \param vector The vector to retrieve the size from. \return
-/// The point
+/// allocated size.
+/// \param vector The vector to retrieve the size from.
+/// \return The size of the vector.
 uint64_t CVector_size(CVector_t *vector);
 
 /// \brief Add an element to the end of the vector.
@@ -120,6 +120,13 @@ int CVector_add(CVector_t *vector, void *element);
 /// \return Returns `CVECTOR_SUCCESS` on success, or an error code if the
 /// operation fails (e.g., invalid index).
 int CVector_del(CVector_t *vector, uint64_t index);
+
+/// \brief Retrieve an element from the vector at the specified index.
+/// \param vector Pointer to the `CVector` structure.
+/// \param index The index of the element to retrieve.
+/// \return Returns a pointer to the element at the specified index, or `NULL`
+/// if the index is invalid.
+void *CVector_fget(const CVector_t *vector, uint64_t index);
 
 /// \brief Retrieve an element from the vector at the specified index.
 /// \param vector Pointer to the `CVector` structure.

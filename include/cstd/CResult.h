@@ -62,8 +62,8 @@
 #ifndef CSTD_CRESULT_H
 #define CSTD_CRESULT_H
 
-#include "Operators.h"
 #include "CError.h"
+#include "Operators.h"
 
 /// \struct CResult
 /// \brief Structure for wrapping the value or error.
@@ -75,9 +75,6 @@ typedef struct CResult CResult_t;
 /// free the value.
 /// \return Pointer to a newly allocated `CResult` object with
 /// `status` set to `CRESULT_OK` and the `value` field populated.
-///
-/// \note It is advisable that you avoid stack-allocation and use
-/// heap-allocation instead.
 CResult_t *CResult_create(void *value, Destructor destroy);
 
 /// \brief Creates a `CResult` object representing an error.
@@ -99,15 +96,32 @@ int CResult_is_error(const CResult_t *result);
 
 /// \brief Retrieves the value from a successful `CResult` object.
 /// \param result Pointer to the `CResult` object from which to retrieve the
-/// value. \return Pointer to the value encapsulated in the `CResult` if
-/// successful, or `NULL` if the `result` is an error.
+/// value.
+/// \return Pointer to the value encapsulated in the `CResult` if successful, or
+/// `NULL` if the `result` is an error.
 void *CResult_get(const CResult_t *result);
 
 /// \brief Retrieves the error from an error `CResult` object.
 /// \param result Pointer to the `CResult` object from which to retrieve the
-/// error. \return Pointer to the `CError` object encapsulated in the `CResult`
-/// if it represents an error, or `NULL` if the `result` is successful.
+/// error.
+/// \return Pointer to the `CError` object encapsulated in the `CResult`  if it
+/// represents an error, or `NULL` if the `result` is successful.
 CError_t *CResult_eget(const CResult_t *result);
+
+/// \brief Modify the existing data of the CResult_t, thus effectively allowing
+/// to avoid excessive memory allocations in cases where it can be avoided.
+/// \param value Pointer to the value to be encapsulated in the `CResult`.
+/// \param destroy Function pointer for custom free function. This is used to
+/// free the value.
+/// \return `0` if modification is a success, `1` otherwise.
+int CResult_modify(CResult_t *result, void *value, Destructor destroy);
+
+/// \brief Modify the existing data of the CResult_t, thus effectively allowing
+/// to avoid excessive memory allocations in cases where it can be avoided. This
+/// is a variation for CError_t strucutre.
+/// \param error Pointer to the `CError` stricture.
+/// \return `0` if modification is a success, `1` otherwise.
+int CResult_emodify(CResult_t *result, CError_t *error);
 
 /// \brief Free the resources used by the `CResult` object.
 /// \param result  The pointer to the pointer to the `CResult` object.

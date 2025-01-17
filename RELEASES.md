@@ -29,3 +29,16 @@ None
 
 ## Removal/Deprecation:
 None
+
+**VERSION:** `1.0.2 (2025/01)`
+
+## Addition:
+- CQueue - Provide a implementation for queues, where the user can specify which to use.
+
+## Modification:
+- CError - Added a modify function.
+- CResult - Added two modify functions for both types of result outcomes.
+- CVector - Added a get (fget) method that returns the pointer directly, thus avoiding the issue of multiple allocations.
+
+## Removal/Deprecation:
+None

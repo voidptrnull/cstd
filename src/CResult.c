@@ -25,16 +25,8 @@
 #include <cstd/CResult.h>
 #include <stdlib.h>
 
-/// \internal
-/// \enum CResultStatus
-/// \brief Enumeration representing the status of a `CResult`.
-/// \details The `CResultStatus` can either be `CRESULT_OK` if the operation was
-/// successful,
-///          or `CRESULT_ERROR` if an error occurred.
-typedef enum {
-    CRESULT_OK,   ///< Indicates a successful operation.
-    CRESULT_ERROR ///< Indicates an error occurred.
-} CResultStatus;
+#define CRESULT_OK 0    ///< Indicates a successful operation.
+#define CRESULT_ERROR 1 ///< Indicates an error occurred.
 
 /// \internal
 /// \struct CResult
@@ -45,8 +37,8 @@ typedef enum {
 ///          indicate success or failure, and a union that holds either the
 ///          result value or an error pointer.
 struct CResult {
-    CResultStatus
-        status; ///< Status of the result (`CRESULT_OK` or `CRESULT_ERROR`).
+    ///< Status of the result (`CRESULT_OK` or `CRESULT_ERROR`).
+    uint64_t status;
     union {
         void *value;   ///< Pointer to the successful result value.
         CError_t *err; ///< Pointer to the error if the operation failed.
@@ -89,6 +81,43 @@ CError_t *CResult_eget(const CResult_t *result) {
     if (result == NULL || result->status == CRESULT_OK)
         return NULL;
     return result->err;
+}
+
+int CResult_modify(CResult_t *result, void *value, Destructor destroy) {
+    if (!result || !value) {
+        return CRESULT_ERROR;
+    }
+
+
+    if (result->status == CRESULT_ERROR && result->err != NULL) {
+        CError_free(&result->err);
+    } else if (result->destroy != NULL) {
+        result->destroy(result->value);
+        result->value = NULL;
+    }
+
+    result->status = CRESULT_OK;
+    result->value = value;
+    result->destroy = destroy;
+    return CRESULT_OK;
+}
+
+int CResult_emodify(CResult_t *result, CError_t *error) {
+    if (!result || !error) {
+        return CRESULT_ERROR;
+    }
+
+    if (result->status == CRESULT_ERROR && result->err != NULL) {
+        CError_free(&result->err);
+    } else if (result->destroy != NULL) {
+        result->destroy(result->value);
+        result->value = NULL;
+    }
+
+    result->status = CRESULT_ERROR;
+    result->err = error;
+    result->destroy = NULL;
+    return CRESULT_OK;
 }
 
 void CResult_free(CResult_t **result) {

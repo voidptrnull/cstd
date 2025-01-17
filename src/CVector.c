@@ -28,8 +28,8 @@
 
 struct _CVector {
     void **data;        ///< Array to store data.
-    uint64_t size;       ///< Number of elements in the vector.
-    uint64_t capacity;   ///< Capacity of the vector.
+    uint64_t size;      ///< Number of elements in the vector.
+    uint64_t capacity;  ///< Capacity of the vector.
     Destructor destroy; ///< Function pointer to the destructor for cleaning up
                         ///< individual elements.
 };
@@ -39,11 +39,10 @@ static int alloc(CVector_t *vector) {
         return CVECTOR_NULL_VECTOR;
 
     if (vector->data == NULL) {
-        vector->data = malloc(CVECTOR_DEFAULT_ALLOC_SIZE * sizeof(void *));
+        vector->data = malloc(vector->capacity * sizeof(void *));
         if (vector->data == NULL)
             return CVECTOR_ALLOC_FAILURE;
         vector->size = 0;
-        vector->capacity = CVECTOR_DEFAULT_ALLOC_SIZE;
         return CVECTOR_SUCCESS;
     }
 
@@ -129,6 +128,12 @@ int CVector_del(CVector_t *vector, uint64_t index) {
     return CVECTOR_SUCCESS;
 }
 
+void *CVector_fget(const CVector_t *vector, uint64_t index) {
+    if (vector == NULL || index >= vector->size)
+        return NULL;
+    return vector->data[index];
+}
+
 CResult_t *CVector_get(const CVector_t *vector, uint64_t index) {
     if (vector == NULL)
         return CResult_ecreate(
@@ -165,46 +170,33 @@ static void insertion_sort(void **data, uint64_t left, uint64_t right,
     }
 }
 
-static void merge(void **data, uint64_t l, uint64_t m, uint64_t r, CompareTo cmp) {
+static void merge(void **data, uint64_t l, uint64_t m, uint64_t r,
+                  CompareTo cmp, void **temp) {
     uint64_t len1 = m - l + 1;
     uint64_t len2 = r - m;
 
-    void **left = malloc(len1 * sizeof(void *));
-    void **right = malloc(len2 * sizeof(void *));
+    memcpy(temp, &data[l], len1 * sizeof(void *));
+    memcpy(&temp[len1], &data[m + 1], len2 * sizeof(void *));
 
-    if (left == NULL || right == NULL) {
-        free(left);
-        free(right);
-        return;
-    }
+    uint64_t i = 0, j = len1, k = l;
 
-    memcpy(left, &data[l], len1 * sizeof(void *));
-    memcpy(right, &data[m + 1], len2 * sizeof(void *));
-
-    uint64_t i = 0, j = 0, k = l;
-    while (i < len1 && j < len2) {
-        if (cmp(left[i], right[j]) <= 0) {
-            data[k++] = left[i++];
+    while (i < len1 && j < len1 + len2) {
+        if (cmp(temp[i], temp[j]) <= 0) {
+            data[k++] = temp[i++];
         } else {
-            data[k++] = right[j++];
+            data[k++] = temp[j++];
         }
     }
 
     while (i < len1) {
-        data[k++] = left[i++];
+        data[k++] = temp[i++];
     }
 
-    while (j < len2) {
-        data[k++] = right[j++];
+    while (j < len1 + len2) {
+        data[k++] = temp[j++];
     }
-
-    free(left);
-    free(right);
 }
 
-// Thanks to Patrick Perry and other authors.
-// I referenced this from
-// https://github.com/patperry/timsort/blob/master/timsort.c
 static void timsort(void **data, uint64_t size, CompareTo cmp) {
     const uint64_t min_run = 32;
 
@@ -213,20 +205,27 @@ static void timsort(void **data, uint64_t size, CompareTo cmp) {
         insertion_sort(data, i, end, cmp);
     }
 
+    void **temp = malloc(size * sizeof(void *));
+    if (temp == NULL) {
+        return;
+    }
+
     uint64_t run_size = min_run;
     while (run_size < size) {
         for (uint64_t start = 0; start < size; start += 2 * run_size) {
             uint64_t mid = start + run_size - 1;
             uint64_t end = (start + 2 * run_size - 1 < size)
-                              ? start + 2 * run_size - 1
-                              : size - 1;
+                               ? start + 2 * run_size - 1
+                               : size - 1;
 
             if (mid < end) {
-                merge(data, start, mid, end, cmp);
+                merge(data, start, mid, end, cmp, temp);
             }
         }
         run_size *= 2;
     }
+
+    free(temp);
 }
 
 int CVector_sort(CVector_t *vector, CompareTo cmp) {

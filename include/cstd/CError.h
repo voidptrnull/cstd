@@ -37,7 +37,7 @@
 #ifndef CSTD_CERROR_H
 #define CSTD_CERROR_H
 
-#include <stddef.h>
+#include <stdint.h>
 
 /// \struct CError
 /// \brief Structure representing an error in the CUtils library.
@@ -49,12 +49,12 @@ typedef struct CError CError_t;
 
 /// \brief Creates a new `CError` object.
 /// \details Allocates and initializes a `CError` object with the provided
-/// message, context, and error code. \param msg The error message as a C
-/// string. \param ctx The context in which the error occurred as a C string.
-/// \param err_code The error code as an unsigned long integer.
+/// message, context, and error code.
+/// \param msg The error message as a Cstring.
+/// \param ctx The context in which the error occurred as a C string.
+/// \param err_code The error code as an int64_t.
 /// \return Pointer to the newly allocated `CError` object.
-CError_t *CError_create(const char *msg, const char *ctx,
-                      unsigned long int err_code);
+CError_t *CError_create(const char *msg, const char *ctx, int64_t err_code);
 
 /// \brief Frees a `CError` object.
 /// \details Releases the memory associated with the given `CError` object,
@@ -75,8 +75,8 @@ const char *CError_get_context(const CError_t *error);
 
 /// \brief Retrieves the error code from a `CError` object.
 /// \param error Pointer to the `CError` object.
-/// \return The error code as an unsigned long integer.
-unsigned long int CError_get_code(const CError_t *error);
+/// \return The error code as an int64_t.
+int64_t CError_get_code(const CError_t *error);
 
 /// \typedef ErrorHandler
 /// \brief Function pointer type for error handling functions.
@@ -86,6 +86,16 @@ unsigned long int CError_get_code(const CError_t *error);
 ///          or otherwise process errors.
 /// \param error Pointer to the `CError` object representing the error.
 typedef void (*ErrorHandler)(const CError_t *error);
+
+/// \brief Modify the existing data of the CError, thus effectively allowing to
+/// avoid excessive memory allocations in cases where it can be avoided.
+/// \param error Pointer to the `CError` stricture.
+/// \param msg The error message as a Cstring.
+/// \param ctx The context in which the error occurred as a C string.
+/// \param err_code The error code as an int64_t.
+/// \return `0` if modification is a success, `1` otherwise.
+int CError_modify(CError_t *error, const char *msg, const char *ctx,
+                  int64_t err_code);
 
 #ifdef CUTILS_COMP_FUNCTIONS
 /// \brief Prints a `CError` object to standard output.

@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2024 Subhadip Roy Chowdhury
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 #include <assert.h>
 #include <cstd/CLog.h>
 #include <cstd/CVector.h>
@@ -41,14 +65,14 @@ int test_floats() {
         float *f = malloc(sizeof(float));
         assert(f != NULL);
         *f = test_floats[i];
-        CVector_add(vec, f);
+        assert(CVector_add(vec, f) == CVECTOR_SUCCESS);
     }
 
     for (int i = 0; i < 3; i++) {
         CResult_t *res1 = CVector_get(vec, i);
         assert(!CResult_is_error(res1));
-        float *f = CResult_get(res1);
-        assert(*f == test_floats[i]);
+        float f = *(float *)CResult_get(res1);
+        assert(f == test_floats[i]);
         CResult_free(&res1);
     }
 
@@ -248,10 +272,12 @@ int cmp(const void *a, const void *b) {
 
 int test_sort() {
     CLog(INFO, "test_sort()");
-    CResult_t *res = CVector_new(300, free);
+    CResult_t *res = CVector_new(200000, free);
     assert(!CResult_is_error(res));
     CVector_t *vec = CResult_get(res);
-    for (int64_t i = 1; i < 2000; i++) {
+    CResult_free(&res);
+
+    for (int64_t i = 1; i < 200000; i++) {
         uint64_t *e = malloc(sizeof(uint64_t));
         assert(e != NULL);
         *e = UINT64_MAX / i;
@@ -259,17 +285,13 @@ int test_sort() {
     }
     assert(CVector_sort(vec, cmp) == CVECTOR_SUCCESS);
     for (int64_t i = 1; i < CVector_size(vec); i++) {
-        CResult_t *res1 = CVector_get(vec, i);
-        assert(!CResult_is_error(res1));
-        CResult_t *res2 = CVector_get(vec, i - 1);
-        assert(!CResult_is_error(res2));
-        assert(*(uint64_t *)CResult_get(res1) >=
-               *(uint64_t *)CResult_get(res2));
-        CResult_free(&res1);
-        CResult_free(&res2);
+        void *res1 = CVector_fget(vec, i);
+        assert(res1 != NULL);
+        void *res2 = CVector_fget(vec, i - 1);
+        assert(res2 != NULL);
+        assert(*(uint64_t *)res1 > *(uint64_t *)res2);
     }
     CVector_free(&vec);
-    CResult_free(&res);
     return 0;
 }
 
