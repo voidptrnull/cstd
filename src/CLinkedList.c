@@ -19,7 +19,7 @@ typedef struct _CLinkedList {
     };
     __CDNode *tail;
     Destructor destroy;
-    uint64_t size;
+    size_t size;
 } CLinkedList_t;
 
 CResult_t *CLinkedList_new(int list_type, Destructor destroy) {
@@ -118,7 +118,7 @@ int CLinkedList_add(CLinkedList_t *list, void *element) {
     return CLINKEDLIST_SUCCESS;
 }
 
-int CLinkedList_remove(CLinkedList_t *list, uint64_t index) {
+int CLinkedList_remove(CLinkedList_t *list, size_t index) {
     if (!list) {
         return CLINKEDLIST_NULL_LIST;
     }
@@ -131,12 +131,12 @@ int CLinkedList_remove(CLinkedList_t *list, uint64_t index) {
         __CDNode *current;
         if (index < list->size / 2) {
             current = list->dhead->next;
-            for (uint64_t i = 0; i < index; i++) {
+            for (size_t i = 0; i < index; i++) {
                 current = current->next;
             }
         } else {
             current = list->tail->prev;
-            for (uint64_t i = list->size - 1; i > index; i--) {
+            for (size_t i = list->size - 1; i > index; i--) {
                 current = current->prev;
             }
         }
@@ -158,7 +158,7 @@ int CLinkedList_remove(CLinkedList_t *list, uint64_t index) {
         __CSNode *current = list->shead;
         __CSNode *prev = NULL;
 
-        for (uint64_t i = 0; i < index; i++) {
+        for (size_t i = 0; i < index; i++) {
             prev = current;
             current = current->next;
         }
@@ -176,7 +176,7 @@ int CLinkedList_remove(CLinkedList_t *list, uint64_t index) {
     return CLINKEDLIST_SUCCESS;
 }
 
-CResult_t *CLinkedList_get(const CLinkedList_t *list, uint64_t index) {
+CResult_t *CLinkedList_get(const CLinkedList_t *list, size_t index) {
     if (!list) {
         return CResult_ecreate(CError_create("List is NULL.", "CLinkedList_get",
                                              CLINKEDLIST_NULL_LIST));
@@ -192,40 +192,40 @@ CResult_t *CLinkedList_get(const CLinkedList_t *list, uint64_t index) {
         __CDNode *current;
         if (index < list->size / 2) {
             current = list->dhead->next;
-            for (uint64_t i = 0; i < index; i++) {
+            for (size_t i = 0; i < index; i++) {
                 current = current->next;
             }
         } else {
             current = list->tail->prev;
-            for (uint64_t i = list->size - 1; i > index; i--) {
+            for (size_t i = list->size - 1; i > index; i--) {
                 current = current->prev;
             }
         }
         return CResult_create(current->value, NULL);
     } else { // SINGLY LINKED LIST
         __CSNode *current = list->shead;
-        for (uint64_t i = 0; i < index; i++) {
+        for (size_t i = 0; i < index; i++) {
             current = current->next;
         }
         return CResult_create(current->value, NULL);
     }
 }
 
-uint64_t CLinkedList_find(const CLinkedList_t *list, void *key, CompareTo cmp) {
+size_t CLinkedList_find(const CLinkedList_t *list, void *key, CompareTo cmp) {
     if (!list) {
         return CLINKEDLIST_NULL_LIST;
     }
 
     if (list->tail) {                          
         __CDNode *current = list->dhead->next;
-        for (uint64_t i = 0; i < list->size; i++) {
+        for (size_t i = 0; i < list->size; i++) {
             if (cmp(current->value, key) == 0)
                 return i;
             current = current->next;
         }
     } else { // Singly linked list
         __CSNode *current = list->shead;
-        for (uint64_t i = 0; i < list->size; i++) {
+        for (size_t i = 0; i < list->size; i++) {
             if (cmp(current->value, key) == 0)
                 return i;
             current = current->next;
@@ -341,7 +341,7 @@ CResult_t *CLinkedList_clone(const CLinkedList_t *source, CloneFn cloner) {
     return CResult_create(clone, NULL);
 }
 
-uint64_t CLinkedList_size(const CLinkedList_t *list) {
+size_t CLinkedList_size(const CLinkedList_t *list) {
     if (!list) {
         return 0;
     }

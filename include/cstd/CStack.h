@@ -40,6 +40,10 @@
 #ifndef CSTD_CSTACK_H
 #define CSTD_CSTACK_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CResult.h"
 
 // Error codes for stack operations
@@ -112,5 +116,9 @@ int CStack_clear(CStack_t *stack);
 /// \param stack A pointer to a pointer to the stack to be freed.
 /// \return CSTACK_SUCCESS on success, or an error code on failure.
 int CStack_free(CStack_t **stack);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CSTACK_H

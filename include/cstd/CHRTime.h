@@ -40,11 +40,15 @@
 #ifndef CSTD_CHRTIME_H
 #define CSTD_CHRTIME_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
-typedef uint64_t hrtime_t;
+typedef size_t hrtime_t;
 
 /// \brief Retrieve the current time in nanoseconds.
 /// \return The current high-resolution time in nanoseconds.
@@ -75,7 +79,7 @@ hrtime_t hrtime_ms() {
 
 #elif defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #include <time.h>
-typedef uint64_t hrtime_t;
+typedef size_t hrtime_t;
 
 /// \brief Retrieve the current time in nanoseconds.
 /// \return The current high-resolution time in nanoseconds.
@@ -103,6 +107,10 @@ hrtime_t hrtime_ms() {
 
 #else
 #error "Unsupported platform"
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // CSTD_CHRTIME_H

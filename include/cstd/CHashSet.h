@@ -40,6 +40,10 @@
 #ifndef CSTD_CHASHSET_H
 #define CSTD_CHASHSET_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CResult.h"
 #include "Operators.h"
 
@@ -97,7 +101,7 @@ typedef struct _CHashSet CHashSet_t;
 /// `NULL` if no destructor is needed.
 /// \return Returns a pointer to the newly created `CHashSet` structure,
 /// encapsulated in CResult for error handling.
-CResult_t *CHashSet_new(uint64_t capacity, CompareTo cmp, Hash hash,
+CResult_t *CHashSet_new(size_t capacity, CompareTo cmp, Hash hash,
                         Destructor destroy);
 
 /// \brief Initialize a hash set with a specified initial capacity.
@@ -109,7 +113,7 @@ CResult_t *CHashSet_new(uint64_t capacity, CompareTo cmp, Hash hash,
 /// `NULL` if no destructor is needed.
 /// \return Returns `CHASHSET_SUCCESS` on success, or an error code if
 /// initialization fails.
-int CHashSet_init(CHashSet_t *set, uint64_t capacity, CompareTo cmp, Hash hash,
+int CHashSet_init(CHashSet_t *set, size_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroy);
 
 /// \brief Add an element to the hash set.
@@ -138,7 +142,7 @@ int CHashSet_contains(CHashSet_t *set, void *value);
 /// \param key The index of the element to retrieve.
 /// \return Returns a pointer to `CResult`, which in turn contains the element
 /// at the specified index, or `NULL` if the index is invalid.
-CResult_t *CHashSet_get(CHashSet_t *set, uint64_t key);
+CResult_t *CHashSet_get(CHashSet_t *set, size_t key);
 
 /// \brief Clear the hash set and release its resources.
 /// \details This function releases the memory allocated for the elements in the
@@ -155,5 +159,9 @@ int CHashSet_clear(CHashSet_t *set);
 /// \note This function releases all memory associated with the hash set,
 /// including the structure itself.
 int CHashSet_free(CHashSet_t **set);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CHASHSET_H

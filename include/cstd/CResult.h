@@ -62,6 +62,10 @@
 #ifndef CSTD_CRESULT_H
 #define CSTD_CRESULT_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CError.h"
 #include "Operators.h"
 
@@ -139,5 +143,9 @@ int CResult_emodify(CResult_t *result, CError_t *error);
 /// After freeing the `CResult` object, the pointer to the `CResult` is set to
 /// `NULL` to avoid dangling references.
 void CResult_free(CResult_t **result);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CRESULT_H

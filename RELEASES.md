@@ -42,3 +42,25 @@ None
 
 ## Removal/Deprecation:
 None
+
+**VERSION:** `1.0.3 (2025/01)`
+
+## Addition:
+- CHeap - Provide a implementation for min-max heaps.
+
+## Modification:
+- CError - Added C++ namespace comptability.
+- CResult - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CHashMap - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CHashSet - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CStack - Added C++ namespace compatibility.
+- CQueue - Added C++ namespace comptability.
+- CHRTime - Added C++ namespace compatibility.
+- CLog - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CLinkedList - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CString - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- CVector - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+- Operators - Added C++ namespace comptability. Reverted from uint64_t to size_t for platform support.
+
+## Removal/Deprecation:
+None

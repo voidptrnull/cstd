@@ -40,6 +40,10 @@
 #ifndef CSTD_CLINKEDLIST_H
 #define CSTD_CLINKEDLIST_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CResult.h"
 #include "Operators.h"
 
@@ -115,14 +119,14 @@ int CLinkedList_add(CLinkedList_t *list, void *element);
 /// \param index The index of the element to remove.
 /// \return Returns `CLINKEDLIST_SUCCESS` on success, or an error code if
 /// the operation fails (e.g., invalid index).
-int CLinkedList_remove(CLinkedList_t *list, uint64_t index);
+int CLinkedList_remove(CLinkedList_t *list, size_t index);
 
 /// \brief Retrieve an element from the list at the specified index.
 /// \param list Pointer to the `CLinkedList` structure.
 /// \param index The index of the element to retrieve.
 /// \return Returns a pointer to CResult, which in turn contains the element
 /// at the specified index, or `NULL` if the index is invalid.
-CResult_t *CLinkedList_get(const CLinkedList_t *list, uint64_t index);
+CResult_t *CLinkedList_get(const CLinkedList_t *list, size_t index);
 
 /// \brief Find the index of a specific element in the list.
 /// \param list Pointer to the `CLinkedList` structure.
@@ -130,7 +134,7 @@ CResult_t *CLinkedList_get(const CLinkedList_t *list, uint64_t index);
 /// \param cmp The function pointer to compare the values with the key.
 /// \return Returns the index of the `key` if found, or `-1UL` if the element
 /// is not present.
-uint64_t CLinkedList_find(const CLinkedList_t *list, void *key, CompareTo cmp);
+size_t CLinkedList_find(const CLinkedList_t *list, void *key, CompareTo cmp);
 
 /// \brief Clear the resources used by the list.
 /// \details This function releases the memory allocated for the elements and
@@ -160,6 +164,10 @@ CResult_t *CLinkedList_clone(const CLinkedList_t *source, CloneFn cloner);
 /// \brief Get the size of the list.
 /// \param list Pointer to the `CLinkedList` structure.
 /// \return The size of the list (number of elements).
-uint64_t CLinkedList_size(const CLinkedList_t *list);
+size_t CLinkedList_size(const CLinkedList_t *list);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CLINKEDLIST_H

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -99,7 +99,7 @@ $(function(){ initResizable(false); });
 
 <p>A simple and lightweight logging library routine provider for C.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 </div>
 <p><a href="CLog_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -126,9 +126,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3a4c6c63779cb095b5d48d1ad03e1d71" id="r_a3a4c6c63779cb095b5d48d1ad03e1d71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a4c6c63779cb095b5d48d1ad03e1d71">CLogImpl</a> (int level, char *loc, __uint64_t line, const char *format,...)</td></tr>
-<tr class="memdesc:a3a4c6c63779cb095b5d48d1ad03e1d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a specific severity level.  <br /></td></tr>
-<tr class="separator:a3a4c6c63779cb095b5d48d1ad03e1d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900571be7a71138275ebe6ee84eeed64" id="r_a900571be7a71138275ebe6ee84eeed64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a900571be7a71138275ebe6ee84eeed64">CLogImpl</a> (int level, char *loc, size_t line, const char *format,...)</td></tr>
+<tr class="memdesc:a900571be7a71138275ebe6ee84eeed64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs a message with a specific severity level.  <br /></td></tr>
+<tr class="separator:a900571be7a71138275ebe6ee84eeed64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca63ef6354d7c4566935db67592f3ad9" id="r_aca63ef6354d7c4566935db67592f3ad9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca63ef6354d7c4566935db67592f3ad9">enable_colors</a> (void)</td></tr>
 <tr class="memdesc:aca63ef6354d7c4566935db67592f3ad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables ANSI-colored output for log messages.  <br /></td></tr>
 <tr class="separator:aca63ef6354d7c4566935db67592f3ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,12 +168,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shortened_location</b
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="ttc" id="aCLog_8h_html"><div class="ttname"><a href="CLog_8h.html">CLog.h</a></div><div class="ttdoc">A simple and lightweight logging library routine provider for C.</div></div>
-<div class="ttc" id="aCLog_8h_html_a271d8f7f52be750e5c744a394ec71344"><div class="ttname"><a href="#a271d8f7f52be750e5c744a394ec71344">WARN</a></div><div class="ttdeci">#define WARN</div><div class="ttdoc">Warning level for cautionary messages.</div><div class="ttdef"><b>Definition</b> CLog.h:60</div></div>
-<div class="ttc" id="aCLog_8h_html_a8fe83ac76edc595f6b98cd4a4127aed5"><div class="ttname"><a href="#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a></div><div class="ttdeci">#define ERROR</div><div class="ttdoc">Error level for critical issues.</div><div class="ttdef"><b>Definition</b> CLog.h:61</div></div>
+<div class="ttc" id="aCLog_8h_html_a271d8f7f52be750e5c744a394ec71344"><div class="ttname"><a href="#a271d8f7f52be750e5c744a394ec71344">WARN</a></div><div class="ttdeci">#define WARN</div><div class="ttdoc">Warning level for cautionary messages.</div><div class="ttdef"><b>Definition</b> CLog.h:64</div></div>
+<div class="ttc" id="aCLog_8h_html_a8fe83ac76edc595f6b98cd4a4127aed5"><div class="ttname"><a href="#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a></div><div class="ttdeci">#define ERROR</div><div class="ttdoc">Error level for critical issues.</div><div class="ttdef"><b>Definition</b> CLog.h:65</div></div>
 <div class="ttc" id="aCLog_8h_html_aa3245fae45915809e3f64ab81c08fd58"><div class="ttname"><a href="#aa3245fae45915809e3f64ab81c08fd58">enable_debugging</a></div><div class="ttdeci">void enable_debugging(void)</div><div class="ttdoc">Enables debug outputs. This is turned off by default.</div></div>
 <div class="ttc" id="aCLog_8h_html_aca63ef6354d7c4566935db67592f3ad9"><div class="ttname"><a href="#aca63ef6354d7c4566935db67592f3ad9">enable_colors</a></div><div class="ttdeci">void enable_colors(void)</div><div class="ttdoc">Enables ANSI-colored output for log messages.</div></div>
-<div class="ttc" id="aCLog_8h_html_ad72dbcf6d0153db1b8d8a58001feed83"><div class="ttname"><a href="#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a></div><div class="ttdeci">#define DEBUG</div><div class="ttdoc">Debug level for verbose logging.</div><div class="ttdef"><b>Definition</b> CLog.h:58</div></div>
-<div class="ttc" id="aCLog_8h_html_ae1103fea1e1b3c41ca3322d5389f7162"><div class="ttname"><a href="#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></div><div class="ttdeci">#define INFO</div><div class="ttdoc">Info level for general information.</div><div class="ttdef"><b>Definition</b> CLog.h:59</div></div>
+<div class="ttc" id="aCLog_8h_html_ad72dbcf6d0153db1b8d8a58001feed83"><div class="ttname"><a href="#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a></div><div class="ttdeci">#define DEBUG</div><div class="ttdoc">Debug level for verbose logging.</div><div class="ttdef"><b>Definition</b> CLog.h:62</div></div>
+<div class="ttc" id="aCLog_8h_html_ae1103fea1e1b3c41ca3322d5389f7162"><div class="ttname"><a href="#ae1103fea1e1b3c41ca3322d5389f7162">INFO</a></div><div class="ttdeci">#define INFO</div><div class="ttdoc">Info level for general information.</div><div class="ttdef"><b>Definition</b> CLog.h:63</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a04dd4051b04fce714422658d5070bebd" name="a04dd4051b04fce714422658d5070bebd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a04dd4051b04fce714422658d5070bebd">&#9670;&#160;</a></span>CLog</h2>
@@ -198,14 +198,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shortened_location</b
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_function" href="#a3a4c6c63779cb095b5d48d1ad03e1d71">CLogImpl</a>(level, __FILE__, __LINE__,format, ##__VA_ARGS__)</div>
-<div class="ttc" id="aCLog_8h_html_a3a4c6c63779cb095b5d48d1ad03e1d71"><div class="ttname"><a href="#a3a4c6c63779cb095b5d48d1ad03e1d71">CLogImpl</a></div><div class="ttdeci">void CLogImpl(int level, char *loc, __uint64_t line, const char *format,...)</div><div class="ttdoc">Logs a message with a specific severity level.</div></div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_function" href="#a900571be7a71138275ebe6ee84eeed64">CLogImpl</a>(level, __FILE__, __LINE__,format, ##__VA_ARGS__)</div>
+<div class="ttc" id="aCLog_8h_html_a900571be7a71138275ebe6ee84eeed64"><div class="ttname"><a href="#a900571be7a71138275ebe6ee84eeed64">CLogImpl</a></div><div class="ttdeci">void CLogImpl(int level, char *loc, size_t line, const char *format,...)</div><div class="ttdoc">Logs a message with a specific severity level.</div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3a4c6c63779cb095b5d48d1ad03e1d71" name="a3a4c6c63779cb095b5d48d1ad03e1d71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a4c6c63779cb095b5d48d1ad03e1d71">&#9670;&#160;</a></span>CLogImpl()</h2>
+<a id="a900571be7a71138275ebe6ee84eeed64" name="a900571be7a71138275ebe6ee84eeed64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900571be7a71138275ebe6ee84eeed64">&#9670;&#160;</a></span>CLogImpl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +223,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>shortened_location</b
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">__uint64_t</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -100,7 +100,8 @@ $(function(){ initResizable(false); });
 
 <p>Header file for all definitions of functions to be used or provided by the user.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="Operators_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -109,9 +110,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a9fe4009a9ab82eaae68d8d3f87e7b89b" id="r_a9fe4009a9ab82eaae68d8d3f87e7b89b"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a>) (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a9fe4009a9ab82eaae68d8d3f87e7b89b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for comparison functions.  <br /></td></tr>
 <tr class="separator:a9fe4009a9ab82eaae68d8d3f87e7b89b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a938fb46f0e2acc91126dd1dccf917841" id="r_a938fb46f0e2acc91126dd1dccf917841"><td class="memItemLeft" align="right" valign="top">typedef uint64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a938fb46f0e2acc91126dd1dccf917841">Hash</a>) (const void *key)</td></tr>
-<tr class="memdesc:a938fb46f0e2acc91126dd1dccf917841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for hash functions.  <br /></td></tr>
-<tr class="separator:a938fb46f0e2acc91126dd1dccf917841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57256c3a81d021cf0da786ca72e04876" id="r_a57256c3a81d021cf0da786ca72e04876"><td class="memItemLeft" align="right" valign="top">typedef size_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57256c3a81d021cf0da786ca72e04876">Hash</a>) (const void *key)</td></tr>
+<tr class="memdesc:a57256c3a81d021cf0da786ca72e04876"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for hash functions.  <br /></td></tr>
+<tr class="separator:a57256c3a81d021cf0da786ca72e04876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab97786fe2483a950ebbc3eada82c4c73" id="r_ab97786fe2483a950ebbc3eada82c4c73"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a>) (void *data)</td></tr>
 <tr class="memdesc:ab97786fe2483a950ebbc3eada82c4c73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer type for destructor functions.  <br /></td></tr>
 <tr class="separator:ab97786fe2483a950ebbc3eada82c4c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,12 +128,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a37eb4a0a536b9fe626c06b7922fcfc9c" id="r_a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37eb4a0a536b9fe626c06b7922fcfc9c">ccompare_integer</a> (const void *a, const void *b)</td></tr>
 <tr class="memdesc:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare function for integers.  <br /></td></tr>
 <tr class="separator:a37eb4a0a536b9fe626c06b7922fcfc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03fdc24b989585a54914b303c40aee8d" id="r_a03fdc24b989585a54914b303c40aee8d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03fdc24b989585a54914b303c40aee8d">chash_string</a> (const void *key)</td></tr>
-<tr class="memdesc:a03fdc24b989585a54914b303c40aee8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
-<tr class="separator:a03fdc24b989585a54914b303c40aee8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab26a4e15d309c9b426cf03ba8c0dc541" id="r_ab26a4e15d309c9b426cf03ba8c0dc541"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab26a4e15d309c9b426cf03ba8c0dc541">cdefault_hash</a> (const void *key)</td></tr>
-<tr class="memdesc:ab26a4e15d309c9b426cf03ba8c0dc541"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
-<tr class="separator:ab26a4e15d309c9b426cf03ba8c0dc541"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4157eb754c9aac92a47107789351d66d" id="r_a4157eb754c9aac92a47107789351d66d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4157eb754c9aac92a47107789351d66d">chash_string</a> (const void *key)</td></tr>
+<tr class="memdesc:a4157eb754c9aac92a47107789351d66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for strings.  <br /></td></tr>
+<tr class="separator:a4157eb754c9aac92a47107789351d66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbbf765bb3df5c959af0e4f89e1f00f6" id="r_abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbbf765bb3df5c959af0e4f89e1f00f6">cdefault_hash</a> (const void *key)</td></tr>
+<tr class="memdesc:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default hash function for void pointers.  <br /></td></tr>
+<tr class="separator:abbbf765bb3df5c959af0e4f89e1f00f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6c89c74ced32fa71304ed19bae086b" id="r_aca6c89c74ced32fa71304ed19bae086b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca6c89c74ced32fa71304ed19bae086b">cclone_integer</a> (const void *data)</td></tr>
 <tr class="memdesc:aca6c89c74ced32fa71304ed19bae086b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default clone function for integers.  <br /></td></tr>
 <tr class="separator:aca6c89c74ced32fa71304ed19bae086b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,14 +212,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a938fb46f0e2acc91126dd1dccf917841" name="a938fb46f0e2acc91126dd1dccf917841"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a938fb46f0e2acc91126dd1dccf917841">&#9670;&#160;</a></span>Hash</h2>
+<a id="a57256c3a81d021cf0da786ca72e04876" name="a57256c3a81d021cf0da786ca72e04876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57256c3a81d021cf0da786ca72e04876">&#9670;&#160;</a></span>Hash</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef uint64_t(* Hash) (const void *key)</td>
+          <td class="memname">typedef size_t(* Hash) (const void *key)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -326,14 +327,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab26a4e15d309c9b426cf03ba8c0dc541" name="ab26a4e15d309c9b426cf03ba8c0dc541"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab26a4e15d309c9b426cf03ba8c0dc541">&#9670;&#160;</a></span>cdefault_hash()</h2>
+<a id="abbbf765bb3df5c959af0e4f89e1f00f6" name="abbbf765bb3df5c959af0e4f89e1f00f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbbf765bb3df5c959af0e4f89e1f00f6">&#9670;&#160;</a></span>cdefault_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t cdefault_hash </td>
+          <td class="memname">size_t cdefault_hash </td>
           <td>(</td>
           <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
           <td></td>
@@ -353,14 +354,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a03fdc24b989585a54914b303c40aee8d" name="a03fdc24b989585a54914b303c40aee8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03fdc24b989585a54914b303c40aee8d">&#9670;&#160;</a></span>chash_string()</h2>
+<a id="a4157eb754c9aac92a47107789351d66d" name="a4157eb754c9aac92a47107789351d66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4157eb754c9aac92a47107789351d66d">&#9670;&#160;</a></span>chash_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t chash_string </td>
+          <td class="memname">size_t chash_string </td>
           <td>(</td>
           <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
           <td></td>

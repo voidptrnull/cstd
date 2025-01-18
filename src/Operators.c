@@ -38,9 +38,9 @@ int ccompare_integer(const void *a, const void *b) {
     return (*int_a > *int_b) - (*int_a < *int_b);
 }
 
-uint64_t chash_string(const void *key) {
+size_t chash_string(const void *key) {
     const char *str_key = (const char *)key;
-    uint64_t hash = 5381;
+    size_t hash = 5381;
     int c;
     while ((c = *str_key++)) {
         hash = ((hash << 5) + hash) + c; // hash * 33 + c
@@ -48,7 +48,7 @@ uint64_t chash_string(const void *key) {
     return hash;
 }
 
-uint64_t cdefault_hash(const void *key) {
+size_t cdefault_hash(const void *key) {
     uintptr_t ptr = (uintptr_t)key;
     ptr ^= (ptr >> 33);
     ptr *= 0xff51afd7ed558ccd;
@@ -56,7 +56,7 @@ uint64_t cdefault_hash(const void *key) {
     ptr *= 0xc4ceb9fe1a85ec53;
     ptr ^= (ptr >> 33);
 
-    return (uint64_t)ptr;
+    return (size_t)ptr;
 }
 
 void *cclone_integer(const void *data) {

@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -134,30 +134,30 @@ typedef struct _CVector&#160;</td><td class="memItemRight" valign="bottom"><b>CV
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a96a08ce9258a31382b3c193afcd0176b" id="r_a96a08ce9258a31382b3c193afcd0176b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96a08ce9258a31382b3c193afcd0176b">CVector_new</a> (uint64_t reserve_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy)</td></tr>
-<tr class="memdesc:a96a08ce9258a31382b3c193afcd0176b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new vector and initialize it with a specified initial capacity.  <br /></td></tr>
-<tr class="separator:a96a08ce9258a31382b3c193afcd0176b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e0214836052539b836e529bf9b1ec15" id="r_a6e0214836052539b836e529bf9b1ec15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e0214836052539b836e529bf9b1ec15">CVector_init</a> (CVector_t *vector, uint64_t reserve_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy)</td></tr>
-<tr class="memdesc:a6e0214836052539b836e529bf9b1ec15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the vector with a specified initial capacity.  <br /></td></tr>
-<tr class="separator:a6e0214836052539b836e529bf9b1ec15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97057642cca3e7bcefd367b369e8aa5c" id="r_a97057642cca3e7bcefd367b369e8aa5c"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97057642cca3e7bcefd367b369e8aa5c">CVector_size</a> (CVector_t *vector)</td></tr>
-<tr class="memdesc:a97057642cca3e7bcefd367b369e8aa5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the vector. Not to be confused with capacity or allocated size.  <br /></td></tr>
-<tr class="separator:a97057642cca3e7bcefd367b369e8aa5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4efafd0d2c0763ccde48b984aec711e" id="r_ac4efafd0d2c0763ccde48b984aec711e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4efafd0d2c0763ccde48b984aec711e">CVector_new</a> (size_t reserve_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy)</td></tr>
+<tr class="memdesc:ac4efafd0d2c0763ccde48b984aec711e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new vector and initialize it with a specified initial capacity.  <br /></td></tr>
+<tr class="separator:ac4efafd0d2c0763ccde48b984aec711e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a151792f9bd49f734e496b63c77a810fe" id="r_a151792f9bd49f734e496b63c77a810fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a151792f9bd49f734e496b63c77a810fe">CVector_init</a> (CVector_t *vector, size_t reserve_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy)</td></tr>
+<tr class="memdesc:a151792f9bd49f734e496b63c77a810fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the vector with a specified initial capacity.  <br /></td></tr>
+<tr class="separator:a151792f9bd49f734e496b63c77a810fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b3aa6824f75c9d37c0e2900396ee47" id="r_a39b3aa6824f75c9d37c0e2900396ee47"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39b3aa6824f75c9d37c0e2900396ee47">CVector_size</a> (CVector_t *vector)</td></tr>
+<tr class="memdesc:a39b3aa6824f75c9d37c0e2900396ee47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size of the vector. Not to be confused with capacity or allocated size.  <br /></td></tr>
+<tr class="separator:a39b3aa6824f75c9d37c0e2900396ee47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a395dd7a962455284ec3440d32c55544c" id="r_a395dd7a962455284ec3440d32c55544c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a395dd7a962455284ec3440d32c55544c">CVector_add</a> (CVector_t *vector, void *element)</td></tr>
 <tr class="memdesc:a395dd7a962455284ec3440d32c55544c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element to the end of the vector.  <br /></td></tr>
 <tr class="separator:a395dd7a962455284ec3440d32c55544c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a776310817f768a6709b3fd7dd4b51320" id="r_a776310817f768a6709b3fd7dd4b51320"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a776310817f768a6709b3fd7dd4b51320">CVector_del</a> (CVector_t *vector, uint64_t index)</td></tr>
-<tr class="memdesc:a776310817f768a6709b3fd7dd4b51320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an element from the vector at the specified index.  <br /></td></tr>
-<tr class="separator:a776310817f768a6709b3fd7dd4b51320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10d824361b18b96c2468f05ebe022ee7" id="r_a10d824361b18b96c2468f05ebe022ee7"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10d824361b18b96c2468f05ebe022ee7">CVector_fget</a> (const CVector_t *vector, uint64_t index)</td></tr>
-<tr class="memdesc:a10d824361b18b96c2468f05ebe022ee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the vector at the specified index.  <br /></td></tr>
-<tr class="separator:a10d824361b18b96c2468f05ebe022ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace1cabbe053e5d442d1afbb8f7764620" id="r_ace1cabbe053e5d442d1afbb8f7764620"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace1cabbe053e5d442d1afbb8f7764620">CVector_get</a> (const CVector_t *vector, uint64_t index)</td></tr>
-<tr class="memdesc:ace1cabbe053e5d442d1afbb8f7764620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the vector at the specified index.  <br /></td></tr>
-<tr class="separator:ace1cabbe053e5d442d1afbb8f7764620"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87e898c6b3a264d590c476538d842a17" id="r_a87e898c6b3a264d590c476538d842a17"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87e898c6b3a264d590c476538d842a17">CVector_find</a> (const CVector_t *vector, void *key, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
-<tr class="memdesc:a87e898c6b3a264d590c476538d842a17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of a specific element in the vector.  <br /></td></tr>
-<tr class="separator:a87e898c6b3a264d590c476538d842a17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af80526f3c5098ec70e74ed0eee2dc912" id="r_af80526f3c5098ec70e74ed0eee2dc912"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af80526f3c5098ec70e74ed0eee2dc912">CVector_del</a> (CVector_t *vector, size_t index)</td></tr>
+<tr class="memdesc:af80526f3c5098ec70e74ed0eee2dc912"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an element from the vector at the specified index.  <br /></td></tr>
+<tr class="separator:af80526f3c5098ec70e74ed0eee2dc912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58a846921935e613b36421b54bc4ef2e" id="r_a58a846921935e613b36421b54bc4ef2e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58a846921935e613b36421b54bc4ef2e">CVector_fget</a> (const CVector_t *vector, size_t index)</td></tr>
+<tr class="memdesc:a58a846921935e613b36421b54bc4ef2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the vector at the specified index.  <br /></td></tr>
+<tr class="separator:a58a846921935e613b36421b54bc4ef2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3668c9a59ebe1100831125785829e09e" id="r_a3668c9a59ebe1100831125785829e09e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3668c9a59ebe1100831125785829e09e">CVector_get</a> (const CVector_t *vector, size_t index)</td></tr>
+<tr class="memdesc:a3668c9a59ebe1100831125785829e09e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the vector at the specified index.  <br /></td></tr>
+<tr class="separator:a3668c9a59ebe1100831125785829e09e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3effffccc721916a8d932ddf36b9945" id="r_aa3effffccc721916a8d932ddf36b9945"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3effffccc721916a8d932ddf36b9945">CVector_find</a> (const CVector_t *vector, void *key, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
+<tr class="memdesc:aa3effffccc721916a8d932ddf36b9945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of a specific element in the vector.  <br /></td></tr>
+<tr class="separator:aa3effffccc721916a8d932ddf36b9945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f7de65d18908eb5b84019d5433a3b42" id="r_a0f7de65d18908eb5b84019d5433a3b42"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f7de65d18908eb5b84019d5433a3b42">CVector_sort</a> (CVector_t *vector, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
 <tr class="memdesc:a0f7de65d18908eb5b84019d5433a3b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the elements of the vector using a comparison function by timsort.  <br /></td></tr>
 <tr class="separator:a0f7de65d18908eb5b84019d5433a3b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,12 +170,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a1d73986c51bc4858186e9117e4d0c31d" id="r_a1d73986c51bc4858186e9117e4d0c31d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d73986c51bc4858186e9117e4d0c31d">CVector_clone</a> (const CVector_t *source, <a class="el" href="Operators_8h.html#ac6bf75d530a8b083bc904d95408af0d3">CloneFn</a> cloner)</td></tr>
 <tr class="memdesc:a1d73986c51bc4858186e9117e4d0c31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a clone of the <a class="el" href="structCVector.html" title="Structure representing a dynamic array of void* pointers.">CVector</a> object.  <br /></td></tr>
 <tr class="separator:a1d73986c51bc4858186e9117e4d0c31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcf4abe5d1853eb8ade61be362d8d031" id="r_abcf4abe5d1853eb8ade61be362d8d031"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcf4abe5d1853eb8ade61be362d8d031">CVector_reserve</a> (CVector_t *vector, uint64_t new_capacity)</td></tr>
-<tr class="memdesc:abcf4abe5d1853eb8ade61be362d8d031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve a specified capacity for the vector.  <br /></td></tr>
-<tr class="separator:abcf4abe5d1853eb8ade61be362d8d031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7f0fee501cffa015e9488aa4043ddab" id="r_ae7f0fee501cffa015e9488aa4043ddab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7f0fee501cffa015e9488aa4043ddab">CVector_set</a> (CVector_t *vector, uint64_t index, void *new_element)</td></tr>
-<tr class="memdesc:ae7f0fee501cffa015e9488aa4043ddab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the element at the specified index in the vector.  <br /></td></tr>
-<tr class="separator:ae7f0fee501cffa015e9488aa4043ddab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a9edfffa0c7b99e49db89632f69e70" id="r_ad7a9edfffa0c7b99e49db89632f69e70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7a9edfffa0c7b99e49db89632f69e70">CVector_reserve</a> (CVector_t *vector, size_t new_capacity)</td></tr>
+<tr class="memdesc:ad7a9edfffa0c7b99e49db89632f69e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve a specified capacity for the vector.  <br /></td></tr>
+<tr class="separator:ad7a9edfffa0c7b99e49db89632f69e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03f9a0a1082a31881ed29dfe249b453" id="r_ab03f9a0a1082a31881ed29dfe249b453"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab03f9a0a1082a31881ed29dfe249b453">CVector_set</a> (CVector_t *vector, size_t index, void *new_element)</td></tr>
+<tr class="memdesc:ab03f9a0a1082a31881ed29dfe249b453"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the element at the specified index in the vector.  <br /></td></tr>
+<tr class="separator:ab03f9a0a1082a31881ed29dfe249b453"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the <a class="el" href="structCVector.html" title="Structure representing a dynamic array of void* pointers.">CVector</a> implementation. </p>
@@ -375,8 +375,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a776310817f768a6709b3fd7dd4b51320" name="a776310817f768a6709b3fd7dd4b51320"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a776310817f768a6709b3fd7dd4b51320">&#9670;&#160;</a></span>CVector_del()</h2>
+<a id="af80526f3c5098ec70e74ed0eee2dc912" name="af80526f3c5098ec70e74ed0eee2dc912"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af80526f3c5098ec70e74ed0eee2dc912">&#9670;&#160;</a></span>CVector_del()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +389,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -406,8 +406,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a10d824361b18b96c2468f05ebe022ee7" name="a10d824361b18b96c2468f05ebe022ee7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10d824361b18b96c2468f05ebe022ee7">&#9670;&#160;</a></span>CVector_fget()</h2>
+<a id="a58a846921935e613b36421b54bc4ef2e" name="a58a846921935e613b36421b54bc4ef2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58a846921935e613b36421b54bc4ef2e">&#9670;&#160;</a></span>CVector_fget()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -420,7 +420,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -437,14 +437,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a87e898c6b3a264d590c476538d842a17" name="a87e898c6b3a264d590c476538d842a17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87e898c6b3a264d590c476538d842a17">&#9670;&#160;</a></span>CVector_find()</h2>
+<a id="aa3effffccc721916a8d932ddf36b9945" name="aa3effffccc721916a8d932ddf36b9945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3effffccc721916a8d932ddf36b9945">&#9670;&#160;</a></span>CVector_find()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t CVector_find </td>
+          <td class="memname">size_t CVector_find </td>
           <td>(</td>
           <td class="paramtype">const CVector_t *</td>          <td class="paramname"><span class="paramname"><em>vector</em></span>, </td>
         </tr>
@@ -501,8 +501,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ace1cabbe053e5d442d1afbb8f7764620" name="ace1cabbe053e5d442d1afbb8f7764620"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace1cabbe053e5d442d1afbb8f7764620">&#9670;&#160;</a></span>CVector_get()</h2>
+<a id="a3668c9a59ebe1100831125785829e09e" name="a3668c9a59ebe1100831125785829e09e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3668c9a59ebe1100831125785829e09e">&#9670;&#160;</a></span>CVector_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -515,7 +515,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -532,8 +532,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e0214836052539b836e529bf9b1ec15" name="a6e0214836052539b836e529bf9b1ec15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e0214836052539b836e529bf9b1ec15">&#9670;&#160;</a></span>CVector_init()</h2>
+<a id="a151792f9bd49f734e496b63c77a810fe" name="a151792f9bd49f734e496b63c77a810fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a151792f9bd49f734e496b63c77a810fe">&#9670;&#160;</a></span>CVector_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -546,7 +546,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>reserve_capacity</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>reserve_capacity</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -569,8 +569,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a96a08ce9258a31382b3c193afcd0176b" name="a96a08ce9258a31382b3c193afcd0176b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96a08ce9258a31382b3c193afcd0176b">&#9670;&#160;</a></span>CVector_new()</h2>
+<a id="ac4efafd0d2c0763ccde48b984aec711e" name="ac4efafd0d2c0763ccde48b984aec711e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4efafd0d2c0763ccde48b984aec711e">&#9670;&#160;</a></span>CVector_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -578,7 +578,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CVector_new </td>
           <td>(</td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>reserve_capacity</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>reserve_capacity</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -600,8 +600,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abcf4abe5d1853eb8ade61be362d8d031" name="abcf4abe5d1853eb8ade61be362d8d031"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcf4abe5d1853eb8ade61be362d8d031">&#9670;&#160;</a></span>CVector_reserve()</h2>
+<a id="ad7a9edfffa0c7b99e49db89632f69e70" name="ad7a9edfffa0c7b99e49db89632f69e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a9edfffa0c7b99e49db89632f69e70">&#9670;&#160;</a></span>CVector_reserve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -614,7 +614,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>new_capacity</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>new_capacity</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -632,8 +632,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae7f0fee501cffa015e9488aa4043ddab" name="ae7f0fee501cffa015e9488aa4043ddab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7f0fee501cffa015e9488aa4043ddab">&#9670;&#160;</a></span>CVector_set()</h2>
+<a id="ab03f9a0a1082a31881ed29dfe249b453" name="ab03f9a0a1082a31881ed29dfe249b453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab03f9a0a1082a31881ed29dfe249b453">&#9670;&#160;</a></span>CVector_set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -646,7 +646,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -670,14 +670,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a97057642cca3e7bcefd367b369e8aa5c" name="a97057642cca3e7bcefd367b369e8aa5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97057642cca3e7bcefd367b369e8aa5c">&#9670;&#160;</a></span>CVector_size()</h2>
+<a id="a39b3aa6824f75c9d37c0e2900396ee47" name="a39b3aa6824f75c9d37c0e2900396ee47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b3aa6824f75c9d37c0e2900396ee47">&#9670;&#160;</a></span>CVector_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t CVector_size </td>
+          <td class="memname">size_t CVector_size </td>
           <td>(</td>
           <td class="paramtype">CVector_t *</td>          <td class="paramname"><span class="paramname"><em>vector</em></span></td><td>)</td>
           <td></td>

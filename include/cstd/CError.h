@@ -37,6 +37,10 @@
 #ifndef CSTD_CERROR_H
 #define CSTD_CERROR_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 /// \struct CError
@@ -104,6 +108,10 @@ int CError_modify(CError_t *error, const char *msg, const char *ctx,
 ///          object, including the error message, context, and error code.
 /// \param error Pointer to the `CError` object to print.
 void print_error(const CError_t *error);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // CSTD_CERROR_H

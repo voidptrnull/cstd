@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -143,15 +143,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a14442110ba7d405a3d2dba37264db730" id="r_a14442110ba7d405a3d2dba37264db730"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14442110ba7d405a3d2dba37264db730">CLinkedList_add</a> (CLinkedList_t *list, void *element)</td></tr>
 <tr class="memdesc:a14442110ba7d405a3d2dba37264db730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an element to the end of the list.  <br /></td></tr>
 <tr class="separator:a14442110ba7d405a3d2dba37264db730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb3af82eea9d1f599123098ab3960c34" id="r_aeb3af82eea9d1f599123098ab3960c34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb3af82eea9d1f599123098ab3960c34">CLinkedList_remove</a> (CLinkedList_t *list, uint64_t index)</td></tr>
-<tr class="memdesc:aeb3af82eea9d1f599123098ab3960c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from the list at the specified index.  <br /></td></tr>
-<tr class="separator:aeb3af82eea9d1f599123098ab3960c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a897e11497f3ef5bbcbae935bad566151" id="r_a897e11497f3ef5bbcbae935bad566151"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a897e11497f3ef5bbcbae935bad566151">CLinkedList_get</a> (const CLinkedList_t *list, uint64_t index)</td></tr>
-<tr class="memdesc:a897e11497f3ef5bbcbae935bad566151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the list at the specified index.  <br /></td></tr>
-<tr class="separator:a897e11497f3ef5bbcbae935bad566151"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4724a799f625a212c5cf174a6b9c2d2" id="r_ab4724a799f625a212c5cf174a6b9c2d2"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4724a799f625a212c5cf174a6b9c2d2">CLinkedList_find</a> (const CLinkedList_t *list, void *key, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
-<tr class="memdesc:ab4724a799f625a212c5cf174a6b9c2d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of a specific element in the list.  <br /></td></tr>
-<tr class="separator:ab4724a799f625a212c5cf174a6b9c2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17d86b1cc96a73e84870058484bf6dc3" id="r_a17d86b1cc96a73e84870058484bf6dc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17d86b1cc96a73e84870058484bf6dc3">CLinkedList_remove</a> (CLinkedList_t *list, size_t index)</td></tr>
+<tr class="memdesc:a17d86b1cc96a73e84870058484bf6dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an element from the list at the specified index.  <br /></td></tr>
+<tr class="separator:a17d86b1cc96a73e84870058484bf6dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac55ca31fa021bf5307437e54bdac2f2c" id="r_ac55ca31fa021bf5307437e54bdac2f2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac55ca31fa021bf5307437e54bdac2f2c">CLinkedList_get</a> (const CLinkedList_t *list, size_t index)</td></tr>
+<tr class="memdesc:ac55ca31fa021bf5307437e54bdac2f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve an element from the list at the specified index.  <br /></td></tr>
+<tr class="separator:ac55ca31fa021bf5307437e54bdac2f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8aa20f139126856ca3f61db68d0f73" id="r_a8f8aa20f139126856ca3f61db68d0f73"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f8aa20f139126856ca3f61db68d0f73">CLinkedList_find</a> (const CLinkedList_t *list, void *key, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
+<tr class="memdesc:a8f8aa20f139126856ca3f61db68d0f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the index of a specific element in the list.  <br /></td></tr>
+<tr class="separator:a8f8aa20f139126856ca3f61db68d0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97fd7ea498d6492481ccc2a40327d5f9" id="r_a97fd7ea498d6492481ccc2a40327d5f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97fd7ea498d6492481ccc2a40327d5f9">CLinkedList_clear</a> (CLinkedList_t *list)</td></tr>
 <tr class="memdesc:a97fd7ea498d6492481ccc2a40327d5f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the resources used by the list.  <br /></td></tr>
 <tr class="separator:a97fd7ea498d6492481ccc2a40327d5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,9 +161,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a022e8f33505837057ca93913333d123e" id="r_a022e8f33505837057ca93913333d123e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a022e8f33505837057ca93913333d123e">CLinkedList_clone</a> (const CLinkedList_t *source, <a class="el" href="Operators_8h.html#ac6bf75d530a8b083bc904d95408af0d3">CloneFn</a> cloner)</td></tr>
 <tr class="memdesc:a022e8f33505837057ca93913333d123e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clone the linked list.  <br /></td></tr>
 <tr class="separator:a022e8f33505837057ca93913333d123e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee5efc140dd32987d8be39f1ade77d2b" id="r_aee5efc140dd32987d8be39f1ade77d2b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee5efc140dd32987d8be39f1ade77d2b">CLinkedList_size</a> (const CLinkedList_t *list)</td></tr>
-<tr class="memdesc:aee5efc140dd32987d8be39f1ade77d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the list.  <br /></td></tr>
-<tr class="separator:aee5efc140dd32987d8be39f1ade77d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7497ff1a806a05ed5535cb3fa49a59f0" id="r_a7497ff1a806a05ed5535cb3fa49a59f0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7497ff1a806a05ed5535cb3fa49a59f0">CLinkedList_size</a> (const CLinkedList_t *list)</td></tr>
+<tr class="memdesc:a7497ff1a806a05ed5535cb3fa49a59f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the list.  <br /></td></tr>
+<tr class="separator:a7497ff1a806a05ed5535cb3fa49a59f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the <a class="el" href="structCLinkedList.html" title="Structure representing a doubly linked list.">CLinkedList</a> implementation. </p>
@@ -362,14 +362,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab4724a799f625a212c5cf174a6b9c2d2" name="ab4724a799f625a212c5cf174a6b9c2d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4724a799f625a212c5cf174a6b9c2d2">&#9670;&#160;</a></span>CLinkedList_find()</h2>
+<a id="a8f8aa20f139126856ca3f61db68d0f73" name="a8f8aa20f139126856ca3f61db68d0f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8aa20f139126856ca3f61db68d0f73">&#9670;&#160;</a></span>CLinkedList_find()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t CLinkedList_find </td>
+          <td class="memname">size_t CLinkedList_find </td>
           <td>(</td>
           <td class="paramtype">const CLinkedList_t *</td>          <td class="paramname"><span class="paramname"><em>list</em></span>, </td>
         </tr>
@@ -425,8 +425,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a897e11497f3ef5bbcbae935bad566151" name="a897e11497f3ef5bbcbae935bad566151"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a897e11497f3ef5bbcbae935bad566151">&#9670;&#160;</a></span>CLinkedList_get()</h2>
+<a id="ac55ca31fa021bf5307437e54bdac2f2c" name="ac55ca31fa021bf5307437e54bdac2f2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac55ca31fa021bf5307437e54bdac2f2c">&#9670;&#160;</a></span>CLinkedList_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +439,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -522,8 +522,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb3af82eea9d1f599123098ab3960c34" name="aeb3af82eea9d1f599123098ab3960c34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb3af82eea9d1f599123098ab3960c34">&#9670;&#160;</a></span>CLinkedList_remove()</h2>
+<a id="a17d86b1cc96a73e84870058484bf6dc3" name="a17d86b1cc96a73e84870058484bf6dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17d86b1cc96a73e84870058484bf6dc3">&#9670;&#160;</a></span>CLinkedList_remove()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -536,7 +536,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -553,14 +553,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aee5efc140dd32987d8be39f1ade77d2b" name="aee5efc140dd32987d8be39f1ade77d2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee5efc140dd32987d8be39f1ade77d2b">&#9670;&#160;</a></span>CLinkedList_size()</h2>
+<a id="a7497ff1a806a05ed5535cb3fa49a59f0" name="a7497ff1a806a05ed5535cb3fa49a59f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7497ff1a806a05ed5535cb3fa49a59f0">&#9670;&#160;</a></span>CLinkedList_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t CLinkedList_size </td>
+          <td class="memname">size_t CLinkedList_size </td>
           <td>(</td>
           <td class="paramtype">const CLinkedList_t *</td>          <td class="paramname"><span class="paramname"><em>list</em></span></td><td>)</td>
           <td></td>

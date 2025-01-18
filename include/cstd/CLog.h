@@ -54,13 +54,17 @@
 #ifndef CSTD_LOG_H
 #define CSTD_LOG_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Logging levels
 #define DEBUG 0 ///< Debug level for verbose logging.
 #define INFO 1  ///< Info level for general information.
 #define WARN 2  ///< Warning level for cautionary messages.
 #define ERROR 3 ///< Error level for critical issues.
 
-#include <stdint.h>
+#include <stddef.h>
 
 /// \brief Logs a message with a specific severity level.
 /// \param level The severity level of the log message. It can be one of the
@@ -77,7 +81,7 @@
 /// This function prints the log message to the standard output or standard
 /// error based on the log level. It also includes a timestamp and uses colors
 /// if enabled.
-void CLogImpl(int level, char* loc, __uint64_t line, const char *format, ...);
+void CLogImpl(int level, char* loc, size_t line, const char *format, ...);
 
 #define CLog(level, format, ...) \
     CLogImpl(level, __FILE__, __LINE__,format, ##__VA_ARGS__)
@@ -114,5 +118,9 @@ void disable_location(void);
 /// \brief Restrict the location to only be the file name, do noot include the parent directories.
 /// Calling this once enables shortened location, else disables it.
 void shortened_location(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_LOG_H

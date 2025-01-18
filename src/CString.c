@@ -43,7 +43,7 @@ CResult_t *CString_new() {
     return CResult_create(string, NULL);
 }
 
-int CString_init(CString_t *string, uint64_t size) {
+int CString_init(CString_t *string, size_t size) {
     if (string == NULL)
         return CSTRING_NULL_STRING;
 
@@ -66,11 +66,11 @@ int CString_set(CString_t *string, char *str) {
     if (code != 0)
         return code;
 
-    uint64_t len = strlen(str);
+    size_t len = strlen(str);
     code = CString_init(string, len);
     if (code)
         return code;
-    for (uint64_t i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
         code = CVector_add(string->characters, &str[i]);
         if (code != CVECTOR_SUCCESS) {
             return CSTRING_OP_FAILURE;
@@ -80,7 +80,7 @@ int CString_set(CString_t *string, char *str) {
     return CSTRING_SUCCESS;
 }
 
-char CString_at(const CString_t *string, uint64_t index) {
+char CString_at(const CString_t *string, size_t index) {
     if (string == NULL || string->characters == NULL)
         return '\0';
 
@@ -108,7 +108,7 @@ int CString_free(CString_t **string) {
     return CSTRING_SUCCESS;
 }
 
-uint64_t CString_length(const CString_t *string) {
+size_t CString_length(const CString_t *string) {
     return CVector_size(string->characters);
 }
 
@@ -116,14 +116,14 @@ int CString_append_c(CString_t *string, const char *str) {
     if (string == NULL || str == NULL)
         return CSTRING_NULL_STRING;
 
-    uint64_t append_len = strlen(str);
-    uint64_t current_len = CVector_size(string->characters);
+    size_t append_len = strlen(str);
+    size_t current_len = CVector_size(string->characters);
 
     if (CVector_reserve(string->characters, current_len + append_len) !=
         CVECTOR_SUCCESS)
         return CSTRING_ALLOC_FAILURE;
 
-    for (uint64_t i = 0; i < append_len; i++)
+    for (size_t i = 0; i < append_len; i++)
         if (CVector_add(string->characters, (void *)(uintptr_t)(str[i])) !=
             CVECTOR_SUCCESS)
             return CSTRING_ALLOC_FAILURE;
@@ -135,14 +135,14 @@ int CString_append(CString_t *string, CString_t *str) {
     if (string == NULL || str == NULL)
         return CSTRING_NULL_STRING;
 
-    uint64_t append_len = CVector_size(str->characters);
-    uint64_t current_len = CVector_size(string->characters);
+    size_t append_len = CVector_size(str->characters);
+    size_t current_len = CVector_size(string->characters);
 
     if (CVector_reserve(string->characters, current_len + append_len) !=
         CVECTOR_SUCCESS)
         return CSTRING_ALLOC_FAILURE;
 
-    for (uint64_t i = 0; i < append_len; i++) {
+    for (size_t i = 0; i < append_len; i++) {
         CResult_t *res = CVector_get(str->characters, i);
         if (CResult_is_error(res) ||
             CVector_add(string->characters, CResult_get(res)) !=
@@ -226,7 +226,7 @@ CResult_t *CString_c_str(CString_t *string) {
         return CResult_ecreate(
             CError_create("Unable to allocate memory for C string.",
                           "CString_c_str", CSTRING_ALLOC_FAILURE));
-    for (uint64_t i = 0; i < CVector_size(string->characters); i++) {
+    for (size_t i = 0; i < CVector_size(string->characters); i++) {
         CResult_t *res = CVector_get(string->characters, i);
         if (CResult_is_error(res)) {
             free(str);
@@ -252,7 +252,7 @@ int CString_equals(CString_t *str1, CString_t *str2) {
     if (CVector_size(str1->characters) != CVector_size(str2->characters))
         return 0;
 
-    for (uint64_t i = 0; i < CVector_size(str1->characters); i++) {
+    for (size_t i = 0; i < CVector_size(str1->characters); i++) {
         CResult_t *res1 = CVector_get(str1->characters, i);
         CResult_t *res2 = CVector_get(str2->characters, i);
 
@@ -283,7 +283,7 @@ int64_t CString_compare(CString_t *str1, CString_t *str2) {
     if (CString_length(str1) - CString_length(str2))
         return CString_length(str1) - CString_length(str2);
 
-    for (uint64_t i = 0; i < CString_length(str1); i++) {
+    for (size_t i = 0; i < CString_length(str1); i++) {
         if (CString_at(str1, i) != CString_at(str2, i)) {
             return CString_at(str1, i) - CString_at(str2, i);
         }
@@ -292,15 +292,15 @@ int64_t CString_compare(CString_t *str1, CString_t *str2) {
     return 0;
 }
 
-CResult_t *CString_substring(const CString_t *string, uint64_t start,
-                             uint64_t end) {
+CResult_t *CString_substring(const CString_t *string, size_t start,
+                             size_t end) {
     if (!string || !string->characters) {
         return CResult_ecreate(
             CError_create("Failed to add character to substring.",
                           "CString_substring", CSTRING_NULL_STRING));
     }
 
-    uint64_t length = CString_length(string);
+    size_t length = CString_length(string);
 
     if (start >= length || end >= length || start > end) {
         return CResult_ecreate(
@@ -308,7 +308,7 @@ CResult_t *CString_substring(const CString_t *string, uint64_t start,
                           "CString_substring", CSTRING_INDEX_OUT_OF_BOUNDS));
     }
 
-    uint64_t substring_length = end - start + 1;
+    size_t substring_length = end - start + 1;
     CResult_t *res = CVector_new(substring_length, NULL);
     if (CResult_is_error(res)) {
         CResult_free(&res);
@@ -324,7 +324,7 @@ CResult_t *CString_substring(const CString_t *string, uint64_t start,
                           "CString_substring", CSTRING_ALLOC_FAILURE));
     }
 
-    for (uint64_t i = start; i <= end; ++i) {
+    for (size_t i = start; i <= end; ++i) {
         char ch = CString_at(string, i);
         if (CVector_add(substring_vector, (void *)(uintptr_t)ch) !=
             CVECTOR_SUCCESS) {
@@ -364,7 +364,7 @@ CResult_t *CString_c_wchar_t(CString_t *string) {
                                              CSTRING_NULL_STRING));
     }
 
-    uint64_t length = CString_length(string);
+    size_t length = CString_length(string);
     wchar_t *wide_str = (wchar_t *)malloc((length + 1) * sizeof(wchar_t));
     if (!wide_str) {
         return CResult_ecreate(
@@ -372,7 +372,7 @@ CResult_t *CString_c_wchar_t(CString_t *string) {
                           "CString_c_utf8_str", CSTRING_ALLOC_FAILURE));
     }
 
-    for (uint64_t i = 0; i < length; ++i) {
+    for (size_t i = 0; i < length; ++i) {
         wide_str[i] = (wchar_t)CString_at(string, i);
     }
 

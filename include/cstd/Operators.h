@@ -11,8 +11,14 @@
 /// simply use the `HAVE_CSTD_DEFAULTS` macro.
 #ifndef CSTD_OPERATORS_H
 #define CSTD_OPERATORS_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define HAVE_CSTD_DEFAULTS
 
+#include <stddef.h>
 #include <stdint.h>
 
 /// \typedef CompareTo
@@ -26,7 +32,7 @@ typedef int32_t (*CompareTo)(const void *a, const void *b);
 /// \brief Function pointer type for hash functions.
 /// \param key Pointer to the element to hash.
 /// \return A `int64_t` value representing the hash of the element.
-typedef uint64_t (*Hash)(const void *key);
+typedef size_t (*Hash)(const void *key);
 
 /// \typedef Destructor
 /// \brief Function pointer type for destructor functions.
@@ -66,7 +72,7 @@ int ccompare_integer(const void *a, const void *b);
 ///
 /// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
 /// check for it's presence.
-uint64_t chash_string(const void *key);
+size_t chash_string(const void *key);
 
 /// \brief Default hash function for void pointers.
 /// \param key Pointer to the element to hash.
@@ -74,7 +80,7 @@ uint64_t chash_string(const void *key);
 ///
 /// \attention This method may be absent. Use the `HAVE_CSTD_DEFAULTS` macro to
 /// check for it's presence.
-uint64_t cdefault_hash(const void *key);
+size_t cdefault_hash(const void *key);
 
 /// \brief Default clone function for integers.
 /// \param data Pointer to the integer to clone.
@@ -85,5 +91,9 @@ uint64_t cdefault_hash(const void *key);
 void *cclone_integer(const void *data);
 
 #endif // CSTD_NO_DEF_FN_IMPL
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_OPERATORS_H

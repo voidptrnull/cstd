@@ -34,7 +34,12 @@
 #ifndef CSTD_H
 #define CSTD_H
 
-#define CSTD_VERSION 102202501UL
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// VERSION: 1.0.3 (2025/01)
+#define CSTD_VERSION 103202501UL
 
 #include "CError.h"
 #include "CHashMap.h"
@@ -47,5 +52,9 @@
 #include "CString.h"
 #include "CVector.h"
 #include "Operators.h"
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_H

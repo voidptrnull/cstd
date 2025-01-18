@@ -59,7 +59,7 @@ static void print_timestamp(FILE *stream) {
             local->tm_sec);
 }
 
-void CLogImpl(int level, char *_loc, uint64_t line, const char *format, ...) {
+void CLogImpl(int level, char *_loc, size_t line, const char *format, ...) {
     const char *level_str;
     const char *loc = short_loc && strrchr(_loc, _CLOG_FILE_SEPERATOR)
                           ? strrchr(_loc, _CLOG_FILE_SEPERATOR) + 1

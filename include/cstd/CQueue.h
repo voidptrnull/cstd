@@ -42,6 +42,10 @@
 #ifndef CSTD_CQUEUE_H
 #define CSTD_CQUEUE_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CResult.h"
 #include "Operators.h"
 #include <stddef.h>
@@ -120,5 +124,9 @@ int CQueue_clear(CQueue_t *queue);
 /// \return Returns `CQUEUE_SUCCESS` on success, or an error code if the operation
 /// fails (e.g., failure to free memory).
 int CQueue_free(CQueue_t **queue);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CQUEUE_H

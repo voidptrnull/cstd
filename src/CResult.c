@@ -38,7 +38,7 @@
 ///          result value or an error pointer.
 struct CResult {
     ///< Status of the result (`CRESULT_OK` or `CRESULT_ERROR`).
-    uint64_t status;
+    size_t status;
     union {
         void *value;   ///< Pointer to the successful result value.
         CError_t *err; ///< Pointer to the error if the operation failed.

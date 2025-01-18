@@ -41,8 +41,12 @@
 #ifndef CSTD_CHASHMAP_H
 #define CSTD_CHASHMAP_H
 
-#include "Operators.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "CVector.h"
+#include "Operators.h"
 
 /// \def CHASHMAP_NULL_VAL
 /// \brief Error code indicating that a value or key is NULL or is not valid.
@@ -92,8 +96,8 @@ typedef struct _CHashMap CHashMap_t;
 /// \warning If memory allocation fails during the creation of the hash map,
 ///          this function will return an error, and no hash map will be
 ///          created.
-CResult_t *CHashMap_new(uint64_t capacity, CompareTo cmp, Hash hash,
-                  Destructor destroyKey, Destructor destroyValue);
+CResult_t *CHashMap_new(size_t capacity, CompareTo cmp, Hash hash,
+                        Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Initialize a hash map.
 /// \details Allocates and initializes a new hash map with the specified
@@ -116,7 +120,7 @@ CResult_t *CHashMap_new(uint64_t capacity, CompareTo cmp, Hash hash,
 ///
 /// \warning If memory allocation fails or the parameters are invalid, the
 /// function will return `CHASHMAP_ALLOC_FAILURE`.
-int CHashMap_init(CHashMap_t *map, uint64_t capacity, CompareTo cmp, Hash hash,
+int CHashMap_init(CHashMap_t *map, size_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey, Destructor destroyValue);
 
 /// \brief Insert a key-value pair into the hash map.
@@ -229,7 +233,7 @@ int CHashMap_clear(CHashMap_t *map);
 /// stored in the hash map.
 ///
 /// \warning If `map` is NULL, the function returns 0.
-uint64_t CHashMap_size(const CHashMap_t *map);
+size_t CHashMap_size(const CHashMap_t *map);
 
 /// \brief Calculate the load factor of the hash map.
 /// \details The load factor is defined as the ratio of the number of key-value
@@ -242,5 +246,9 @@ uint64_t CHashMap_size(const CHashMap_t *map);
 ///
 /// \warning If `map` is NULL, the function returns 0.0.
 double CHashMap_load_factor(const CHashMap_t *map);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // CSTD_CHASHMAP_H

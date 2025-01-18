@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -120,29 +120,37 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifndef CSTD_CSTACK_H</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#define CSTD_CSTACK_H</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="CResult_8h.html">CResult.h</a>&quot;</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Error codes for stack operations</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2169e63108d14798684739168cff1ed3">   46</a></span><span class="preprocessor">#define CSTACK_NULL_STACK -3    </span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="CStack_8h.html#a5d164e5c502389810c08de0b68c36ccf">   47</a></span><span class="preprocessor">#define CSTACK_OVERFLOW -2      </span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="CStack_8h.html#a7cdc31f301ea3908004794058fb9d38a">   48</a></span><span class="preprocessor">#define CSTACK_ALLOC_FAILURE -1 </span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="CStack_8h.html#af20ea84537a02748669e0e26d9c55cc7">   49</a></span><span class="preprocessor">#define CSTACK_SUCCESS 0        </span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">typedef</span> <span class="keyword">struct </span>_CStack CStack_t;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="CStack_8h.html#ac6bf753ec19812447bf315458090123b">   66</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CStack_8h.html#ac6bf753ec19812447bf315458090123b">CStack_new</a>(<a class="code hl_typedef" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="CStack_8h.html#a953ccf89b32410b68482db9af754e5eb">   77</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a953ccf89b32410b68482db9af754e5eb">CStack_init</a>(CStack_t *stack, <a class="code hl_typedef" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="CStack_8h.html#aaf508b8902d72d73dee2fec5bbe7a66d">   87</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#aaf508b8902d72d73dee2fec5bbe7a66d">CStack_push</a>(CStack_t *stack, <span class="keywordtype">void</span> *item);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="CStack_8h.html#a1da9b4b1e6e64db5cfc5e23c4cd515a8">   97</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CStack_8h.html#a1da9b4b1e6e64db5cfc5e23c4cd515a8">CStack_pop</a>(CStack_t *stack);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="CStack_8h.html#a3bd915b63d8e0a146da55125742cab21">  106</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a3bd915b63d8e0a146da55125742cab21">CStack_clear</a>(CStack_t *stack);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2b0f5a46274adaf3d8696bef7e939b22">  114</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a2b0f5a46274adaf3d8696bef7e939b22">CStack_free</a>(CStack_t **stack);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CSTACK_H</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;<a class="code" href="CResult_8h.html">CResult.h</a>&quot;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Error codes for stack operations</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2169e63108d14798684739168cff1ed3">   50</a></span><span class="preprocessor">#define CSTACK_NULL_STACK -3    </span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="CStack_8h.html#a5d164e5c502389810c08de0b68c36ccf">   51</a></span><span class="preprocessor">#define CSTACK_OVERFLOW -2      </span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="CStack_8h.html#a7cdc31f301ea3908004794058fb9d38a">   52</a></span><span class="preprocessor">#define CSTACK_ALLOC_FAILURE -1 </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="CStack_8h.html#af20ea84537a02748669e0e26d9c55cc7">   53</a></span><span class="preprocessor">#define CSTACK_SUCCESS 0        </span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">typedef</span> <span class="keyword">struct </span>_CStack CStack_t;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="CStack_8h.html#ac6bf753ec19812447bf315458090123b">   70</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CStack_8h.html#ac6bf753ec19812447bf315458090123b">CStack_new</a>(<a class="code hl_typedef" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="CStack_8h.html#a953ccf89b32410b68482db9af754e5eb">   81</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a953ccf89b32410b68482db9af754e5eb">CStack_init</a>(CStack_t *stack, <a class="code hl_typedef" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="CStack_8h.html#aaf508b8902d72d73dee2fec5bbe7a66d">   91</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#aaf508b8902d72d73dee2fec5bbe7a66d">CStack_push</a>(CStack_t *stack, <span class="keywordtype">void</span> *item);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="CStack_8h.html#a1da9b4b1e6e64db5cfc5e23c4cd515a8">  101</a></span><a class="code hl_struct" href="structCResult.html">CResult_t</a> *<a class="code hl_function" href="CStack_8h.html#a1da9b4b1e6e64db5cfc5e23c4cd515a8">CStack_pop</a>(CStack_t *stack);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="CStack_8h.html#a3bd915b63d8e0a146da55125742cab21">  110</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a3bd915b63d8e0a146da55125742cab21">CStack_clear</a>(CStack_t *stack);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="CStack_8h.html#a2b0f5a46274adaf3d8696bef7e939b22">  118</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CStack_8h.html#a2b0f5a46274adaf3d8696bef7e939b22">CStack_free</a>(CStack_t **stack);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CSTACK_H</span></div>
 <div class="ttc" id="aCResult_8h_html"><div class="ttname"><a href="CResult_8h.html">CResult.h</a></div><div class="ttdoc">Header file for handling results and errors in the CUtils library.</div></div>
 <div class="ttc" id="aCStack_8h_html_a1da9b4b1e6e64db5cfc5e23c4cd515a8"><div class="ttname"><a href="CStack_8h.html#a1da9b4b1e6e64db5cfc5e23c4cd515a8">CStack_pop</a></div><div class="ttdeci">CResult_t * CStack_pop(CStack_t *stack)</div><div class="ttdoc">Pops an item from the stack.</div></div>
 <div class="ttc" id="aCStack_8h_html_a2b0f5a46274adaf3d8696bef7e939b22"><div class="ttname"><a href="CStack_8h.html#a2b0f5a46274adaf3d8696bef7e939b22">CStack_free</a></div><div class="ttdeci">int CStack_free(CStack_t **stack)</div><div class="ttdoc">Frees the stack.</div></div>
@@ -150,7 +158,7 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aCStack_8h_html_a953ccf89b32410b68482db9af754e5eb"><div class="ttname"><a href="CStack_8h.html#a953ccf89b32410b68482db9af754e5eb">CStack_init</a></div><div class="ttdeci">int CStack_init(CStack_t *stack, Destructor destroy)</div><div class="ttdoc">Initializes a stack.</div></div>
 <div class="ttc" id="aCStack_8h_html_aaf508b8902d72d73dee2fec5bbe7a66d"><div class="ttname"><a href="CStack_8h.html#aaf508b8902d72d73dee2fec5bbe7a66d">CStack_push</a></div><div class="ttdeci">int CStack_push(CStack_t *stack, void *item)</div><div class="ttdoc">Pushes an item onto the stack.</div></div>
 <div class="ttc" id="aCStack_8h_html_ac6bf753ec19812447bf315458090123b"><div class="ttname"><a href="CStack_8h.html#ac6bf753ec19812447bf315458090123b">CStack_new</a></div><div class="ttdeci">CResult_t * CStack_new(Destructor destroy)</div><div class="ttdoc">Creates a new stack.</div></div>
-<div class="ttc" id="aOperators_8h_html_ab97786fe2483a950ebbc3eada82c4c73"><div class="ttname"><a href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a></div><div class="ttdeci">void(* Destructor)(void *data)</div><div class="ttdoc">Function pointer type for destructor functions.</div><div class="ttdef"><b>Definition</b> Operators.h:36</div></div>
+<div class="ttc" id="aOperators_8h_html_ab97786fe2483a950ebbc3eada82c4c73"><div class="ttname"><a href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a></div><div class="ttdeci">void(* Destructor)(void *data)</div><div class="ttdoc">Function pointer type for destructor functions.</div><div class="ttdef"><b>Definition</b> Operators.h:42</div></div>
 <div class="ttc" id="astructCResult_html"><div class="ttname"><a href="structCResult.html">CResult</a></div><div class="ttdoc">Structure for wrapping the value or error.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

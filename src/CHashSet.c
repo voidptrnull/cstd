@@ -36,9 +36,9 @@ struct CHashSetEntry {
 
 struct _CHashSet {
     struct CHashSetEntry *entries;
-    uint64_t size;
-    uint64_t capacity;
-    uint64_t deleted_count;
+    size_t size;
+    size_t capacity;
+    size_t deleted_count;
     CompareTo cmp;
     Hash hash;
     Destructor destroyKey;
@@ -48,8 +48,8 @@ double CHashSet_load_factor(const CHashSet_t *set) {
     return set ? ((double)set->size / set->capacity) : 0.0;
 }
 
-static uint64_t __ceil(double x) {
-    uint64_t int_part = (uint64_t)x;
+static size_t __ceil(double x) {
+    size_t int_part = (size_t)x;
     if (x > int_part) {
         return int_part + 1;
     }
@@ -58,7 +58,7 @@ static uint64_t __ceil(double x) {
 
 static int CHashSet_resize(CHashSet_t *set);
 
-CResult_t *CHashSet_new(uint64_t capacity, CompareTo cmp, Hash hash,
+CResult_t *CHashSet_new(size_t capacity, CompareTo cmp, Hash hash,
                         Destructor destroyKey) {
     CHashSet_t *set = malloc(sizeof(CHashSet_t));
     if (!set)
@@ -74,7 +74,7 @@ CResult_t *CHashSet_new(uint64_t capacity, CompareTo cmp, Hash hash,
     return CResult_create(set, NULL);
 }
 
-int CHashSet_init(CHashSet_t *set, uint64_t capacity, CompareTo cmp, Hash hash,
+int CHashSet_init(CHashSet_t *set, size_t capacity, CompareTo cmp, Hash hash,
                   Destructor destroyKey) {
     if (!set || !cmp || !hash)
         return CHASHSET_NULL_SET;
@@ -93,16 +93,16 @@ int CHashSet_init(CHashSet_t *set, uint64_t capacity, CompareTo cmp, Hash hash,
     return CHASHSET_SUCCESS;
 }
 
-uint64_t CHashSet_size(const CHashSet_t *set) { return set ? set->size : 0; }
+size_t CHashSet_size(const CHashSet_t *set) { return set ? set->size : 0; }
 
 static int CHashSet_resize(CHashSet_t *set) {
-    uint64_t new_capacity = __ceil(set->capacity * 1.5);
+    size_t new_capacity = __ceil(set->capacity * 1.5);
     struct CHashSetEntry *new_entries =
         calloc(new_capacity, sizeof(struct CHashSetEntry));
     if (!new_entries)
         return CHASHSET_ALLOC_FAILURE;
 
-    uint64_t old_capacity = set->capacity;
+    size_t old_capacity = set->capacity;
     struct CHashSetEntry *old_entries = set->entries;
 
     set->entries = new_entries;
@@ -110,9 +110,9 @@ static int CHashSet_resize(CHashSet_t *set) {
     set->size = 0;
     set->deleted_count = 0;
 
-    for (uint64_t i = 0; i < old_capacity; i++) {
+    for (size_t i = 0; i < old_capacity; i++) {
         if (old_entries[i].key && old_entries[i].key != DELETED) {
-            uint64_t new_index = set->hash(old_entries[i].key) % new_capacity;
+            size_t new_index = set->hash(old_entries[i].key) % new_capacity;
             while (new_entries[new_index].key != NULL) {
                 new_index = (new_index + 1) % new_capacity;
             }
@@ -136,7 +136,7 @@ int CHashSet_add(CHashSet_t *set, void *key) {
             return CHASHSET_ALLOC_FAILURE;
     }
 
-    uint64_t index = set->hash(key) % set->capacity;
+    size_t index = set->hash(key) % set->capacity;
 
     while (set->entries[index].key && set->entries[index].key != DELETED) {
         if (set->cmp(set->entries[index].key, key) == 0) {
@@ -157,7 +157,7 @@ int CHashSet_contains(CHashSet_t *set, void *key) {
     if (!key)
         return CHASHSET_NULL_KEY;
 
-    uint64_t index = set->hash(key) % set->capacity;
+    size_t index = set->hash(key) % set->capacity;
 
     while (set->entries[index].key) {
         if (set->entries[index].key != DELETED &&
@@ -176,7 +176,7 @@ int CHashSet_remove(CHashSet_t *set, void *key) {
     if (!key)
         return CHASHSET_NULL_KEY;
 
-    uint64_t index = set->hash(key) % set->capacity;
+    size_t index = set->hash(key) % set->capacity;
 
     while (set->entries[index].key) {
         if (set->entries[index].key != DELETED &&
@@ -199,7 +199,7 @@ int CHashSet_clear(CHashSet_t *set) {
     if (!set)
         return CHASHSET_NULL_SET;
 
-    for (uint64_t i = 0; i < set->capacity; i++) {
+    for (size_t i = 0; i < set->capacity; i++) {
         if (set->entries[i].key && set->entries[i].key != DELETED) {
             if (set->destroyKey)
                 set->destroyKey(set->entries[i].key);
@@ -219,7 +219,7 @@ int CHashSet_free(CHashSet_t **set) {
     if (!set)
         return CHASHSET_NULL_SET;
 
-    for (uint64_t i = 0; i < (*set)->capacity; i++) {
+    for (size_t i = 0; i < (*set)->capacity; i++) {
         if ((*set)->entries[i].key && (*set)->entries[i].key != DELETED) {
             if ((*set)->destroyKey)
                 (*set)->destroyKey((*set)->entries[i].key);

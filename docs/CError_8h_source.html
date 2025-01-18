@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.2-202501</span>
+   <div id="projectname">cstd<span id="projectnumber">&#160;1.0.3-202501</span>
    </div>
    <div id="projectbrief">A library for providing useful utilities and functionality by extending the standard C library.</div>
   </td>
@@ -121,34 +121,42 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#ifndef CSTD_CERROR_H</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define CSTD_CERROR_H</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCError.html">CError</a> <a class="code hl_struct" href="structCError.html">CError_t</a>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="CError_8h.html#aff13969b90e52d5c6435d51ec163da3b">   57</a></span><a class="code hl_struct" href="structCError.html">CError_t</a> *<a class="code hl_function" href="CError_8h.html#aff13969b90e52d5c6435d51ec163da3b">CError_create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> <span class="keywordtype">char</span> *ctx, int64_t err_code);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="CError_8h.html#a4bf7c7df6123a1cfe46f791f1dbec42a">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CError_8h.html#a4bf7c7df6123a1cfe46f791f1dbec42a">CError_free</a>(<a class="code hl_struct" href="structCError.html">CError_t</a> **error);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="CError_8h.html#aec7fb625e7e4c71cc6254eda8086d838">   68</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="CError_8h.html#aec7fb625e7e4c71cc6254eda8086d838">CError_get_message</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="CError_8h.html#afad054668a57598f8df250d0b1ae7b81">   74</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="CError_8h.html#afad054668a57598f8df250d0b1ae7b81">CError_get_context</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="CError_8h.html#a28c7405dc3dd78ee9c63ed5f24168186">   79</a></span>int64_t <a class="code hl_function" href="CError_8h.html#a28c7405dc3dd78ee9c63ed5f24168186">CError_get_code</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">   88</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">ErrorHandler</a>)(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="CError_8h.html#a8cb67cb5b6ada63b37b05e7b12cb0759">   97</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CError_8h.html#a8cb67cb5b6ada63b37b05e7b12cb0759">CError_modify</a>(<a class="code hl_struct" href="structCError.html">CError_t</a> *error, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> <span class="keywordtype">char</span> *ctx,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                  int64_t err_code);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#ifdef CUTILS_COMP_FUNCTIONS</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">void</span> print_error(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CERROR_H</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structCError.html">CError</a> <a class="code hl_struct" href="structCError.html">CError_t</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="CError_8h.html#aff13969b90e52d5c6435d51ec163da3b">   61</a></span><a class="code hl_struct" href="structCError.html">CError_t</a> *<a class="code hl_function" href="CError_8h.html#aff13969b90e52d5c6435d51ec163da3b">CError_create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> <span class="keywordtype">char</span> *ctx, int64_t err_code);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="CError_8h.html#a4bf7c7df6123a1cfe46f791f1dbec42a">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="CError_8h.html#a4bf7c7df6123a1cfe46f791f1dbec42a">CError_free</a>(<a class="code hl_struct" href="structCError.html">CError_t</a> **error);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="CError_8h.html#aec7fb625e7e4c71cc6254eda8086d838">   72</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="CError_8h.html#aec7fb625e7e4c71cc6254eda8086d838">CError_get_message</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="CError_8h.html#afad054668a57598f8df250d0b1ae7b81">   78</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="CError_8h.html#afad054668a57598f8df250d0b1ae7b81">CError_get_context</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="CError_8h.html#a28c7405dc3dd78ee9c63ed5f24168186">   83</a></span>int64_t <a class="code hl_function" href="CError_8h.html#a28c7405dc3dd78ee9c63ed5f24168186">CError_get_code</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">   92</a></span><span class="keyword">typedef</span> void (*<a class="code hl_typedef" href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">ErrorHandler</a>)(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="CError_8h.html#a8cb67cb5b6ada63b37b05e7b12cb0759">  101</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="CError_8h.html#a8cb67cb5b6ada63b37b05e7b12cb0759">CError_modify</a>(<a class="code hl_struct" href="structCError.html">CError_t</a> *error, <span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">const</span> <span class="keywordtype">char</span> *ctx,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                  int64_t err_code);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">#ifdef CUTILS_COMP_FUNCTIONS</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> print_error(<span class="keyword">const</span> <a class="code hl_struct" href="structCError.html">CError_t</a> *error);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif </span><span class="comment">// CSTD_CERROR_H</span></div>
 <div class="ttc" id="aCError_8h_html_a28c7405dc3dd78ee9c63ed5f24168186"><div class="ttname"><a href="CError_8h.html#a28c7405dc3dd78ee9c63ed5f24168186">CError_get_code</a></div><div class="ttdeci">int64_t CError_get_code(const CError_t *error)</div><div class="ttdoc">Retrieves the error code from a CError object.</div></div>
 <div class="ttc" id="aCError_8h_html_a4bf7c7df6123a1cfe46f791f1dbec42a"><div class="ttname"><a href="CError_8h.html#a4bf7c7df6123a1cfe46f791f1dbec42a">CError_free</a></div><div class="ttdeci">void CError_free(CError_t **error)</div><div class="ttdoc">Frees a CError object.</div></div>
 <div class="ttc" id="aCError_8h_html_a8cb67cb5b6ada63b37b05e7b12cb0759"><div class="ttname"><a href="CError_8h.html#a8cb67cb5b6ada63b37b05e7b12cb0759">CError_modify</a></div><div class="ttdeci">int CError_modify(CError_t *error, const char *msg, const char *ctx, int64_t err_code)</div><div class="ttdoc">Modify the existing data of the CError, thus effectively allowing to avoid excessive memory allocatio...</div></div>
-<div class="ttc" id="aCError_8h_html_a9fc893416babaf8864f3a94c27ee9d61"><div class="ttname"><a href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">ErrorHandler</a></div><div class="ttdeci">void(* ErrorHandler)(const CError_t *error)</div><div class="ttdoc">Function pointer type for error handling functions.</div><div class="ttdef"><b>Definition</b> CError.h:88</div></div>
+<div class="ttc" id="aCError_8h_html_a9fc893416babaf8864f3a94c27ee9d61"><div class="ttname"><a href="CError_8h.html#a9fc893416babaf8864f3a94c27ee9d61">ErrorHandler</a></div><div class="ttdeci">void(* ErrorHandler)(const CError_t *error)</div><div class="ttdoc">Function pointer type for error handling functions.</div><div class="ttdef"><b>Definition</b> CError.h:92</div></div>
 <div class="ttc" id="aCError_8h_html_aec7fb625e7e4c71cc6254eda8086d838"><div class="ttname"><a href="CError_8h.html#aec7fb625e7e4c71cc6254eda8086d838">CError_get_message</a></div><div class="ttdeci">const char * CError_get_message(const CError_t *error)</div><div class="ttdoc">Retrieves the error message from a CError object.</div></div>
 <div class="ttc" id="aCError_8h_html_afad054668a57598f8df250d0b1ae7b81"><div class="ttname"><a href="CError_8h.html#afad054668a57598f8df250d0b1ae7b81">CError_get_context</a></div><div class="ttdeci">const char * CError_get_context(const CError_t *error)</div><div class="ttdoc">Retrieves the context from a CError object.</div></div>
 <div class="ttc" id="aCError_8h_html_aff13969b90e52d5c6435d51ec163da3b"><div class="ttname"><a href="CError_8h.html#aff13969b90e52d5c6435d51ec163da3b">CError_create</a></div><div class="ttdeci">CError_t * CError_create(const char *msg, const char *ctx, int64_t err_code)</div><div class="ttdoc">Creates a new CError object.</div></div>
