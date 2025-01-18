@@ -67,18 +67,22 @@ typedef struct _CHeap CHeap_t;
 
 /// \brief Create a new heap with the specified initial capacity and comparator.
 /// \param initial_capacity The initial capacity to reserve for the heap.
+/// \param destroy The destructor function to use for cleaning up elements, or
+/// `NULL` if no destructor is needed.
 /// \param cmp The comparator function to organize the heap.
 /// \return Returns a pointer to the newly created heap encapsulated in CResult,
 /// or an error code if creation fails.
-CResult_t *CHeap_new(size_t initial_capacity, CompareTo cmp);
+CResult_t *CHeap_new(size_t initial_capacity, Destructor destroy, CompareTo cmp);
 
 /// \brief Initialize an existing heap with the specified initial capacity and
 /// comparator.
 /// \param heap Pointer to the `CHeap` structure to initialize.
 /// \param initial_capacity The initial capacity to reserve for the heap.
+/// \param destroy The destructor function to use for cleaning up elements, or
+/// `NULL` if no destructor is needed.
 /// \param cmp The comparator function to organize the heap.
 /// \return Returns `CHEAP_SUCCESS` on success, or an error code on failure.
-int CHeap_init(CHeap_t *heap, size_t initial_capacity, CompareTo cmp);
+int CHeap_init(CHeap_t *heap, size_t initial_capacity, Destructor destroy, CompareTo cmp);
 
 /// \brief Get the current size of the heap.
 /// \param heap Pointer to the heap.

@@ -128,12 +128,12 @@ typedef struct _CHeap&#160;</td><td class="memItemRight" valign="bottom"><b>CHea
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a211b473cd1d647918f8bde8c177310f8" id="r_a211b473cd1d647918f8bde8c177310f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a211b473cd1d647918f8bde8c177310f8">CHeap_new</a> (size_t initial_capacity, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
-<tr class="memdesc:a211b473cd1d647918f8bde8c177310f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new heap with the specified initial capacity and comparator.  <br /></td></tr>
-<tr class="separator:a211b473cd1d647918f8bde8c177310f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abef3eea5766b8fae49ba70aaa87e5934" id="r_abef3eea5766b8fae49ba70aaa87e5934"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abef3eea5766b8fae49ba70aaa87e5934">CHeap_init</a> (CHeap_t *heap, size_t initial_capacity, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
-<tr class="memdesc:abef3eea5766b8fae49ba70aaa87e5934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an existing heap with the specified initial capacity and comparator.  <br /></td></tr>
-<tr class="separator:abef3eea5766b8fae49ba70aaa87e5934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb7f1e590db66e461fb02fa36294fff5" id="r_acb7f1e590db66e461fb02fa36294fff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCResult.html">CResult_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb7f1e590db66e461fb02fa36294fff5">CHeap_new</a> (size_t initial_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
+<tr class="memdesc:acb7f1e590db66e461fb02fa36294fff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new heap with the specified initial capacity and comparator.  <br /></td></tr>
+<tr class="separator:acb7f1e590db66e461fb02fa36294fff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31d1b256badf468767d23b37d0c5263c" id="r_a31d1b256badf468767d23b37d0c5263c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31d1b256badf468767d23b37d0c5263c">CHeap_init</a> (CHeap_t *heap, size_t initial_capacity, <a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a> destroy, <a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a> cmp)</td></tr>
+<tr class="memdesc:a31d1b256badf468767d23b37d0c5263c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize an existing heap with the specified initial capacity and comparator.  <br /></td></tr>
+<tr class="separator:a31d1b256badf468767d23b37d0c5263c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ccfff6095560c5c028a22542b63eb24" id="r_a2ccfff6095560c5c028a22542b63eb24"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ccfff6095560c5c028a22542b63eb24">CHeap_size</a> (CHeap_t *heap)</td></tr>
 <tr class="memdesc:a2ccfff6095560c5c028a22542b63eb24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current size of the heap.  <br /></td></tr>
 <tr class="separator:a2ccfff6095560c5c028a22542b63eb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -333,8 +333,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abef3eea5766b8fae49ba70aaa87e5934" name="abef3eea5766b8fae49ba70aaa87e5934"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abef3eea5766b8fae49ba70aaa87e5934">&#9670;&#160;</a></span>CHeap_init()</h2>
+<a id="a31d1b256badf468767d23b37d0c5263c" name="a31d1b256badf468767d23b37d0c5263c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31d1b256badf468767d23b37d0c5263c">&#9670;&#160;</a></span>CHeap_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -352,6 +352,11 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a></td>          <td class="paramname"><span class="paramname"><em>destroy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="Operators_8h.html#a9fe4009a9ab82eaae68d8d3f87e7b89b">CompareTo</a></td>          <td class="paramname"><span class="paramname"><em>cmp</em></span>&#160;)</td>
         </tr>
       </table>
@@ -362,6 +367,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">heap</td><td>Pointer to the <code><a class="el" href="structCHeap.html" title="Structure representing a heap-based priority queue.">CHeap</a></code> structure to initialize. </td></tr>
     <tr><td class="paramname">initial_capacity</td><td>The initial capacity to reserve for the heap. </td></tr>
+    <tr><td class="paramname">destroy</td><td>The destructor function to use for cleaning up elements, or <code>NULL</code> if no destructor is needed. </td></tr>
     <tr><td class="paramname">cmp</td><td>The comparator function to organize the heap. </td></tr>
   </table>
   </dd>
@@ -401,8 +407,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a211b473cd1d647918f8bde8c177310f8" name="a211b473cd1d647918f8bde8c177310f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a211b473cd1d647918f8bde8c177310f8">&#9670;&#160;</a></span>CHeap_new()</h2>
+<a id="acb7f1e590db66e461fb02fa36294fff5" name="acb7f1e590db66e461fb02fa36294fff5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb7f1e590db66e461fb02fa36294fff5">&#9670;&#160;</a></span>CHeap_new()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,6 +417,11 @@ Functions</h2></td></tr>
           <td class="memname"><a class="el" href="structCResult.html">CResult_t</a> * CHeap_new </td>
           <td>(</td>
           <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>initial_capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Operators_8h.html#ab97786fe2483a950ebbc3eada82c4c73">Destructor</a></td>          <td class="paramname"><span class="paramname"><em>destroy</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -424,6 +435,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">initial_capacity</td><td>The initial capacity to reserve for the heap. </td></tr>
+    <tr><td class="paramname">destroy</td><td>The destructor function to use for cleaning up elements, or <code>NULL</code> if no destructor is needed. </td></tr>
     <tr><td class="paramname">cmp</td><td>The comparator function to organize the heap. </td></tr>
   </table>
   </dd>

@@ -11,7 +11,7 @@ int compare_integers(const void *a, const void *b) {
 
 int test_heap_creation() {
     CLog(INFO, "test_heap_creation()");
-    CResult_t *res = CHeap_new(10, compare_integers);
+    CResult_t *res = CHeap_new(10, NULL, compare_integers);
     assert(!CResult_is_error(res));
     CHeap_t *heap = CResult_get(res);
 
@@ -24,7 +24,7 @@ int test_heap_creation() {
 
 int test_heap_insertion() {
     CLog(INFO, "test_heap_insertion()");
-    CResult_t *res = CHeap_new(10, compare_integers);
+    CResult_t *res = CHeap_new(10, NULL, compare_integers);
     assert(!CResult_is_error(res));
     CHeap_t *heap = CResult_get(res);
 
@@ -42,7 +42,7 @@ int test_heap_insertion() {
 
 int test_heap_extraction() {
     CLog(INFO, "test_heap_extraction()");
-    CResult_t *res = CHeap_new(10, compare_integers);
+    CResult_t *res = CHeap_new(10, NULL, compare_integers);
     assert(!CResult_is_error(res));
     CHeap_t *heap = CResult_get(res);
 
@@ -68,7 +68,7 @@ int test_heap_extraction() {
 
 int test_heap_resize() {
     CLog(INFO, "test_heap_resize()");
-    CResult_t *res = CHeap_new(5, compare_integers);
+    CResult_t *res = CHeap_new(5, NULL, compare_integers);
     assert(!CResult_is_error(res));
     CHeap_t *heap = CResult_get(res);
 

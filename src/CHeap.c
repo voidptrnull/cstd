@@ -30,18 +30,20 @@ struct _CHeap {
     size_t size;
     size_t capacity;
     CompareTo cmp;
+    Destructor destroy;
 };
 
 static inline void CHeap_heapify_up(CHeap_t *heap, size_t index);
 static inline void CHeap_heapify_down(CHeap_t *heap, size_t index);
 
-CResult_t *CHeap_new(size_t initial_capacity, CompareTo cmp) {
+CResult_t *CHeap_new(size_t initial_capacity, Destructor destroy,
+                     CompareTo cmp) {
     CHeap_t *heap = malloc(sizeof(CHeap_t));
     if (!heap)
         return CResult_ecreate(
             CError_create("Unable to allocate memory for heap.", "CHeap_new",
                           CHEAP_ALLOC_FAILURE));
-    if (CHeap_init(heap, initial_capacity, cmp)) {
+    if (CHeap_init(heap, initial_capacity, destroy, cmp)) {
         free(heap);
         return CResult_ecreate(
             CError_create("Unable to allocate memory for heap data.",
@@ -50,7 +52,8 @@ CResult_t *CHeap_new(size_t initial_capacity, CompareTo cmp) {
     return CResult_create(heap, NULL);
 }
 
-int CHeap_init(CHeap_t *heap, size_t initial_capacity, CompareTo cmp) {
+int CHeap_init(CHeap_t *heap, size_t initial_capacity, Destructor destroy,
+               CompareTo cmp) {
     if (!heap)
         return CHEAP_NULL_HEAP;
     heap->data = malloc(initial_capacity * sizeof(void *));
@@ -58,6 +61,7 @@ int CHeap_init(CHeap_t *heap, size_t initial_capacity, CompareTo cmp) {
         return CHEAP_ALLOC_FAILURE;
     heap->size = 0;
     heap->capacity = initial_capacity;
+    heap->destroy = destroy;
     heap->cmp = cmp;
     return CHEAP_SUCCESS;
 }
@@ -95,7 +99,8 @@ int CHeap_insert(CHeap_t *heap, void *element) {
 CResult_t *CHeap_extract(CHeap_t *heap) {
     if (!heap || !heap->data)
         return CResult_ecreate(
-            CError_create("Heap is null.", "CHeap_extract", CHEAP_NULL_HEAP));;
+            CError_create("Heap is null.", "CHeap_extract", CHEAP_NULL_HEAP));
+    ;
     if (heap->size == 0)
         return CResult_ecreate(
             CError_create("Heap is empty.", "CHeap_extract", CHEAP_NOT_FOUND));
@@ -119,6 +124,9 @@ void *CHeap_fextract(CHeap_t *heap) {
 int CHeap_clear(CHeap_t *heap) {
     if (!heap)
         return CHEAP_NULL_HEAP;
+    if (heap->destroy)
+        for (size_t i = 0; i < heap->size; i++)
+            heap->destroy(heap->data[i]);
     free(heap->data);
     return CHEAP_SUCCESS;
 }
